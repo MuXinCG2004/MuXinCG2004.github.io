@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"www.muxincg.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一名山大学子的博客,为了能寻找到志同道合的同学并减轻后辈的压力">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Astral">
-<meta property="og:url" content="https://www.muxincg.top/archives/2024/11/index.html">
+  <meta name="description" content="24年秋,编者与校友组队完成了OceanBase大赛(兼全国大学生系统能力大赛比赛的初赛,这两天借着复习数据库的机会,来重新看一下MiniOB的源代码,弥补一下初赛的失败,也给新生们留下一个参考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MiniOB数据库解析及源码解读">
+<meta property="og:url" content="https://www.muxincg.top/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/index.html">
 <meta property="og:site_name" content="Astral">
-<meta property="og:description" content="一名山大学子的博客,为了能寻找到志同道合的同学并减轻后辈的压力">
+<meta property="og:description" content="24年秋,编者与校友组队完成了OceanBase大赛(兼全国大学生系统能力大赛比赛的初赛,这两天借着复习数据库的机会,来重新看一下MiniOB的源代码,弥补一下初赛的失败,也给新生们留下一个参考">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-23T11:24:49.000Z">
+<meta property="article:modified_time" content="2024-11-23T11:31:47.761Z">
 <meta property="article:author" content="MuXinCG">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://www.muxincg.top/archives/2024/11/">
+<link rel="canonical" href="https://www.muxincg.top/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">
 
 
 <script id="page-configurations">
@@ -38,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-cn'
   };
 </script>
 
-  <title>Archive | Astral</title>
+  <title>MiniOB数据库解析及源码解读 | Astral</title>
   
 
 
@@ -142,70 +144,78 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 2 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="MuXinCG">
+      <meta itemprop="description" content="一名山大学子的博客,为了能寻找到志同道合的同学并减轻后辈的压力">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Astral">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          MiniOB数据库解析及源码解读
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-11-23 19:24:49 / Modified: 19:31:47" itemprop="dateCreated datePublished" datetime="2024-11-23T19:24:49+08:00">2024-11-23</time>
+            </span>
+
+          
+            <div class="post-description">24年秋,编者与校友组队完成了OceanBase大赛(兼全国大学生系统能力大赛比赛的初赛,这两天借着复习数据库的机会,来重新看一下MiniOB的源代码,弥补一下初赛的失败,也给新生们留下一个参考</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-11-23T19:24:49+08:00"
-              content="2024-11-23">
-          11-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/" itemprop="url">
-            <span itemprop="name">MiniOB数据库解析及源码解读</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-11-23T13:37:03+08:00"
-              content="2024-11-23">
-          11-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/23/flutter%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/" itemprop="url">
-            <span itemprop="name">flutter探索指北</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="层次划分">层次划分</h1>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/23/flutter%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/" rel="prev" title="flutter探索指北">
+      <i class="fa fa-chevron-left"></i> flutter探索指北
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -258,6 +268,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%82%E6%AC%A1%E5%88%92%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">层次划分</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
