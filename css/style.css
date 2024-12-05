@@ -499,7 +499,6 @@ body,
 #container {
   height: 100%;
   scroll-behavior: smooth;
-  cursor: var(--cursor-default);
 }
 body {
   width: 100%;
@@ -513,23 +512,6 @@ body {
 body ::selection {
   background: var(--red-1);
   color: #fff;
-}
-a {
-  cursor: var(--cursor-pointer) !important;
-}
-.site-search input {
-  cursor: var(--cursor-text) !important;
-}
-#main span,
-#main p,
-#main code,
-#main kbd,
-#main input,
-#main textarea {
-  cursor: var(--cursor-text) !important;
-}
-#main nav span {
-  cursor: var(--cursor-default) !important;
 }
 #container {
   position: relative;
@@ -775,7 +757,7 @@ a {
   opacity: 0.7;
 }
 .main-nav-icon {
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   padding: 15px 5px;
   display: flex;
   align-items: center;
@@ -1936,7 +1918,7 @@ pre .javascript .function {
   margin: 5px;
   z-index: 1;
   filter: invert(50%);
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   color: #fff;
   transition: 0.3s;
 }
@@ -1949,13 +1931,13 @@ pre .javascript .function {
   font-weight: bold;
   z-index: 1;
   filter: invert(50%);
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
 }
 .code-expand {
   margin: 5px;
   filter: invert(50%);
   z-index: 1;
-  cursor: var(--cursor-pointer);
+  cursor: pointer;
   transition: 0.3s;
   transform: rotate(0deg);
   color: #fff;
