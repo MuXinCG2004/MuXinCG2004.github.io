@@ -14,7 +14,7 @@
   
   
   <title>
-    MiniOB数据库解析及源码解读 |
+    CSAPP探索 |
     
     Astral
   </title>
@@ -29,15 +29,15 @@
 
   
   
-    <meta name="description" content="24年秋,编者与校友组队完成了OceanBase大赛(兼全国大学生系统能力大赛比赛的初赛,这两天借着复习数据库的机会,来重新看一下MiniOB的源代码,弥补一下初赛的失败,也给新生们留下一个参考">
+    <meta name="description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MiniOB数据库解析及源码解读">
-<meta property="og:url" content="https://www.muxincg.top/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/index.html">
+<meta property="og:title" content="CSAPP探索">
+<meta property="og:url" content="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/index.html">
 <meta property="og:site_name" content="Astral">
-<meta property="og:description" content="24年秋,编者与校友组队完成了OceanBase大赛(兼全国大学生系统能力大赛比赛的初赛,这两天借着复习数据库的机会,来重新看一下MiniOB的源代码,弥补一下初赛的失败,也给新生们留下一个参考">
+<meta property="og:description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-11-23T11:24:49.000Z">
-<meta property="article:modified_time" content="2024-11-23T11:31:47.761Z">
+<meta property="article:published_time" content="2024-12-07T12:13:49.000Z">
+<meta property="article:modified_time" content="2024-12-07T12:15:27.539Z">
 <meta property="article:author" content="MuXinCG">
 <meta name="twitter:card" content="summary">
   
@@ -162,7 +162,7 @@
 <header id="header">
   
     
-      <img fetchpriority="high" src="/images/banner.webp" alt="MiniOB数据库解析及源码解读">
+      <img fetchpriority="high" src="/images/banner.webp" alt="CSAPP探索">
     
   
   <div id="header-outer">
@@ -171,7 +171,7 @@
         
         
           <a href="/" id="logo">
-            <h1 data-aos="slide-up">MiniOB数据库解析及源码解读</h1>
+            <h1 data-aos="slide-up">CSAPP探索</h1>
           </a>
         
       
@@ -187,13 +187,13 @@
 
         <div id="content">
           
-          <section id="main"><article id="post-MiniOB数据库解析及源码解读" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main"><article id="post-CSAPP探索" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
-  <a href="/2024/11/23/MiniOB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A7%A3%E6%9E%90%E5%8F%8A%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB/" class="article-date-link" data-aos="zoom-in">
-    <time datetime="2024-11-23T11:24:49.000Z" itemprop="datePublished">2024-11-23</time>
-    <time style="display: none;" id="post-update-time">2024-11-23</time>
+  <a href="/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/" class="article-date-link" data-aos="zoom-in">
+    <time datetime="2024-12-07T12:13:49.000Z" itemprop="datePublished">2024-12-07</time>
+    <time style="display: none;" id="post-update-time">2024-12-07</time>
   </a>
 </div>
 
@@ -206,7 +206,7 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <h1 id="层次划分">层次划分</h1>
+        <p>由于最近正在复习计算机系统原理的期末考试,所以我想同时进行<span class="math inline">\(CSAPP\)</span>的观看,此博客作为一个速记帖,以便后续整理</p>
 
       
     </div>
@@ -225,35 +225,19 @@
   
   <nav id="article-nav" data-aos="fade-up">
     
-      <div class="article-nav-link-wrap article-nav-link-left">
-        
-          
-          
-            <img data-src="/covers/DDFD615C6F4D8B8E239F0EBB1EBB4B83.JPEG" data-sizes="auto" alt="cmake探索指北" class="lazyload">
-          
-        
-        <a href="/2024/12/05/cmake%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/"></a>
-        <div class="article-nav-caption">Newer</div>
-        <h3 class="article-nav-title">
-          
-            cmake探索指北
-          
-        </h3>
-      </div>
-    
     
     <div class="article-nav-link-wrap article-nav-link-right">
       
         
         
-          <img data-src="/covers/A9CB2D4BED80F7CBBD152EAF7714CDBA.jpg" data-sizes="auto" alt="flutter探索指北" class="lazyload">
+          <img data-src="/covers/34D7DA39714123551BB58D33C31CDBD0.jpg" data-sizes="auto" alt="cmake探索指北" class="lazyload">
         
       
-      <a href="/2024/11/23/flutter%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/"></a>
+      <a href="/2024/12/05/cmake%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/"></a>
       <div class="article-nav-caption">Older</div>
       <h3 class="article-nav-title">
         
-          flutter探索指北
+          cmake探索指北
         
       </h3>
     </div>
@@ -278,7 +262,7 @@
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E5%88%92%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">层次划分</span></a></li></ol>
+        
       
   </div>
 </div>
@@ -414,7 +398,7 @@
   <h3 class="toc-title">Contents</h3>
   <div class="sidebar-toc-wrapper toc-div-class" >
       
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E5%88%92%E5%88%86"><span class="toc-number">1.</span> <span class="toc-text">层次划分</span></a></li></ol>
+        
       
   </div>
 </div>
