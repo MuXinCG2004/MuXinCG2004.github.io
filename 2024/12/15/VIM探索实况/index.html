@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.muxincg.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="由于最近了解了vim这种编辑方式,为了更好地记忆,也为了寻找哪些vim操作被zed或vscode兼容,我编写这篇博客用来进行一次归档.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VIM探索实况">
+<meta property="og:url" content="https://www.muxincg.top/2024/12/15/VIM%E6%8E%A2%E7%B4%A2%E5%AE%9E%E5%86%B5/index.html">
+<meta property="og:site_name" content="Astral">
+<meta property="og:description" content="由于最近了解了vim这种编辑方式,为了更好地记忆,也为了寻找哪些vim操作被zed或vscode兼容,我编写这篇博客用来进行一次归档.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-15T12:55:22.000Z">
+<meta property="article:modified_time" content="2024-12-18T13:25:24.504Z">
+<meta property="article:author" content="MuXinCG">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.muxincg.top/2024/12/15/VIM%E6%8E%A2%E7%B4%A2%E5%AE%9E%E5%86%B5/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://www.muxincg.top/2024/12/15/VIM%E6%8E%A2%E7%B4%A2%E5%AE%9E%E5%86%B5/","path":"2024/12/15/VIM探索实况/","title":"VIM探索实况"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>VIM探索实况 | Astral</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Astral</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">MuXinCG的个人博客</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">模式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.</span> <span class="nav-text">移动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.1.</span> <span class="nav-text">简单移动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9"><span class="nav-number">3.</span> <span class="nav-text">修改</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BF%AE%E6%94%B9"><span class="nav-number">3.1.</span> <span class="nav-text">简单修改</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%96%87%E6%9C%AC"><span class="nav-number">3.1.1.</span> <span class="nav-text">插入文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6"><span class="nav-number">3.1.2.</span> <span class="nav-text">删除字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%92%A4%E9%94%80%E5%92%8C%E9%87%8D%E5%81%9A"><span class="nav-number">3.1.3.</span> <span class="nav-text">撤销和重做</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%A0%81"><span class="nav-number">4.</span> <span class="nav-text">数码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E4%BB%A4"><span class="nav-number">5.</span> <span class="nav-text">指令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">MuXinCG</p>
+  <div class="site-description" itemprop="description">无限风光在险峰</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/12/15/VIM%E6%8E%A2%E7%B4%A2%E5%AE%9E%E5%86%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="MuXinCG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Astral">
+      <meta itemprop="description" content="无限风光在险峰">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="VIM探索实况 | Astral">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VIM探索实况
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-12-15 20:55:22" itemprop="dateCreated datePublished" datetime="2024-12-15T20:55:22+08:00">2024-12-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-12-18 21:25:24" itemprop="dateModified" datetime="2024-12-18T21:25:24+08:00">2024-12-18</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>由于最近了解了<code>vim</code>这种编辑方式,为了更好地记忆,也为了寻找哪些<code>vim</code>操作被<code>zed</code>或<code>vscode</code>兼容,我编写这篇博客用来进行一次归档.</p>
+<span id="more"></span>
+<h1 id="模式">模式</h1>
+<p><code>vim</code>有四种模式,可以通过不同的方式从这四种模式中切换.我们首先可以简单地了解一下这四种模式</p>
+<p>我们第一次打开<code>vim</code>界面,首先进入的就是<code>正常模式</code>,在正常模式中,我们使用指令,相对应的,由于指令键位被占用,我们没办法编辑,只有进入其他的模式中才能进行编辑操作</p>
+<p>其次就是<code>插入模式</code></p>
+<h1 id="移动">移动</h1>
+<h2 id="简单移动">简单移动</h2>
+<p><code>vim</code>和其他编辑器一样,可以用方向键来控制移动的方向,不过使用<code>vim</code>是为了更加高效地进行编辑,所以使用方向键是一个非常耗费时间的移动方式.考虑到效率,我们使用<code>hjkl</code>四个键位来进行移动.<code>h</code>对应左,<code>j</code>对应下,<code>k</code>对应上,<code>l</code>对应右.</p>
+<h1 id="修改">修改</h1>
+<h2 id="简单修改">简单修改</h2>
+<h3 id="插入文本">插入文本</h3>
+<p>我们可以使用多种方式进行插入模式来插入文本,对于不同的键位,不同的只有进入插入模式后的光标位置.我们可以列一个表来进行</p>
+<table>
+<thead>
+<tr class="header">
+<th>键位</th>
+<th>插入位置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>i</td>
+<td>光标所覆盖字符左</td>
+</tr>
+<tr class="even">
+<td>a</td>
+<td>光标所覆盖字符右</td>
+</tr>
+<tr class="odd">
+<td>A</td>
+<td>行末</td>
+</tr>
+<tr class="even">
+<td>o</td>
+<td>在光标所在行下一行开一个新行进行插入</td>
+</tr>
+<tr class="odd">
+<td>O</td>
+<td>在光标所在行下一行开一个新行进行插入</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="删除字符">删除字符</h3>
+<p>我们可以使用<code>x</code>来简单删除字符,当你按下<code>x</code>键时,你会删除你光标对应的字符.在删除前后,你依然会在正常模式.</p>
+<p><code>vim</code>同时也考虑到了做大修改的状况,当我们按下<code>dd</code>键时,我们可以删除一整行文本.</p>
+<p>还有一种特殊的方式,我们称为删除换行符,在<code>vim</code>中,你有时可能会将一行误拆成两行,当你按下<code>J</code>时,<code>vim</code>会将光标所在的一行和下一行进行合并.</p>
+<h3 id="撤销和重做">撤销和重做</h3>
+<p>我们进行操作时,很可能会有一些误操作.这样,撤销操作就变得十分重要.当我们按下<code>u</code>时.我们就会撤销上一个不是<code>u</code>的操作.相对应的,当你撤销太多时,我们有重做的功能,我们只需按下<code>CTRL + R</code>.即可重做.</p>
+<p>有一个很有意思的指令<code>U</code>,这个指令的意义是行撤销,这个指令撤销任何光标所在行的最近的所有操作.有意思的地方在于,这个撤销操作可以被<code>u</code>进行撤销<code>CTRL + R</code>进行重做.</p>
+<h1 id="数码">数码</h1>
+<h1 id="指令">指令</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/12/15/Shell%E8%84%9A%E6%9C%AC%E6%8E%A2%E7%B4%A2/" rel="prev" title="Shell脚本探索">
+                  <i class="fa fa-angle-left"></i> Shell脚本探索
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">MuXinCG</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
