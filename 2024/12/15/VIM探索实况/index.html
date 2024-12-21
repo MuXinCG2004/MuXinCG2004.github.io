@@ -27,7 +27,7 @@
 <meta property="og:description" content="由于最近了解了vim这种编辑方式,为了更好地记忆,也为了寻找哪些vim操作被zed或vscode兼容,我编写这篇博客用来进行一次归档.">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-15T12:55:22.000Z">
-<meta property="article:modified_time" content="2024-12-18T13:25:24.504Z">
+<meta property="article:modified_time" content="2024-12-19T02:31:12.180Z">
 <meta property="article:author" content="MuXinCG">
 <meta name="twitter:card" content="summary">
 
@@ -117,7 +117,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -185,7 +185,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-12-18 21:25:24" itemprop="dateModified" datetime="2024-12-18T21:25:24+08:00">2024-12-18</time>
+      <time title="Modified: 2024-12-19 10:31:12" itemprop="dateModified" datetime="2024-12-19T10:31:12+08:00">2024-12-19</time>
     </span>
 
   
@@ -202,10 +202,22 @@
 <h1 id="模式">模式</h1>
 <p><code>vim</code>有四种模式,可以通过不同的方式从这四种模式中切换.我们首先可以简单地了解一下这四种模式</p>
 <p>我们第一次打开<code>vim</code>界面,首先进入的就是<code>正常模式</code>,在正常模式中,我们使用指令,相对应的,由于指令键位被占用,我们没办法编辑,只有进入其他的模式中才能进行编辑操作</p>
-<p>其次就是<code>插入模式</code></p>
+<p>其次就是<code>插入模式</code>,在插入模式中,<code>vim</code>就像一个普通的文本编辑器一样,我们在插入模式的情况下,只能通过<code>ESC</code>回到正常模式,而没有进入其他模式的方式.</p>
 <h1 id="移动">移动</h1>
 <h2 id="简单移动">简单移动</h2>
 <p><code>vim</code>和其他编辑器一样,可以用方向键来控制移动的方向,不过使用<code>vim</code>是为了更加高效地进行编辑,所以使用方向键是一个非常耗费时间的移动方式.考虑到效率,我们使用<code>hjkl</code>四个键位来进行移动.<code>h</code>对应左,<code>j</code>对应下,<code>k</code>对应上,<code>l</code>对应右.</p>
+<p>单个字符的移动终究还是太慢了,我们考虑到这一点,所以我们需要用一些别的方式来加速移动,词移动就能做到这一点.我们发现有三种词移动的方式:</p>
+<p><code>w</code>将光标往后跳一个词,我们可以加入数码让这个命令重复多次,每次跳跃,会将光标置于下一个单词的词首</p>
+<p><code>b</code>将光标往前跳一个词,我们可以加入数码让这个命令重复多次,每次跳跃,会将光标置于下一个单词的词首</p>
+<p><code>e</code>将光标往后跳一个词,我们可以加入数码让这个命令重复多次,每次跳跃,会将光标置于下一个单词的词首</p>
+<p><code>ge</code>与<code>e</code>相反,不过多赘述.</p>
+<p>注:这里说的向前指在一行中向左,向后指在一行中向右</p>
+<p>我们也可以用对应的大写形式来移动,这样我们就可以按照字符串来移动,字符串通常只有两个分割方式:空格和回车</p>
+<p>不过当我们在一行的中间时.想要移动到行首或行尾,用上述移动方式需要数码.不过<code>vim</code>想到了这一点,我们可以用对应的指令来进行快速移动.</p>
+<p><code>$</code>命令把光标移动到当前行行尾</p>
+<p><code>0</code>命令把光标移动到当前行行首</p>
+<p><code>^</code>命令把光标移动到当前行第一个非空字符</p>
+<p>我们想到,既然已经如此方便了,那我们能不能更加方便,就是我在一行的任意位置,我能不能不用估算<code>w</code>等指令给我带来的移动,而是随心所欲所见即所得呢,其实<code>vim</code>为不愿估算位置的人提供了一种新的方法,就是在行内使用查找功能,相对于沉浸在<code>:</code>到底是不是字符的纠结中,只需要知道你所要修改的字符距离你现在还有多少个相同字符无疑是更加方便的</p>
 <h1 id="修改">修改</h1>
 <h2 id="简单修改">简单修改</h2>
 <h3 id="插入文本">插入文本</h3>
@@ -283,6 +295,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" rel="next" title="MIPS架构基础整理">
+                  MIPS架构基础整理 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>

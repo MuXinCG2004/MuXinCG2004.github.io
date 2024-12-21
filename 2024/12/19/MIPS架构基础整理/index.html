@@ -19,26 +19,26 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.muxincg.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
+    <meta name="description" content="作为一个计科学生,我要考计算机系统.但是作为一个SDUer,我不得不承认,学校用MIPS指令架构简直是纯逆天行为,这导致我们无法从网上获取到合适的资源.所以为了我的期末复习,也为了众多SDUer.我满怀愤懑写下了这篇博客.博主水平不精,希望读者多多包涵.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP探索">
-<meta property="og:url" content="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/index.html">
+<meta property="og:title" content="MIPS架构基础整理">
+<meta property="og:url" content="https://www.muxincg.top/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="Astral">
-<meta property="og:description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
+<meta property="og:description" content="作为一个计科学生,我要考计算机系统.但是作为一个SDUer,我不得不承认,学校用MIPS指令架构简直是纯逆天行为,这导致我们无法从网上获取到合适的资源.所以为了我的期末复习,也为了众多SDUer.我满怀愤懑写下了这篇博客.博主水平不精,希望读者多多包涵.">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-07T12:13:49.000Z">
-<meta property="article:modified_time" content="2024-12-16T12:19:35.269Z">
+<meta property="article:published_time" content="2024-12-19T14:26:23.000Z">
+<meta property="article:modified_time" content="2024-12-19T16:40:50.707Z">
 <meta property="article:author" content="MuXinCG">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/">
+<link rel="canonical" href="https://www.muxincg.top/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/","path":"2024/12/07/CSAPP探索/","title":"CSAPP探索"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://www.muxincg.top/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/","path":"2024/12/19/MIPS架构基础整理/","title":"MIPS架构基础整理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>CSAPP探索 | Astral</title>
+<title>MIPS架构基础整理 | Astral</title>
   
 
 
@@ -91,7 +91,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -104,6 +104,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">寄存器架构</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -148,7 +149,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/">
+    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,12 +162,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="CSAPP探索 | Astral">
+      <meta itemprop="name" content="MIPS架构基础整理 | Astral">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSAPP探索
+          MIPS架构基础整理
         </h1>
 
         <div class="post-meta-container">
@@ -177,14 +178,14 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2024-12-07 20:13:49" itemprop="dateCreated datePublished" datetime="2024-12-07T20:13:49+08:00">2024-12-07</time>
+      <time title="Created: 2024-12-19 22:26:23" itemprop="dateCreated datePublished" datetime="2024-12-19T22:26:23+08:00">2024-12-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-12-16 20:19:35" itemprop="dateModified" datetime="2024-12-16T20:19:35+08:00">2024-12-16</time>
+      <time title="Modified: 2024-12-20 00:40:50" itemprop="dateModified" datetime="2024-12-20T00:40:50+08:00">2024-12-20</time>
     </span>
 
   
@@ -196,7 +197,98 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>由于最近正在复习计算机系统原理的期末考试,所以我想同时进行<span class="math inline">\(CSAPP\)</span>的观看,此博客作为一个速记帖,以便后续整理</p>
+    <div class="post-body" itemprop="articleBody"><p>作为一个计科学生,我要考计算机系统.但是作为一个<code>SDUer</code>,我不得不承认,学校用<code>MIPS</code>指令架构简直是纯逆天行为,这导致我们无法从网上获取到合适的资源.所以为了我的期末复习,也为了众多<code>SDUer</code>.我满怀愤懑写下了这篇博客.博主水平不精,希望读者多多包涵.</p>
+<span id="more"></span>
+<h1 id="寄存器架构">寄存器架构</h1>
+<p>我们首先知道,计算机由五部分组成:运算器,控制器,存储器,输入设备和输出设备.我们要谈起指令,就不能只谈论指令,而是要谈论我们指令所做的操作.一切指令只有做出操作才有意义.计算机无非就是一个操作数据的工具.作为指令集的导入,我们首先进行寄存器架构的讲解.</p>
+<p>我们首先列举出所有寄存器的名称和作用,然后再一一讲解这些寄存器</p>
+<table>
+<thead>
+<tr class="header">
+<th>寄存器名</th>
+<th>地址编号</th>
+<th>用途说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>$0</td>
+<td>0</td>
+<td>保存固定的常数0</td>
+</tr>
+<tr class="even">
+<td>$at</td>
+<td>1</td>
+<td>汇编器专用</td>
+</tr>
+<tr class="odd">
+<td>$v0~$v1</td>
+<td>2~3</td>
+<td>表达式计算或函数调用的返回结果</td>
+</tr>
+<tr class="even">
+<td>$a0~$a3</td>
+<td>4~7</td>
+<td>函数调用参数1~3</td>
+</tr>
+<tr class="odd">
+<td>$t0~$t7</td>
+<td>8~15</td>
+<td>临时变量,函数调用时不需要保存和恢复</td>
+</tr>
+<tr class="even">
+<td>$s0~$s7</td>
+<td>16~23</td>
+<td>函数调用时需要保存和恢复的寄存器变量</td>
+</tr>
+<tr class="odd">
+<td>~$t9</td>
+<td>24~25</td>
+<td>临时变量,函数调用时不需要保存和恢复</td>
+</tr>
+<tr class="even">
+<td>$k0~$k1</td>
+<td>26~27</td>
+<td>操作系统专用</td>
+</tr>
+<tr class="odd">
+<td>$gp</td>
+<td>28</td>
+<td>全局指针变量</td>
+</tr>
+<tr class="even">
+<td>$sp</td>
+<td>29</td>
+<td>堆栈指针变量</td>
+</tr>
+<tr class="odd">
+<td>$fp</td>
+<td>30</td>
+<td>帧指针变量</td>
+</tr>
+<tr class="even">
+<td>$ra</td>
+<td>31</td>
+<td>返回地址</td>
+</tr>
+</tbody>
+</table>
+<p>我们从简单开始,首先来看</p>
+<p><code>t0-t9</code>这几个寄存器按照约定.可以被函数使用,一个子函数不用保存,就可以随便使用这些寄存器.</p>
+<p><code>s0-s8</code>依照约定:</p>
+<ul>
+<li>子函数必须保证当函数返回时这些寄存器的内容必须恢复到函数调用以前的值</li>
+<li>或者在子函数里不用这些寄存器把它们保存在堆栈上并在函数退出时恢复</li>
+</ul>
+<p>这两种寄存器主要用于函数的运算,</p>
+<p>两个特殊寄存器</p>
+<p><code>$0</code>不管你存放什么值,其返回值永远是零</p>
+<p><code>$31</code>永远存放着正常函数调用指令的返回地</p>
+<p>我们详细解释一下这两个寄存器:首先<code>$0</code>提供一个零的编码,这个编码的作用在于,将一些指令伪装成另一条指令.在<code>mips</code>指令码中,是没有<code>move</code>对应的指令码的,因此我们可以使用如下方式执行<code>move</code>.即将被移动的数加<code>0</code>然后赋值到需要操作的位置中.这里的简化并不是技术上不允许而是为了简化没必要做.</p>
+<!--标记一下-->
+<p><code>$31</code>中永远存放了一个指针,在<code>C</code>语言中,对于调用的函数,<code>$31</code>储存的是调用函数语句下一条语句的地址.对于主函数,目前还没有理解是什么.</p>
+<p><code>$at</code>该寄存器为汇编保留,该寄存器为了拆分大整数来使用,</p>
+<p>``</p>
 
     </div>
 
@@ -210,13 +302,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/12/05/cmake%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/" rel="prev" title="cmake探索指北">
-                  <i class="fa fa-angle-left"></i> cmake探索指北
+                <a href="/2024/12/15/VIM%E6%8E%A2%E7%B4%A2%E5%AE%9E%E5%86%B5/" rel="prev" title="VIM探索实况">
+                  <i class="fa fa-angle-left"></i> VIM探索实况
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/12/12/HTML%E6%8E%A2%E7%B4%A2%E7%AE%80%E8%AE%B0/" rel="next" title="HTML探索简记">
-                  HTML探索简记 <i class="fa fa-angle-right"></i>
+                <a href="/2024/12/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%AE%80%E8%AE%B0/" rel="next" title="数字逻辑简记">
+                  数字逻辑简记 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>

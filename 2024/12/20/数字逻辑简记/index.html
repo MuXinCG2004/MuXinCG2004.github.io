@@ -19,26 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"www.muxincg.top","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.21.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
+    <meta name="description" content="马上进行数字逻辑考试,这篇博客主要用来归档一些零散的知识点的记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSAPP探索">
-<meta property="og:url" content="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/index.html">
+<meta property="og:title" content="数字逻辑简记">
+<meta property="og:url" content="https://www.muxincg.top/2024/12/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%AE%80%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Astral">
-<meta property="og:description" content="由于最近正在复习计算机系统原理的期末考试,所以我想同时进行\(CSAPP\)的观看,此博客作为一个速记帖,以便后续整理">
+<meta property="og:description" content="马上进行数字逻辑考试,这篇博客主要用来归档一些零散的知识点的记录">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-07T12:13:49.000Z">
-<meta property="article:modified_time" content="2024-12-16T12:19:35.269Z">
+<meta property="og:image" content="https://www.muxincg.top/2024/12/20/image/%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2.png">
+<meta property="article:published_time" content="2024-12-20T05:34:19.000Z">
+<meta property="article:modified_time" content="2024-12-20T07:01:22.092Z">
 <meta property="article:author" content="MuXinCG">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.muxincg.top/2024/12/20/image/%E5%8E%9F%E5%8F%8D%E8%A1%A5%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2.png">
 
 
-<link rel="canonical" href="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/">
+<link rel="canonical" href="https://www.muxincg.top/2024/12/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%AE%80%E8%AE%B0/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/","path":"2024/12/07/CSAPP探索/","title":"CSAPP探索"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-cn","comments":true,"permalink":"https://www.muxincg.top/2024/12/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%AE%80%E8%AE%B0/","path":"2024/12/20/数字逻辑简记/","title":"数字逻辑简记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>CSAPP探索 | Astral</title>
+<title>数字逻辑简记 | Astral</title>
   
 
 
@@ -91,7 +93,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -104,6 +106,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BF%A1%E6%81%AF%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.</span> <span class="nav-text">数据信息的二进制表示</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E4%BD%8D%E8%AE%A1%E6%95%B0%E5%88%B6"><span class="nav-number">1.1.</span> <span class="nav-text">进位计数制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E7%AC%A6%E5%8F%B7%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">带符号的二进制数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E7%82%B9%E6%95%B0%E5%92%8C%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">定点数和浮点数</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -148,7 +151,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/12/07/CSAPP%E6%8E%A2%E7%B4%A2/">
+    <link itemprop="mainEntityOfPage" href="https://www.muxincg.top/2024/12/20/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E7%AE%80%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,12 +164,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="CSAPP探索 | Astral">
+      <meta itemprop="name" content="数字逻辑简记 | Astral">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CSAPP探索
+          数字逻辑简记
         </h1>
 
         <div class="post-meta-container">
@@ -176,15 +179,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2024-12-07 20:13:49" itemprop="dateCreated datePublished" datetime="2024-12-07T20:13:49+08:00">2024-12-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-12-16 20:19:35" itemprop="dateModified" datetime="2024-12-16T20:19:35+08:00">2024-12-16</time>
+      <time title="Created: 2024-12-20 13:34:19 / Modified: 15:01:22" itemprop="dateCreated datePublished" datetime="2024-12-20T13:34:19+08:00">2024-12-20</time>
     </span>
 
   
@@ -196,7 +193,57 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>由于最近正在复习计算机系统原理的期末考试,所以我想同时进行<span class="math inline">\(CSAPP\)</span>的观看,此博客作为一个速记帖,以便后续整理</p>
+    <div class="post-body" itemprop="articleBody"><p>马上进行数字逻辑考试,这篇博客主要用来归档一些零散的知识点的记录</p>
+<span id="more"></span>
+<h1 id="数据信息的二进制表示">数据信息的二进制表示</h1>
+<h2 id="进位计数制">进位计数制</h2>
+<p>这一部分倒是没有什么可以记录的.通常出的考题也应该都是按照进制去转换数字,我们只需要记住一点:不同数值转换的方法肯定是先转换为二进制再相互转换更加方便不易错,所以我们要进行十六进制,八进制,二进制之间的互相转换的时候,我们首先要做的是转换为二进制然后再进行不同进制转换.</p>
+<p>我们也不要忘记不同数制所对应的字符</p>
+<table>
+<thead>
+<tr class="header">
+<th>数制</th>
+<th>后缀标识</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>二进制</td>
+<td>nB</td>
+</tr>
+<tr class="even">
+<td>八进制</td>
+<td>nQ</td>
+</tr>
+<tr class="odd">
+<td>十进制</td>
+<td>nD</td>
+</tr>
+<tr class="even">
+<td>十六进制</td>
+<td>nH</td>
+</tr>
+</tbody>
+</table>
+<p>这点没必要多说,我们直接列举出来</p>
+<p>需要注意的是,十进制转换为其他进制数的方法有些不同,十进制数转其他进制数在整数部分可以使用除基取余法,小数部分则是使用乘基取整法,而转换为十进制数可以使用</p>
+<h2 id="带符号的二进制数">带符号的二进制数</h2>
+<p>这一节主要是知道三种编码方法</p>
+<ul>
+<li>原码</li>
+<li>补码</li>
+<li>反码</li>
+</ul>
+<p>我们可以将这些编码方式当做一些表达式来理解:</p>
+<p>原码的首位是符号位,其余位是数值位,我们看到原码时,直接观察原码第一位,如果是<span class="math inline">\(1\)</span>则数值为负数,如果是<span class="math inline">\(0\)</span>则是正数.接下来我们将其他数位当做二进制数进行翻译即可.</p>
+<p>我们再看补码:首先我们将其所有位都看成数值位,不过数值位代表的含义不同,首先第一个数值位需要乘-1.其余的然后将所有的数值位作为二进制数来求出真值即可.比如说<span class="math inline">\(111\)</span>,计算过程为<span class="math inline">\(-1 *2^2 + 1 * 2^1 + 1 = -1\)</span>我们可以知道,对于任意一个补码,如果所有位都是<span class="math inline">\(-1\)</span>,那么其值为<span class="math inline">\(-1\)</span>.</p>
+<p>对于反码:正数的反码和原码相同,负数的反码数值位和原码相反.</p>
+<figure>
+<img src="../image/原反补相互转换.png" alt="" /><figcaption>原反补相互转换</figcaption>
+</figure>
+<p>我们也可以通过这个图像来进行记忆</p>
+<p>我们同时需要理解移码,移码就是将表示的值整体移动了<span class="math inline">\(2^{n-1}\)</span>所以我们可以知道,移码就是补码符号位取反的结果</p>
+<h2 id="定点数和浮点数">定点数和浮点数</h2>
 
     </div>
 
@@ -210,14 +257,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/12/05/cmake%E6%8E%A2%E7%B4%A2%E6%8C%87%E5%8C%97/" rel="prev" title="cmake探索指北">
-                  <i class="fa fa-angle-left"></i> cmake探索指北
+                <a href="/2024/12/19/MIPS%E6%9E%B6%E6%9E%84%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" rel="prev" title="MIPS架构基础整理">
+                  <i class="fa fa-angle-left"></i> MIPS架构基础整理
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/12/12/HTML%E6%8E%A2%E7%B4%A2%E7%AE%80%E8%AE%B0/" rel="next" title="HTML探索简记">
-                  HTML探索简记 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
