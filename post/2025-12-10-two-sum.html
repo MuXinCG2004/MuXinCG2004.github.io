@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCode 1. 两数之和 - 三种解法详解 - MuXinCG2004</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- KaTeX 数学公式渲染 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- 代码高亮 - 使用 cdnjs 的 highlight.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- 引入等宽字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- 常用语言包 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0d9488', dark: '#14b8a6' },
+                        secondary: { DEFAULT: '#06b6d4', dark: '#22d3ee' },
+                        'primary-dark': '#14b8a6',
+                        'secondary-dark': '#22d3ee'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass-panel {
+            background: rgba(17, 24, 39, 0.6);
+        }
+        /* 文章内容样式 */
+        .prose h1 { font-size: 2em; font-weight: bold; margin: 1.5em 0 0.5em; }
+        .prose h2 { font-size: 1.5em; font-weight: bold; margin: 1.5em 0 0.5em; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.3em; }
+        .prose h3 { font-size: 1.25em; font-weight: bold; margin: 1em 0 0.5em; }
+        .prose p { margin: 1em 0; line-height: 1.8; }
+        .prose ul, .prose ol { margin: 1em 0; padding-left: 2em; }
+        .prose li { margin: 0.5em 0; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose blockquote { border-left: 4px solid #0d9488; padding-left: 1em; margin: 1em 0; color: #6b7280; font-style: italic; }
+        .prose a { color: #0d9488; text-decoration: underline; }
+        .prose img { max-width: 100%; border-radius: 0.5em; margin: 1em 0; }
+        .prose hr { margin: 2em 0; border-color: #e5e7eb; }
+        .dark .prose hr { border-color: #374151; }
+
+        /* 代码块样式 - macOS 风格 */
+        .code-block {
+            position: relative;
+            margin: 1.5em 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .dark .code-block {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+        /* 代码块头部 - 模拟 macOS 窗口 */
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        .code-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .code-dot-red { background: #ff5f56; }
+        .code-dot-yellow { background: #ffbd2e; }
+        .code-dot-green { background: #27ca40; }
+        .code-lang-label {
+            color: #8b949e;
+            font-size: 0.75em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .code-block pre {
+            margin: 0;
+            padding: 1.25em 1.5em;
+            overflow-x: auto;
+            background: #0d1117 !important;
+        }
+        .code-block pre code {
+            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            font-size: 0.875em;
+            line-height: 1.7;
+            tab-size: 4;
+        }
+        /* 复制按钮 */
+        .code-copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #8b949e;
+            cursor: pointer;
+            font-size: 0.75em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .code-copy-btn:hover {
+            background: #21262d;
+            border-color: #8b949e;
+            color: #c9d1d9;
+        }
+        .code-copy-btn.copied {
+            background: #238636;
+            border-color: #238636;
+            color: #fff;
+        }
+        /* 代码块滚动条 */
+        .code-block pre::-webkit-scrollbar {
+            height: 8px;
+        }
+        .code-block pre::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+        .code-block pre::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        .code-block pre::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+
+        /* 行内代码 */
+        .prose :not(pre) > code {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            padding: 0.2em 0.5em;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #d63384;
+            border: 1px solid #ddd;
+        }
+        .dark .prose :not(pre) > code {
+            background: linear-gradient(135deg, #2d333b 0%, #22272e 100%);
+            color: #f97583;
+            border-color: #444c56;
+        }
+
+        /* 表格样式 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        .prose th, .prose td {
+            padding: 0.75em 1em;
+            border: 1px solid #e5e7eb;
+        }
+        .prose th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        .prose tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .prose tr:hover {
+            background: #f3f4f6;
+        }
+        .dark .prose th, .dark .prose td {
+            border-color: #374151;
+        }
+        .dark .prose th {
+            background: #1f2937;
+        }
+        .dark .prose tr:nth-child(even) {
+            background: #1f2937;
+        }
+        .dark .prose tr:hover {
+            background: #374151;
+        }
+
+        /* 数学公式样式 */
+        .math-block {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../blog.html" class="font-bold text-lg hover:text-primary dark:hover:text-primary-dark transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i>返回博客
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="../index.html" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="主页">
+                    <i class="fa-solid fa-home text-gray-700 dark:text-gray-300"></i>
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fa-solid fa-moon dark:hidden text-gray-700"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 pt-24 pb-16 max-w-4xl">
+        <article class="glass-panel rounded-2xl p-8 shadow-lg">
+            <!-- 文章头部 -->
+            <header class="mb-8 pb-6 border-b dark:border-gray-700">
+                <h1 class="text-3xl font-bold mb-4">LeetCode 1. 两数之和 - 三种解法详解</h1>
+                <div class="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400">
+                    <span><i class="fa-regular fa-calendar mr-2"></i>2025-12-10</span>
+                    <div class="flex gap-2">
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">算法</span>
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">LeetCode</span>
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">哈希表</span>
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Python</span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            <!-- 文章内容 -->
+            <div class="prose dark:prose-invert max-w-none" id="content">
+                <p>两数之和是 LeetCode 的第一道题，也是面试中的高频题目。本文将介绍三种不同的解法，从暴力到最优。</p>
+<h2>题目描述</h2>
+<p>给定一个整数数组 <code>nums</code> 和一个整数目标值 <code>target</code>，请你在该数组中找出和为目标值的那两个整数，并返回它们的数组下标。</p>
+<p><strong>示例：</strong></p>
+<div class="code-block"><pre><code class="language-plaintext">输入：nums = [2, 7, 11, 15], target = 9
+输出：[0, 1]
+解释：因为 nums[0] + nums[1] == 9，返回 [0, 1]</code></pre></div>
+<h2>解法一：暴力枚举</h2>
+<p>最直观的方法是使用两层循环，遍历所有可能的数对。</p>
+<div class="code-block"><pre><code class="language-python">def twoSum(nums: list[int], target: int) -&gt; list[int]:
+    n = len(nums)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if nums[i] + nums[j] == target:
+                return [i, j]
+    return []</code></pre></div>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：$O(n^2)$，两层循环</li>
+<li>空间复杂度：$O(1)$，只使用常数空间</li>
+</ul>
+<h2>解法二：哈希表（两次遍历）</h2>
+<p>我们可以用哈希表存储每个元素的索引，然后查找 <code>target - nums[i]</code> 是否存在。</p>
+<div class="code-block"><pre><code class="language-python">def twoSum(nums: list[int], target: int) -&gt; list[int]:
+    # 第一次遍历：建立哈希表
+    hash_map = {}
+    for i, num in enumerate(nums):
+        hash_map[num] = i
+
+    # 第二次遍历：查找配对
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in hash_map and hash_map[complement] != i:
+            return [i, hash_map[complement]]
+
+    return []</code></pre></div>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：$O(n)$，两次线性遍历</li>
+<li>空间复杂度：$O(n)$，哈希表存储</li>
+</ul>
+<h2>解法三：哈希表（一次遍历）⭐ 最优解</h2>
+<p>我们可以在遍历的同时检查配对元素是否已经在哈希表中，这样只需要一次遍历。</p>
+<div class="code-block"><pre><code class="language-python">def twoSum(nums: list[int], target: int) -&gt; list[int]:
+    hash_map = {}
+
+    for i, num in enumerate(nums):
+        complement = target - num
+
+        # 检查配对元素是否已存在
+        if complement in hash_map:
+            return [hash_map[complement], i]
+
+        # 将当前元素加入哈希表
+        hash_map[num] = i
+
+    return []</code></pre></div>
+<p><strong>复杂度分析：</strong></p>
+<ul>
+<li>时间复杂度：$O(n)$，只需一次遍历</li>
+<li>空间复杂度：$O(n)$，哈希表存储</li>
+</ul>
+<h2>图解算法过程</h2>
+<p>以 <code>nums = [2, 7, 11, 15], target = 9</code> 为例：</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align:center">步骤</th><th style="text-align:center">当前元素</th><th style="text-align:center">需要找的数</th><th style="text-align:left">哈希表状态</th><th style="text-align:left">结果</th></tr></thead><tbody><tr><td style="text-align:center">1</td><td style="text-align:center">2</td><td style="text-align:center">7</td><td style="text-align:left"><code>{2: 0}</code></td><td style="text-align:left">未找到</td></tr><tr><td style="text-align:center">2</td><td style="text-align:center">7</td><td style="text-align:center">2</td><td style="text-align:left"><code>{2: 0, 7: 1}</code></td><td style="text-align:left">找到！返回 <code>[0, 1]</code></td></tr></tbody></table></div>
+<h2>扩展思考</h2>
+<p>如果题目要求返回所有满足条件的数对呢？我们可以稍作修改：</p>
+<div class="code-block"><pre><code class="language-python">def twoSumAll(nums: list[int], target: int) -&gt; list[list[int]]:
+    hash_map = {}
+    result = []
+
+    for i, num in enumerate(nums):
+        complement = target - num
+
+        if complement in hash_map:
+            for j in hash_map[complement]:
+                result.append([j, i])
+
+        # 使用列表存储相同值的所有索引
+        if num not in hash_map:
+            hash_map[num] = []
+        hash_map[num].append(i)
+
+    return result</code></pre></div>
+<h2>总结</h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align:left">解法</th><th style="text-align:center">时间复杂度</th><th style="text-align:center">空间复杂度</th><th style="text-align:left">特点</th></tr></thead><tbody><tr><td style="text-align:left">暴力枚举</td><td style="text-align:center">$O(n^2)$</td><td style="text-align:center">$O(1)$</td><td style="text-align:left">简单直观，适合小数据</td></tr><tr><td style="text-align:left">两次哈希</td><td style="text-align:center">$O(n)$</td><td style="text-align:center">$O(n)$</td><td style="text-align:left">空间换时间</td></tr><tr><td style="text-align:left">一次哈希</td><td style="text-align:center">$O(n)$</td><td style="text-align:center">$O(n)$</td><td style="text-align:left">最优解，边遍历边查找</td></tr></tbody></table></div>
+<p>掌握哈希表的使用是解决此类「查找配对」问题的关键！</p>
+            </div>
+        </article>
+
+        <!-- 返回顶部 -->
+        <div class="mt-8 text-center">
+            <a href="../blog.html" class="inline-flex items-center text-primary dark:text-primary-dark hover:underline">
+                <i class="fa-solid fa-arrow-left mr-2"></i>返回文章列表
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // 深色模式
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+        }
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // 等待所有脚本加载完成后再初始化
+        window.addEventListener('load', function() {
+            // 数学公式渲染
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.getElementById('content'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            // 代码高亮
+            if (typeof hljs !== 'undefined') {
+                document.querySelectorAll('.code-block pre code').forEach((el) => {
+                    hljs.highlightElement(el);
+                });
+            }
+
+            // 为代码块添加 macOS 风格头部和复制按钮
+            document.querySelectorAll('.code-block').forEach((block) => {
+                const pre = block.querySelector('pre');
+                const code = block.querySelector('code');
+                if (!code || !pre) return;
+
+                // 获取语言
+                const langClass = code.className.match(/language-(\w+)/);
+                const lang = langClass ? langClass[1] : 'code';
+
+                // 创建头部
+                const header = document.createElement('div');
+                header.className = 'code-header';
+                header.innerHTML = `
+                    <div class="code-header-left">
+                        <div class="code-dots">
+                            <span class="code-dot code-dot-red"></span>
+                            <span class="code-dot code-dot-yellow"></span>
+                            <span class="code-dot code-dot-green"></span>
+                        </div>
+                        <span class="code-lang-label">${lang}</span>
+                    </div>
+                `;
+
+                // 创建复制按钮
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'code-copy-btn';
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 复制';
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(code.textContent);
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 已复制';
+                        copyBtn.classList.add('copied');
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 复制';
+                            copyBtn.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        copyBtn.innerHTML = '<i class="fa-solid fa-xmark"></i> 失败';
+                    }
+                });
+                header.appendChild(copyBtn);
+
+                // 插入头部到代码块开头
+                block.insertBefore(header, pre);
+            });
+        });
+    </script>
+</body>
+</html>
