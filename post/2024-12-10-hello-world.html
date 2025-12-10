@@ -88,7 +88,9 @@
                 <div class="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400">
                     <span><i class="fa-regular fa-calendar mr-2"></i>2024-12-10</span>
                     <div class="flex gap-2">
-                        
+                        {% for tag in post.tags %}
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded"></span>
+                        {% endfor %}
                     </div>
                 </div>
             </header>
