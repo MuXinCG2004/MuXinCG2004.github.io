@@ -445,6 +445,21 @@
                     <div class="space-y-4">
                         
                             
+                                <a href="https://github.com/MuXinCG2004/MuXinCG2004.github.io" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 dark:bg-gray-700 rounded-xl repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h3 class="text-lg font-semibold text-primary dark:text-primary-dark">MuXinCG2004.github.io</h3>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+                                            <i class="fa-solid fa-star mr-1"></i>
+                                            0
+                                        </span>
+                                    </div>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">None</p>
+                                    <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
+                                        <span>HTML</span>
+                                        <span class="update-date" data-date="2025-12-10T17:21:15Z">更新于 2025-12-10</span>
+                                    </div>
+                                </a>
+                            
                                 <a href="https://github.com/MuXinCG2004/MuXinCG2004" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 dark:bg-gray-700 rounded-xl repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
                                     <div class="flex justify-between items-start mb-2">
                                         <h3 class="text-lg font-semibold text-primary dark:text-primary-dark">MuXinCG2004</h3>
@@ -457,21 +472,6 @@
                                     <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
                                         <span>None</span>
                                         <span class="update-date" data-date="2025-12-10T16:56:36Z">更新于 2025-12-10</span>
-                                    </div>
-                                </a>
-                            
-                                <a href="https://github.com/MuXinCG2004/MuXinCG2004.github.io" target="_blank" rel="noopener noreferrer" class="block p-4 bg-gray-50 dark:bg-gray-700 rounded-xl repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="text-lg font-semibold text-primary dark:text-primary-dark">MuXinCG2004.github.io</h3>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400 flex items-center">
-                                            <i class="fa-solid fa-star mr-1"></i>
-                                            0
-                                        </span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">None</p>
-                                    <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-                                        <span>HTML</span>
-                                        <span class="update-date" data-date="2025-12-10T16:55:16Z">更新于 2025-12-10</span>
                                     </div>
                                 </a>
                             
@@ -594,7 +594,7 @@
             });
 
             /* 语言切换功能 */
-            let currentLang = localStorage.getItem('language') || 'zh';
+            let currentLang = localStorage.getItem('language') || 'en';
 
             // 切换语言函数
             function setLanguage(lang) {
@@ -640,7 +640,7 @@
                             labels: ["\u4e00\u6708", "\u4e8c\u6708", "\u4e09\u6708", "\u56db\u6708", "\u4e94\u6708", "\u516d\u6708", "\u4e03\u6708", "\u516b\u6708", "\u4e5d\u6708", "\u5341\u6708", "\u5341\u4e00\u6708", "\u5341\u4e8c\u6708"],
                             datasets: [{
                                 label: i18n[lang]['github-activity'],
-                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22],
+                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23],
                                 borderColor: isDark ? '#14b8a6' : '#0d9488',
                                 backgroundColor: isDark ? 'rgba(168, 85, 247, 0.1)' : 'rgba(106, 17, 203, 0.1)',
                                 tension: 0.4,
