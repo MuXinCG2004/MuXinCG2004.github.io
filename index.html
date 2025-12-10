@@ -258,6 +258,13 @@
                     <i class="fa-solid fa-blog text-gray-700 dark:text-gray-300"></i>
                 </a>
 
+                <!-- 语言切换 -->
+                <button id="language-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative" title="切换语言">
+                    <span class="text-gray-700 dark:text-gray-300 font-medium text-sm">
+                        <span class="lang-text">中文</span>
+                    </span>
+                </button>
+
                 <!-- 极简模式开关 -->
                 <button id="minimal-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
                     <span class="sr-only">切换极简模式</span>
@@ -301,23 +308,23 @@
                             class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-custom text-white font-medium hover:opacity-90 transition-opacity"
                         >
                             <i class="fa-brands fa-github mr-2"></i>
-                            访问我的 GitHub
+                            <span data-i18n="visit-github">访问我的 GitHub</span>
                         </a>
                     </div>
                     <!-- 统计信息 -->
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 text-center">
                             <div class="text-2xl font-bold text-primary dark:text-primary-dark mb-1">2</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">总仓库数</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="total-repos">总仓库数</div>
                         </div>
                         <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 text-center">
                             <div class="text-2xl font-bold text-secondary dark:text-secondary-dark mb-1">0</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400">总 Stars</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="total-stars">总 Stars</div>
                         </div>
                     </div>
                     <!-- 技术标签 -->
                 <div class="mt-6">
-                    <h3 class="text-lg font-semibold mb-3">技术栈</h3>
+                    <h3 class="text-lg font-semibold mb-3" data-i18n="tech-stack">技术栈</h3>
                     <div class="flex flex-wrap gap-2">
                         
                             
@@ -333,7 +340,7 @@
                 
                 <!-- 活动图表 -->
                 <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.2s;">
-                    <h3 class="text-lg font-semibold mb-3">GitHub 活动概览</h3>
+                    <h3 class="text-lg font-semibold mb-3" data-i18n="activity-overview">GitHub 活动概览</h3>
                     <div class="h-64">
                         <canvas id="activityChart"></canvas>
                     </div>
@@ -346,15 +353,15 @@
                 <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 readme-content">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <i class="fa-solid fa-file-lines text-primary dark:text-primary-dark mr-2"></i>
-                        个人介绍
+                        <span data-i18n="introduction">个人介绍</span>
                     </h2>
                     <div class="prose dark:prose-invert max-w-none" id="readme-content">
-                        <p><a href="#"><img align="left" alt="React" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Welcome.svg" /></a></p>
-<p><div align="center"></p>
+                        <a href="#"><img align="left" alt="React" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Welcome.svg" /></a>
+<div align="center">
 <p><a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=32&duration=2800&pause=2000&color=A855F7&center=true&vCenter=true&width=940&lines=Hi+%F0%9F%91%8B%2C+I'm+MuXinCG;%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%88%91%E7%9A%84GitHub%E4%B8%BB%E9%A1%B5%EF%BC%81;Algorithm+Enthusiast+%7C+Full+Stack+Developer;%E6%8C%81%E7%BB%AD%E5%AD%A6%E4%B9%A0+%7C+%E4%B8%8D%E6%96%AD%E8%BF%9B%E6%AD%A5" alt="Typing SVG"></a></p>
-<p></div></p>
-<p><br/><h1> 💫 About Me  </h1></p>
-<p><h3></p>
+</div>
+<br/><h1> 💫 About Me  </h1>
+<h3>
 <ul>
 <li>💻 <strong>开发经验</strong>: 3年C/C++/Golang开发经验，熟悉Python和Rust</li>
 </ul>
@@ -367,68 +374,68 @@
 <ul>
 <li>🚀 <strong>技术兴趣</strong>: 算法优化、开源贡献</li>
 </ul>
-<p></h3></p>
-<p><a href="#--about-me--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a></p>
-<p><br/><br/></p>
-<p><h1> My Skill Sets <a href="#-my-skill-sets--"><img src = "https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/skill.gif" width = 32px></a> </h1></p>
+</h3>
+<a href="#--about-me--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a>
+<br/><br/>
+<h1> My Skill Sets <a href="#-my-skill-sets--"><img src = "https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/skill.gif" width = 32px></a> </h1>
 <h3>Languages</h3>
-<p><a href="https://en.cppreference.com/w/c" target="_blank"><img align="left" alt="C" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" /></a></p>
-<p><a href="https://en.cppreference.com/w/" target="_blank"><img align="left" alt="C++" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" /></a></p>
-<p><a href="https://www.java.com/" target="_blank"><img align="left" alt="Java" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/java.svg" /></a></p>
-<p><a href="https://www.python.org/" target="_blank"><img align="left" alt="Python" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/python.svg" /></a></p>
-<p><a href="https://www.rust-lang.org/" target="_blank"><img align="left" alt="Rust" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/rust.svg" /></a></p>
-<p><br/><br/></p>
+<a href="https://en.cppreference.com/w/c" target="_blank"><img align="left" alt="C" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" /></a>
+<a href="https://en.cppreference.com/w/" target="_blank"><img align="left" alt="C++" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" /></a>
+<a href="https://www.java.com/" target="_blank"><img align="left" alt="Java" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/java.svg" /></a>
+<a href="https://www.python.org/" target="_blank"><img align="left" alt="Python" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/python.svg" /></a>
+<a href="https://www.rust-lang.org/" target="_blank"><img align="left" alt="Rust" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/rust.svg" /></a>
+<br/><br/>
 <h3>Libraries</h3>
-<p><a href="https://nodejs.org/en" target="_blank"><img align="left" alt="Node.js" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/libraries/node.js.gif" /></a></p>
-<p><br/><br/></p>
+<a href="https://nodejs.org/en" target="_blank"><img align="left" alt="Node.js" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/libraries/node.js.gif" /></a>
+<br/><br/>
 <h3>Database</h3>
-<p><a href="https://www.mysql.com/" target="_blank"><img align="left" alt="MySQL" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/databases/mysql.svg" /></a></p>
-<p><br/><br/></p>
+<a href="https://www.mysql.com/" target="_blank"><img align="left" alt="MySQL" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/databases/mysql.svg" /></a>
+<br/><br/>
 <h3>Tools</h3>
-<p><a href="https://git-scm.com/" target="_blank"><img align="left" alt="Git" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/Github.svg" /></a></p>
-<p><a href="https://www.docker.com/" target="_blank"><img align="left" alt="Docker" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/docker.svg" /></a></p>
-<p><a href="https://www.linux.org/" target="_blank"><img align="left" alt="Linux" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" /></a></p>
-<p><a href="https://code.visualstudio.com/" target="_blank"><img align="left" alt="VS Code" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" /></a></p>
-<p><br/><br/></p>
-<p><a href="#-my-skill-sets--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a></p>
-<p><br/></p>
-<p><div style="display: flex; align-items: center"></p>
-<p>  <h1></p>
+<a href="https://git-scm.com/" target="_blank"><img align="left" alt="Git" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/Github.svg" /></a>
+<a href="https://www.docker.com/" target="_blank"><img align="left" alt="Docker" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/docker.svg" /></a>
+<a href="https://www.linux.org/" target="_blank"><img align="left" alt="Linux" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" /></a>
+<a href="https://code.visualstudio.com/" target="_blank"><img align="left" alt="VS Code" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" /></a>
+<br/><br/>
+<a href="#-my-skill-sets--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a>
+<br/>
+<div style="display: flex; align-items: center">
+  <h1>
 <p>    📊 My GitHub Stats</p>
-<p>    <a href="#-my-github-stats--"></p>
-<p>      <img src = "https://raw.githubusercontent.com/MuXinCG2004/MuXinCG2004/auxiliary/others/charts.gif" width = 35px height = 35px></p>
-<p>    </a></p>
-<p>  </h1></p>
-<p></div></p>
-<p><div align="center"></p>
+    <a href="#-my-github-stats--">
+      <img src = "https://raw.githubusercontent.com/MuXinCG2004/MuXinCG2004/auxiliary/others/charts.gif" width = 35px height = 35px>
+    </a>
+  </h1>
+</div>
+<div align="center">
 <p><img src="https://komarev.com/ghpvc/?username=MuXinCG2004&color=blueviolet&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views"></p>
-<p></div></p>
-<p><table align="center"></p>
-<p>  <tr></p>
-<p>    <td align="center" width="45%"></p>
-<p>        <a href="#-my-github-stats--"><img width="100%" src="https://gh-readme-profile.vercel.app/api?username=MuXinCG2004&theme=neon-dark&border_width=0&border_radius=15.2&hide_border=true" alt="MuXinCG2004" /></a></p>
-<p>    </td></p>
-<p>    <td align="center" width="55%"></p>
-<p>        <a href="#-my-github-stats--"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MuXinCG2004&theme=2077" alt="MuXinCG2004" /></a></p>
-<p>    </td></p>
-<p>  </tr></p>
-<p></table></p>
-<p><a align="center" href="#-my-github-stats--"><img align="center" src="https://raw.githubusercontent.com/BEPb/BEPb/output/github-contribution-grid-snake.svg" alt="GitHub Streak" /></a></p>
-<p><br/><br/></p>
-<p><div align="center"></p>
+</div>
+<table align="center">
+  <tr>
+    <td align="center" width="45%">
+        <a href="#-my-github-stats--"><img width="100%" src="https://gh-readme-profile.vercel.app/api?username=MuXinCG2004&theme=neon-dark&border_width=0&border_radius=15.2&hide_border=true" alt="MuXinCG2004" /></a>
+    </td>
+    <td align="center" width="55%">
+        <a href="#-my-github-stats--"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MuXinCG2004&theme=2077" alt="MuXinCG2004" /></a>
+    </td>
+  </tr>
+</table>
+<a align="center" href="#-my-github-stats--"><img align="center" src="https://raw.githubusercontent.com/BEPb/BEPb/output/github-contribution-grid-snake.svg" alt="GitHub Streak" /></a>
+<br/><br/>
+<div align="center">
 <h3>💭 Random Dev Quote</h3>
 <p><img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt=""></p>
-<p></div></p>
-<p><br/></p>
-<p><div align="center"></p>
+</div>
+<br/>
+<div align="center">
 <h3>⚡ Fun Fact</h3>
 <blockquote>"Code is like humor. When you have to explain it, it's bad." – Cory House</blockquote>
-<p></div></p>
-<p><br/></p>
-<p><a href="#"><img align="left" alt="Finish" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Finish.svg" /></a></p>
-<p><div align="center"></p>
-<p>  <h3>⭐ 感谢访问我的主页！如果觉得有帮助，欢迎点个 Star ⭐</h3></p>
-<p></div></p>
+</div>
+<br/>
+<a href="#"><img align="left" alt="Finish" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Finish.svg" /></a>
+<div align="center">
+  <h3>⭐ 感谢访问我的主页！如果觉得有帮助，欢迎点个 Star ⭐</h3>
+</div>
                     </div>
                 </div>
 
@@ -436,7 +443,7 @@
                 <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.4s;">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <i class="fa-solid fa-folder-open text-primary dark:text-primary-dark mr-2"></i>
-                        最近项目
+                        <span data-i18n="recent-projects">最近项目</span>
                     </h2>
                     <div class="space-y-4">
                         
@@ -452,7 +459,7 @@
                                     <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">None</p>
                                     <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
                                         <span>HTML</span>
-                                        <span class="update-date" data-date="2025-12-10T16:41:38Z">更新于 2025-12-10</span>
+                                        <span class="update-date" data-date="2025-12-10T16:46:41Z">更新于 2025-12-10</span>
                                     </div>
                                 </a>
                             
@@ -479,8 +486,8 @@
                 <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.6s;">
                     <h2 class="text-2xl font-bold mb-4 flex items-center">
                         <i class="fa-solid fa-blog text-primary dark:text-primary-dark mr-2"></i>
-                        最近博客
-                        <a href="blog.html" class="ml-auto text-sm font-normal text-primary dark:text-primary-dark hover:underline">查看全部 →</a>
+                        <span data-i18n="recent-blog">最近博客</span>
+                        <a href="blog.html" class="ml-auto text-sm font-normal text-primary dark:text-primary-dark hover:underline" data-i18n="view-all">查看全部 →</a>
                     </h2>
                     <div class="space-y-4">
                         
@@ -528,9 +535,38 @@
 
     <!-- JavaScript -->
     <script>
+        // 国际化翻译数据
+        const i18n = {
+            'zh': {
+                'visit-github': '访问我的 GitHub',
+                'total-repos': '总仓库数',
+                'total-stars': '总 Stars',
+                'tech-stack': '技术栈',
+                'activity-overview': 'GitHub 活动概览',
+                'introduction': '个人介绍',
+                'recent-projects': '最近项目',
+                'recent-blog': '最近博客',
+                'view-all': '查看全部 →',
+                'github-activity': 'GitHub 活动'
+            },
+            'en': {
+                'visit-github': 'Visit my GitHub',
+                'total-repos': 'Total Repos',
+                'total-stars': 'Total Stars',
+                'tech-stack': 'Tech Stack',
+                'activity-overview': 'GitHub Activity Overview',
+                'introduction': 'Introduction',
+                'recent-projects': 'Recent Projects',
+                'recent-blog': 'Recent Blog',
+                'view-all': 'View All →',
+                'github-activity': 'GitHub Activity'
+            }
+        };
+
         // 深色模式切换
         document.addEventListener('DOMContentLoaded', function() {
             const themeToggle = document.getElementById('theme-toggle');
+            const languageToggle = document.getElementById('language-toggle');
             const htmlElement = document.documentElement;
             
             // 检查本地存储或系统偏好
@@ -559,7 +595,106 @@
                     htmlElement.classList.toggle('dark', e.matches);
                 }
             });
-            
+
+            /* 语言切换功能 */
+            let currentLang = localStorage.getItem('language') || 'zh';
+
+            // 切换语言函数
+            function setLanguage(lang) {
+                currentLang = lang;
+                localStorage.setItem('language', lang);
+
+                // 更新所有带有 data-i18n 属性的元素
+                document.querySelectorAll('[data-i18n]').forEach(elem => {
+                    const key = elem.getAttribute('data-i18n');
+                    if (i18n[lang] && i18n[lang][key]) {
+                        elem.textContent = i18n[lang][key];
+                    }
+                });
+
+                // 更新语言切换按钮文本
+                const langText = document.querySelector('.lang-text');
+                if (langText) {
+                    langText.textContent = lang === 'zh' ? '中文' : 'EN';
+                }
+
+                // 更新图表标签
+                updateChartLanguage(lang);
+            }
+
+            // 更新图表语言
+            function updateChartLanguage(lang) {
+                const chartCanvas = document.getElementById('activityChart');
+                if (chartCanvas && window.Chart) {
+                    // 重新创建图表以更新语言
+                    const isDark = htmlElement.classList.contains('dark');
+                    const textColor = isDark ? '#9CA3AF' : '#4B5563';
+
+                    // 获取现有的 chart 实例并销毁
+                    const existingChart = Chart.getChart(chartCanvas);
+                    if (existingChart) {
+                        existingChart.destroy();
+                    }
+
+                    // 创建新图表
+                    new Chart(chartCanvas, {
+                        type: 'line',
+                        data: {
+                            labels: ["\u4e00\u6708", "\u4e8c\u6708", "\u4e09\u6708", "\u56db\u6708", "\u4e94\u6708", "\u516d\u6708", "\u4e03\u6708", "\u516b\u6708", "\u4e5d\u6708", "\u5341\u6708", "\u5341\u4e00\u6708", "\u5341\u4e8c\u6708"],
+                            datasets: [{
+                                label: i18n[lang]['github-activity'],
+                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20],
+                                borderColor: isDark ? '#14b8a6' : '#0d9488',
+                                backgroundColor: isDark ? 'rgba(168, 85, 247, 0.1)' : 'rgba(106, 17, 203, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    display: false
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    grid: {
+                                        color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                                    },
+                                    ticks: {
+                                        color: textColor
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        display: false
+                                    },
+                                    ticks: {
+                                        color: textColor
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            // 语言切换按钮事件
+            languageToggle.addEventListener('click', function() {
+                const newLang = currentLang === 'zh' ? 'en' : 'zh';
+                setLanguage(newLang);
+            });
+
+            // 初始化语言
+            setLanguage(currentLang);
+
             /* 极简模式功能 */
             const minimalModeToggle = document.getElementById('minimal-mode-toggle');
             // 修改选择器，包含所有板块，修复转义字符
@@ -609,61 +744,7 @@
                     minimalModeToggle.querySelector('i').classList.remove('text-primary', 'dark:text-primary-dark');
                 }
             });
-            
-            // 活动图表
-            const ctx = document.getElementById('activityChart');
-            if (ctx) {
-                const isDark = htmlElement.classList.contains('dark');
-                const textColor = isDark ? '#9CA3AF' : '#4B5563';
-                
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: ["\u4e00\u6708", "\u4e8c\u6708", "\u4e09\u6708", "\u56db\u6708", "\u4e94\u6708", "\u516d\u6708", "\u4e03\u6708", "\u516b\u6708", "\u4e5d\u6708", "\u5341\u6708", "\u5341\u4e00\u6708", "\u5341\u4e8c\u6708"],
-                        datasets: [{
-                            label: 'GitHub 活动',
-                            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 19],
-                            borderColor: isDark ? '#14b8a6' : '#0d9488',
-                            backgroundColor: isDark ? 'rgba(168, 85, 247, 0.1)' : 'rgba(106, 17, 203, 0.1)',
-                            tension: 0.4,
-                            fill: true
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                grid: {
-                                    color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                                },
-                                ticks: {
-                                    color: textColor
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    display: false
-                                },
-                                ticks: {
-                                    color: textColor
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            
+
             // 添加页面滚动动画
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
