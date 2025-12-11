@@ -72,27 +72,43 @@
             <div id="search-results-count" class="mt-2 text-sm text-gray-500 dark:text-gray-400 hidden"></div>
         </div>
 
-        <div id="posts-container" class="space-y-6">
+        <!-- 文件夹筛选 -->
+        <div class="mb-6 flex gap-3 flex-wrap">
+            <button class="category-filter px-4 py-2 rounded-full text-sm font-medium transition-all bg-primary text-white" data-category="all">
+                <i class="fa-solid fa-list mr-2"></i>全部
+            </button>
             
                 
-                <a href="post/2025-12-10-two-sum.html" class="post-item block glass-panel rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-title="LeetCode 1. 两数之和 - 三种解法详解" data-summary="" data-tags="算法, LeetCode, 哈希表, Python">
-                    <div class="flex justify-between items-start mb-3">
-                        <h2 class="text-xl font-bold text-primary dark:text-primary-dark">LeetCode 1. 两数之和 - 三种解法详解</h2>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">2025-12-10</span>
+                    
+                
+            
+        </div>
+
+        <div id="posts-container">
+            
+                <!-- 按文件夹分组显示 -->
+                
+                <div class="category-section mb-8" data-category="">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fa-solid fa-folder-open text-primary dark:text-primary-dark mr-2"></i>
+                        
+                        <span class="ml-2 text-sm font-normal text-gray-500">()</span>
+                    </h2>
+                    <div class="space-y-4">
+                        
+                        <a href="post/.html" class="post-item block glass-panel rounded-xl p-5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-title="" data-summary="" data-tags="" data-category="">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-primary dark:text-primary-dark"></h3>
+                                <span class="text-sm text-gray-500 dark:text-gray-400"></span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3"></p>
+                            <div class="flex gap-2 flex-wrap">
+                                
+                            </div>
+                        </a>
+                        
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4"></p>
-                    <div class="flex gap-2">
-                        
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">算法</span>
-                        
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">LeetCode</span>
-                        
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">哈希表</span>
-                        
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Python</span>
-                        
-                    </div>
-                </a>
+                </div>
                 
             
         </div>
@@ -187,6 +203,39 @@
             if (e.key === 'Enter') {
                 performSearch();
             }
+        });
+
+        // 文件夹筛选功能
+        const categoryFilters = document.querySelectorAll('.category-filter');
+        const categorySections = document.querySelectorAll('.category-section');
+
+        categoryFilters.forEach(filter => {
+            filter.addEventListener('click', function() {
+                const category = this.dataset.category;
+
+                // 更新按钮状态
+                categoryFilters.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('glass-panel', 'hover:bg-primary', 'hover:text-white');
+                });
+                this.classList.add('bg-primary', 'text-white');
+                this.classList.remove('glass-panel');
+
+                // 显示/隐藏分类
+                if (category === 'all') {
+                    categorySections.forEach(section => {
+                        section.style.display = 'block';
+                    });
+                } else {
+                    categorySections.forEach(section => {
+                        if (section.dataset.category === category) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                }
+            });
         });
     </script>
 </body>

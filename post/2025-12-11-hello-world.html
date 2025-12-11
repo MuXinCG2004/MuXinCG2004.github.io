@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World - 我的第一篇开发日志 - MuXinCG2004</title>
+    <!-- Tailwind CSS - 使用官方CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome - 使用国内CDN -->
+    <link href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- KaTeX 数学公式渲染 - 使用国内CDN -->
+    <link rel="stylesheet" href="https://npm.elemecdn.com/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://npm.elemecdn.com/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://npm.elemecdn.com/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- 代码高亮 - 使用国内CDN -->
+    <link rel="stylesheet" href="https://npm.elemecdn.com/highlight.js@11.9.0/styles/github-dark.min.css">
+    <script src="https://npm.elemecdn.com/highlight.js@11.9.0/highlight.min.js"></script>
+    <!-- Mermaid 图表 - 使用国内CDN -->
+    <script src="https://npm.elemecdn.com/mermaid@10/dist/mermaid.min.js"></script>
+    <!-- 引入等宽字体 - 使用国内CDN -->
+    <link href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/style.css" rel="stylesheet">
+    <!-- 常用语言包 - 使用国内CDN -->
+    <script src="https://npm.elemecdn.com/highlight.js@11.9.0/languages/python.min.js"></script>
+    <script src="https://npm.elemecdn.com/highlight.js@11.9.0/languages/javascript.min.js"></script>
+    <script src="https://npm.elemecdn.com/highlight.js@11.9.0/languages/bash.min.js"></script>
+    <script src="https://npm.elemecdn.com/highlight.js@11.9.0/languages/json.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT: '#0d9488', dark: '#14b8a6' },
+                        secondary: { DEFAULT: '#06b6d4', dark: '#22d3ee' },
+                        'primary-dark': '#14b8a6',
+                        'secondary-dark': '#22d3ee'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+        }
+        .dark .glass-panel {
+            background: rgba(17, 24, 39, 0.6);
+        }
+        /* 文章内容样式 */
+        .prose h1 { font-size: 2em; font-weight: bold; margin: 1.5em 0 0.5em; }
+        .prose h2 { font-size: 1.5em; font-weight: bold; margin: 1.5em 0 0.5em; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.3em; }
+        .prose h3 { font-size: 1.25em; font-weight: bold; margin: 1em 0 0.5em; }
+        .prose p { margin: 1em 0; line-height: 1.8; }
+        .prose ul, .prose ol { margin: 1em 0; padding-left: 2em; }
+        .prose li { margin: 0.5em 0; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose blockquote { border-left: 4px solid #0d9488; padding-left: 1em; margin: 1em 0; color: #6b7280; font-style: italic; }
+        .prose a { color: #0d9488; text-decoration: underline; }
+        .prose img { max-width: 100%; border-radius: 0.5em; margin: 1em 0; }
+        .prose hr { margin: 2em 0; border-color: #e5e7eb; }
+        .dark .prose hr { border-color: #374151; }
+
+        /* 代码块样式 - macOS 风格 */
+        .code-block {
+            position: relative;
+            margin: 1.5em 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .dark .code-block {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+        /* 代码块头部 - 模拟 macOS 窗口 */
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+        .code-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .code-dot-red { background: #ff5f56; }
+        .code-dot-yellow { background: #ffbd2e; }
+        .code-dot-green { background: #27ca40; }
+        .code-lang-label {
+            color: #8b949e;
+            font-size: 0.75em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .code-block pre {
+            margin: 0;
+            padding: 1.25em 1.5em;
+            overflow-x: auto;
+            background: #0d1117 !important;
+        }
+        .code-block pre code {
+            font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+            font-size: 0.875em;
+            line-height: 1.7;
+            tab-size: 4;
+            counter-reset: line;
+        }
+        /* 代码行号 */
+        .code-block pre code .line {
+            display: block;
+            position: relative;
+            padding-left: 3.5em;
+        }
+        .code-block pre code .line::before {
+            content: counter(line);
+            counter-increment: line;
+            position: absolute;
+            left: 0;
+            width: 2.5em;
+            text-align: right;
+            color: #6e7681;
+            user-select: none;
+            padding-right: 1em;
+            border-right: 1px solid #30363d;
+        }
+        /* 高亮行 */
+        .code-block pre code .line.highlight {
+            background-color: rgba(255, 255, 0, 0.1);
+            border-left: 3px solid #ffd700;
+            margin-left: -1em;
+            padding-left: 4.5em;
+        }
+        /* Diff 显示 */
+        .code-block pre code .line.diff-add {
+            background-color: rgba(46, 160, 67, 0.15);
+        }
+        .code-block pre code .line.diff-add::after {
+            content: '+';
+            position: absolute;
+            left: 0.5em;
+            color: #3fb950;
+        }
+        .code-block pre code .line.diff-remove {
+            background-color: rgba(248, 81, 73, 0.15);
+        }
+        .code-block pre code .line.diff-remove::after {
+            content: '-';
+            position: absolute;
+            left: 0.5em;
+            color: #f85149;
+        }
+        /* 复制按钮 */
+        .code-copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #8b949e;
+            cursor: pointer;
+            font-size: 0.75em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .code-copy-btn:hover {
+            background: #21262d;
+            border-color: #8b949e;
+            color: #c9d1d9;
+        }
+        .code-copy-btn.copied {
+            background: #238636;
+            border-color: #238636;
+            color: #fff;
+        }
+        /* 代码块滚动条 */
+        .code-block pre::-webkit-scrollbar {
+            height: 8px;
+        }
+        .code-block pre::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+        .code-block pre::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+        .code-block pre::-webkit-scrollbar-thumb:hover {
+            background: #484f58;
+        }
+
+        /* 行内代码 */
+        .prose :not(pre) > code {
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+            padding: 0.2em 0.5em;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+            color: #d63384;
+            border: 1px solid #ddd;
+        }
+        .dark .prose :not(pre) > code {
+            background: linear-gradient(135deg, #2d333b 0%, #22272e 100%);
+            color: #f97583;
+            border-color: #444c56;
+        }
+
+        /* 表格样式 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5em 0;
+        }
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        .prose th, .prose td {
+            padding: 0.75em 1em;
+            border: 1px solid #e5e7eb;
+        }
+        .prose th {
+            background: #f9fafb;
+            font-weight: 600;
+        }
+        .prose tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        .prose tr:hover {
+            background: #f3f4f6;
+        }
+        .dark .prose th, .dark .prose td {
+            border-color: #374151;
+        }
+        .dark .prose th {
+            background: #1f2937;
+        }
+        .dark .prose tr:nth-child(even) {
+            background: #1f2937;
+        }
+        .dark .prose tr:hover {
+            background: #374151;
+        }
+
+        /* 数学公式样式 */
+        .math-block {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        /* 返回顶部按钮 */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0d9488, #06b6d4);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+        }
+        #back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        #back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .dark #back-to-top {
+            background: linear-gradient(135deg, #14b8a6, #22d3ee);
+        }
+
+        /* 阅读进度条 */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #0d9488, #06b6d4);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+        .dark #reading-progress {
+            background: linear-gradient(90deg, #14b8a6, #22d3ee);
+        }
+
+        /* 文章目录样式 */
+        #toc-sidebar {
+            position: fixed;
+            top: 6rem;
+            right: 2rem;
+            width: 16rem;
+            max-height: calc(100vh - 8rem);
+            overflow-y: auto;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 40;
+            transition: opacity 0.3s ease;
+        }
+        .dark #toc-sidebar {
+            background: rgba(17, 24, 39, 0.6);
+        }
+        #toc-sidebar.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #toc-sidebar h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #6b7280;
+        }
+        .dark #toc-sidebar h4 {
+            color: #9ca3af;
+        }
+        #toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #toc-list li {
+            margin: 0.5rem 0;
+        }
+        #toc-list a {
+            display: block;
+            font-size: 0.875rem;
+            color: #6b7280;
+            text-decoration: none;
+            padding: 0.25rem 0;
+            transition: color 0.2s ease;
+            border-left: 2px solid transparent;
+            padding-left: 0.75rem;
+        }
+        #toc-list a:hover {
+            color: #0d9488;
+        }
+        .dark #toc-list a:hover {
+            color: #14b8a6;
+        }
+        #toc-list a.active {
+            color: #0d9488;
+            border-left-color: #0d9488;
+            font-weight: 500;
+        }
+        .dark #toc-list a.active {
+            color: #14b8a6;
+            border-left-color: #14b8a6;
+        }
+        #toc-list li.level-3 {
+            padding-left: 1rem;
+        }
+        #toc-list li.level-4 {
+            padding-left: 2rem;
+        }
+
+        /* 响应式：小屏幕隐藏目录 */
+        @media (max-width: 1280px) {
+            #toc-sidebar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen">
+    <!-- 阅读进度条 -->
+    <div id="reading-progress"></div>
+
+    <!-- 导航栏 -->
+    <nav class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../blog.html" class="font-bold text-lg hover:text-primary dark:hover:text-primary-dark transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i>返回博客
+            </a>
+            <div class="flex items-center space-x-4">
+                <a href="../index.html" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="主页">
+                    <i class="fa-solid fa-home text-gray-700 dark:text-gray-300"></i>
+                </a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fa-solid fa-moon dark:hidden text-gray-700"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 pt-24 pb-16 max-w-4xl">
+        <!-- 文章目录侧边栏 -->
+        <aside id="toc-sidebar" class="hidden">
+            <h4><i class="fa-solid fa-list mr-2"></i>目录</h4>
+            <ul id="toc-list"></ul>
+        </aside>
+
+        <article class="glass-panel rounded-2xl p-8 shadow-lg">
+            <!-- 文章头部 -->
+            <header class="mb-8 pb-6 border-b dark:border-gray-700">
+                <h1 class="text-3xl font-bold mb-4">Hello World - 我的第一篇开发日志</h1>
+                <div class="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400">
+                    <span><i class="fa-regular fa-calendar mr-2"></i>2025-12-11</span>
+                    <div class="flex gap-2">
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Development</span>
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Getting</span>
+                        
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Started</span>
+                        
+                    </div>
+                </div>
+            </header>
+
+            <!-- 文章内容 -->
+            <div class="prose dark:prose-invert max-w-none" id="content">
+                <h1>Hello World</h1>
+<p>这是我的第一篇开发日志！</p>
+<h2>为什么写博客</h2>
+<p>记录学习过程，分享技术心得。</p>
+<h2>接下来的计划</h2>
+<ul>
+<li>学习更多技术</li>
+<li>分享更多经验</li>
+<li>持续进步</li>
+</ul>
+            </div>
+        </article>
+
+        <!-- 评论区 -->
+        <div class="glass-panel rounded-2xl p-8 shadow-lg mt-8">
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+                <i class="fa-solid fa-comments text-primary dark:text-primary-dark mr-2"></i>
+                评论
+            </h3>
+            <div class="giscus"></div>
+        </div>
+
+        <!-- 相关文章推荐 -->
+        
+
+        <!-- 返回顶部 -->
+        <div class="mt-8 text-center">
+            <a href="../blog.html" class="inline-flex items-center text-primary dark:text-primary-dark hover:underline">
+                <i class="fa-solid fa-arrow-left mr-2"></i>返回文章列表
+            </a>
+        </div>
+    </main>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" title="返回顶部">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 深色模式
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark');
+        }
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // 等待所有脚本加载完成后再初始化
+        window.addEventListener('load', function() {
+            // 初始化 Mermaid
+            if (typeof mermaid !== 'undefined') {
+                mermaid.initialize({
+                    startOnLoad: true,
+                    theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+                });
+
+                // 处理 mermaid 代码块
+                document.querySelectorAll('code.language-mermaid').forEach((el) => {
+                    const pre = el.parentElement;
+                    const codeBlock = pre.parentElement;
+                    const mermaidCode = el.textContent;
+
+                    // 创建 mermaid 容器
+                    const mermaidDiv = document.createElement('div');
+                    mermaidDiv.className = 'mermaid';
+                    mermaidDiv.textContent = mermaidCode;
+
+                    // 替换代码块
+                    codeBlock.replaceWith(mermaidDiv);
+                });
+
+                // 渲染所有 mermaid 图表
+                mermaid.run();
+            }
+
+            // 生成文章目录
+            const content = document.getElementById('content');
+            const tocSidebar = document.getElementById('toc-sidebar');
+            const tocList = document.getElementById('toc-list');
+            const headings = content.querySelectorAll('h1, h2, h3, h4');
+
+            if (headings.length > 0) {
+                tocSidebar.classList.remove('hidden');
+
+                headings.forEach((heading, index) => {
+                    // 为标题添加 ID
+                    const id = `heading-${index}`;
+                    heading.id = id;
+
+                    // 创建目录项
+                    const li = document.createElement('li');
+                    li.className = `level-${heading.tagName.toLowerCase().substring(1)}`;
+
+                    const a = document.createElement('a');
+                    a.href = `#${id}`;
+                    a.textContent = heading.textContent;
+                    a.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        // 更新 URL hash
+                        history.pushState(null, null, `#${id}`);
+                    });
+
+                    li.appendChild(a);
+                    tocList.appendChild(li);
+                });
+
+                // 监听滚动，高亮当前标题
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const id = entry.target.id;
+                        const tocLink = tocList.querySelector(`a[href="#${id}"]`);
+
+                        if (entry.isIntersecting) {
+                            // 移除所有 active
+                            tocList.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                            // 添加当前 active
+                            if (tocLink) tocLink.classList.add('active');
+                        }
+                    });
+                }, {
+                    rootMargin: '-80px 0px -80% 0px'
+                });
+
+                headings.forEach(heading => observer.observe(heading));
+            }
+
+            // 阅读进度条
+            const readingProgress = document.getElementById('reading-progress');
+
+            function updateReadingProgress() {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.pageYOffset;
+                const progress = (scrolled / documentHeight) * 100;
+                readingProgress.style.width = progress + '%';
+            }
+
+            window.addEventListener('scroll', updateReadingProgress);
+            updateReadingProgress(); // 初始化
+
+            // 返回顶部按钮
+            const backToTopBtn = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // 数学公式渲染
+            if (typeof renderMathInElement !== 'undefined') {
+                renderMathInElement(document.getElementById('content'), {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false},
+                        {left: '\\[', right: '\\]', display: true},
+                        {left: '\\(', right: '\\)', display: false}
+                    ],
+                    throwOnError: false
+                });
+            }
+
+            // 代码高亮
+            if (typeof hljs !== 'undefined') {
+                document.querySelectorAll('.code-block pre code').forEach((el) => {
+                    // 先处理代码内容，添加行号
+                    const codeText = el.textContent;
+                    const lines = codeText.split('\n');
+                    let processedHTML = '';
+
+                    lines.forEach((line, index) => {
+                        // 检测特殊标记
+                        let lineClass = 'line';
+                        let lineContent = line;
+
+                        // Diff 标记：以 + 开头表示新增，- 开头表示删除
+                        if (line.startsWith('+ ')) {
+                            lineClass += ' diff-add';
+                            lineContent = line.substring(2);
+                        } else if (line.startsWith('- ')) {
+                            lineClass += ' diff-remove';
+                            lineContent = line.substring(2);
+                        }
+                        // 高亮标记：// highlight 或 # highlight
+                        else if (line.includes('// highlight') || line.includes('# highlight')) {
+                            lineClass += ' highlight';
+                            lineContent = line.replace('// highlight', '').replace('# highlight', '');
+                        }
+
+                        // 转义 HTML
+                        lineContent = lineContent.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                        processedHTML += `<span class="${lineClass}">${lineContent}</span>\n`;
+                    });
+
+                    el.innerHTML = processedHTML;
+
+                    // 然后进行语法高亮
+                    hljs.highlightElement(el);
+                });
+            }
+
+            // 为代码块添加 macOS 风格头部和复制按钮
+            document.querySelectorAll('.code-block').forEach((block) => {
+                const pre = block.querySelector('pre');
+                const code = block.querySelector('code');
+                if (!code || !pre) return;
+
+                // 获取语言
+                const langClass = code.className.match(/language-(\w+)/);
+                const lang = langClass ? langClass[1] : 'code';
+
+                // 创建头部
+                const header = document.createElement('div');
+                header.className = 'code-header';
+                header.innerHTML = `
+                    <div class="code-header-left">
+                        <div class="code-dots">
+                            <span class="code-dot code-dot-red"></span>
+                            <span class="code-dot code-dot-yellow"></span>
+                            <span class="code-dot code-dot-green"></span>
+                        </div>
+                        <span class="code-lang-label">${lang}</span>
+                    </div>
+                `;
+
+                // 创建复制按钮
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'code-copy-btn';
+                copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 复制';
+                copyBtn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(code.textContent);
+                        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> 已复制';
+                        copyBtn.classList.add('copied');
+                        setTimeout(() => {
+                            copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 复制';
+                            copyBtn.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        copyBtn.innerHTML = '<i class="fa-solid fa-xmark"></i> 失败';
+                    }
+                });
+                header.appendChild(copyBtn);
+
+                // 插入头部到代码块开头
+                block.insertBefore(header, pre);
+            });
+
+            // Giscus 评论系统
+            const giscusScript = document.createElement('script');
+            giscusScript.src = 'https://giscus.app/client.js';
+            giscusScript.setAttribute('data-repo', 'MuXinCG2004/MuXinCG2004.github.io');
+            giscusScript.setAttribute('data-repo-id', 'R_kgDOQl_QCg');
+            giscusScript.setAttribute('data-category', 'General');
+            giscusScript.setAttribute('data-category-id', 'DIC_kwDOQl_QCs4Czn51');
+            giscusScript.setAttribute('data-mapping', 'pathname');
+            giscusScript.setAttribute('data-strict', '0');
+            giscusScript.setAttribute('data-reactions-enabled', '1');
+            giscusScript.setAttribute('data-emit-metadata', '0');
+            giscusScript.setAttribute('data-input-position', 'top');
+            giscusScript.setAttribute('data-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            giscusScript.setAttribute('data-lang', 'zh-CN');
+            giscusScript.setAttribute('data-loading', 'lazy');
+            giscusScript.setAttribute('crossorigin', 'anonymous');
+            giscusScript.async = true;
+
+            const giscusContainer = document.querySelector('.giscus');
+            if (giscusContainer) {
+                giscusContainer.appendChild(giscusScript);
+            }
+
+            // 监听主题变化，更新 Giscus 主题
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', function() {
+                setTimeout(() => {
+                    const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+                    const iframe = document.querySelector('iframe.giscus-frame');
+                    if (iframe) {
+                        iframe.contentWindow.postMessage({
+                            giscus: {
+                                setConfig: { theme: theme }
+                            }
+                        }, 'https://giscus.app');
+                    }
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>
