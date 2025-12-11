@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World - 我的第一篇开发日志 - MuXinCG2004</title>
+    <title>Markdown Showcase - Testing All Features - MuXinCG2004</title>
     <!-- Tailwind CSS - 使用官方CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome - 使用国内CDN -->
@@ -433,16 +433,16 @@
         <article class="glass-panel rounded-2xl p-8 shadow-lg">
             <!-- 文章头部 -->
             <header class="mb-8 pb-6 border-b dark:border-gray-700">
-                <h1 class="text-3xl font-bold mb-4">Hello World - 我的第一篇开发日志</h1>
+                <h1 class="text-3xl font-bold mb-4">Markdown Showcase - Testing All Features</h1>
                 <div class="flex flex-wrap items-center gap-4 text-gray-500 dark:text-gray-400">
                     <span><i class="fa-regular fa-calendar mr-2"></i>2025-12-11</span>
                     <div class="flex gap-2">
                         
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Development</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Markdown</span>
                         
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Getting</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Test</span>
                         
-                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Started</span>
+                            <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Demo</span>
                         
                     </div>
                 </div>
@@ -450,16 +450,266 @@
 
             <!-- 文章内容 -->
             <div class="prose dark:prose-invert max-w-none" id="content">
-                <h1>Hello World</h1>
-<p>这是我的第一篇开发日志！</p>
-<h2>为什么写博客</h2>
-<p>记录学习过程，分享技术心得。</p>
-<h2>接下来的计划</h2>
+                <h1>Markdown Showcase</h1>
+<p>This is a comprehensive demonstration of all supported Markdown features in this blog system.</p>
+<h2>1. Text Formatting</h2>
+<p><strong>Bold text</strong> using double asterisks or <strong>double underscores</strong>.</p>
+<p><em>Italic text</em> using single asterisks or _single underscores_.</p>
+<p><strong><em>Bold and italic</strong></em> combined.</p>
+<p>~~Strikethrough~~ text (if supported).</p>
+<p><code>Inline code</code> with backticks.</p>
+<h2>2. Headers</h2>
+<h1>H1 Header</h1>
+<h2>H2 Header</h2>
+<h3>H3 Header</h3>
+<h4>H4 Header</h4>
+<h5>H5 Header</h5>
+<h6>H6 Header</h6>
+<h2>3. Lists</h2>
+<h3>Unordered Lists</h3>
 <ul>
-<li>学习更多技术</li>
-<li>分享更多经验</li>
-<li>持续进步</li>
+<li>Item 1</li>
+<li>Item 2</li>
 </ul>
+<p>  - Nested item 2.1</p>
+<p>  - Nested item 2.2</p>
+<ul>
+<li>Item 3</li>
+</ul>
+<ul>
+<li>Alternative syntax</li>
+<li>Using asterisks</li>
+</ul>
+<h3>Ordered Lists</h3>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<p>   1. Nested 3.1</p>
+<p>   2. Nested 3.2</p>
+<h3>Todo Lists</h3>
+<ul>
+<li style="list-style: none;"><input type="checkbox" checked disabled style="margin-right: 0.5em;">Completed task</li>
+<li style="list-style: none;"><input type="checkbox"  disabled style="margin-right: 0.5em;">Incomplete task</li>
+<li style="list-style: none;"><input type="checkbox" checked disabled style="margin-right: 0.5em;">Another done task</li>
+<li style="list-style: none;"><input type="checkbox"  disabled style="margin-right: 0.5em;">Work in progress</li>
+</ul>
+<h2>4. Links and Images</h2>
+<p><a href="https://github.com">Visit GitHub</a></p>
+<p><a href="https://github.com "GitHub Homepage"">Link with title</a></p>
+<img src="https://via.placeholder.com/400x200?text=Sample+Image" alt="Alt text for image" />
+<h2>5. Blockquotes</h2>
+<blockquote>This is a blockquote.</blockquote>
+<blockquote>It can span multiple lines.</blockquote>
+<blockquote><strong>Note</strong>: Blockquotes can contain other markdown elements.</blockquote>
+<blockquote></blockquote>
+<blockquote>- Like lists</blockquote>
+<blockquote>- And <strong>formatting</strong></blockquote>
+<h2>6. Code Blocks</h2>
+<h3>Python</h3>
+<div class="code-block"><pre><code class="language-python">def fibonacci(n):
+    """Calculate the nth Fibonacci number."""
+    if n &lt;= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+# Test the function
+result = fibonacci(10)
+print(f"The 10th Fibonacci number is: {result}")</code></pre></div>
+<h3>JavaScript</h3>
+<div class="code-block"><pre><code class="language-javascript">// Arrow function example
+const multiply = (a, b) =&gt; a * b;
+
+// Async/await example
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}</code></pre></div>
+<h3>C++</h3>
+<div class="code-block"><pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+class Solution {
+public:
+    int maxProfit(vector&lt;int&gt;& prices) {
+        int minPrice = INT_MAX;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            minPrice = min(minPrice, price);
+            maxProfit = max(maxProfit, price - minPrice);
+        }
+
+        return maxProfit;
+    }
+};</code></pre></div>
+<h3>Bash</h3>
+<div class="code-block"><pre><code class="language-bash">#!/bin/bash
+
+# System information script
+echo "System Information"
+echo "=================="
+uname -a
+echo ""
+echo "Memory Usage:"
+free -h
+echo ""
+echo "Disk Usage:"
+df -h</code></pre></div>
+<h3>JSON</h3>
+<div class="code-block"><pre><code class="language-json">{
+  "name": "markdown-showcase",
+  "version": "1.0.0",
+  "author": {
+    "name": "Developer",
+    "email": "dev@example.com"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "tailwindcss": "^3.0.0"
+  }
+}</code></pre></div>
+<h3>SQL</h3>
+<div class="code-block"><pre><code class="language-sql">-- Create users table
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Insert sample data
+INSERT INTO users (username, email)
+VALUES ('john_doe', 'john@example.com');
+
+-- Query with JOIN
+SELECT u.username, p.title
+FROM users u
+INNER JOIN posts p ON u.id = p.user_id
+WHERE u.created_at &gt; '2024-01-01';</code></pre></div>
+<h2>7. Tables</h2>
+<h3>Simple Table</h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align:left">Language</th><th style="text-align:left">Paradigm</th><th style="text-align:left">Year</th></tr></thead><tbody><tr><td style="text-align:left">Python</td><td style="text-align:left">Multi-paradigm</td><td style="text-align:left">1991</td></tr><tr><td style="text-align:left">JavaScript</td><td style="text-align:left">Multi-paradigm</td><td style="text-align:left">1995</td></tr><tr><td style="text-align:left">Rust</td><td style="text-align:left">Multi-paradigm</td><td style="text-align:left">2010</td></tr><tr><td style="text-align:left">Go</td><td style="text-align:left">Procedural</td><td style="text-align:left">2009</td></tr></tbody></table></div>
+<h3>Aligned Table</h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align:left">Left Aligned</th><th style="text-align:center">Center Aligned</th><th style="text-align:right">Right Aligned</th></tr></thead><tbody><tr><td style="text-align:left">Left</td><td style="text-align:center">Center</td><td style="text-align:right">Right</td></tr><tr><td style="text-align:left">Text</td><td style="text-align:center">Text</td><td style="text-align:right">Text</td></tr><tr><td style="text-align:left">100</td><td style="text-align:center">200</td><td style="text-align:right">300</td></tr></tbody></table></div>
+<h2>8. Horizontal Rules</h2>
+<hr>
+<p>Three or more hyphens, asterisks, or underscores.</p>
+<hr>
+<p>Another horizontal rule.</p>
+<h2>9. Mathematics (KaTeX)</h2>
+<h3>Inline Math</h3>
+<p>The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.</p>
+<p>Einstein's famous equation: $E = mc^2$.</p>
+<h3>Block Math</h3>
+<p><div class="math-block">$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$</div></p>
+<p><div class="math-block">$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$</div></p>
+<p><div class="math-block">$$
+\frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
+$$</div></p>
+<h2>10. Emojis</h2>
+<p>😊 🎉 🚀 🔥 ❤️ ⭐</p>
+<p>✅ ❌ ⚠️ 💡 📚 📝</p>
+<p>💻 ☕ 👍 👀 🤔</p>
+<h2>11. Nested Structures</h2>
+<ol>
+<li><strong>First level</strong></li>
+</ol>
+<p>   - Bullet point</p>
+<p>   - Another bullet</p>
+<p>     - Nested deeper</p>
+<p>       - Even deeper</p>
+<ol>
+<li><strong>Second level</strong></li>
+</ol>
+<p>   > A blockquote inside a list</p>
+<p>   ></p>
+<p>   > With multiple lines</p>
+<ol>
+<li><strong>Third level</strong></li>
+</ol>
+<p>   ```python</p>
+<p>   # Code block in a list</p>
+<p>   def hello():</p>
+<p>       print("Hello, World!")</p>
+<p>   ```</p>
+<h2>12. Complex Example</h2>
+<p>Here's a complex example combining multiple features:</p>
+<blockquote><strong>Algorithm Complexity Analysis</strong></blockquote>
+<blockquote></blockquote>
+<blockquote>Consider the following Python implementation:</blockquote>
+<blockquote></blockquote>
+<blockquote>```python</blockquote>
+<blockquote>def binary_search(arr, target):</blockquote>
+<blockquote>left, right = 0, len(arr) - 1</blockquote>
+<blockquote></blockquote>
+<blockquote>while left <= right:</blockquote>
+<blockquote>mid = (left + right) // 2</blockquote>
+<blockquote>if arr[mid] == target:</blockquote>
+<blockquote>return mid</blockquote>
+<blockquote>elif arr[mid] < target:</blockquote>
+<blockquote>left = mid + 1</blockquote>
+<blockquote>else:</blockquote>
+<blockquote>right = mid - 1</blockquote>
+<blockquote></blockquote>
+<blockquote>return -1</blockquote>
+<blockquote>```</blockquote>
+<blockquote></blockquote>
+<blockquote><strong>Time Complexity</strong>: $O(\log n)$</blockquote>
+<blockquote></blockquote>
+<blockquote><strong>Space Complexity</strong>: $O(1)$</blockquote>
+<blockquote></blockquote>
+<blockquote>| Operation | Best Case | Average Case | Worst Case |</blockquote>
+<blockquote>|-----------|:---------:|:------------:|:----------:|</blockquote>
+<blockquote>| Search    | $O(1)$    | $O(\log n)$  | $O(\log n)$|</blockquote>
+<h2>13. Special Characters</h2>
+<ul>
+<li>Ampersand: &</li>
+<li>Less than: <</li>
+<li>Greater than: ></li>
+<li>Quote: "</li>
+<li>Apostrophe: '</li>
+<li>Copyright: ©</li>
+<li>Registered: ®</li>
+<li>Trademark: ™</li>
+</ul>
+<h2>14. HTML Elements (if supported)</h2>
+<div style="background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; text-align: center;">
+    <h3>Styled HTML Block</h3>
+    <p>This is raw HTML with inline styles!</p>
+</div>
+<br>
+<details>
+<summary>Click to expand</summary>
+<p>This content is hidden by default!</p>
+<ul>
+<li>You can include</li>
+<li>Any markdown here</li>
+<li>Including <code>code</code></li>
+</ul>
+</details>
+<h2>15. Escape Characters</h2>
+<p>You can escape special characters with backslash:</p>
+<ul>
+<li>\*Not italic\*</li>
+<li>\<strong>Not bold\</strong></li>
+<li>\# Not a header</li>
+<li>\<code>Not code\</code></li>
+</ul>
+<h2>Conclusion</h2>
+<p>This showcase demonstrates the full range of Markdown capabilities supported by this blog system. Feel free to use this as a reference for writing your own posts!</p>
+<hr>
+<p><em>Last updated: 2025-12-11</em></p>
             </div>
         </article>
 

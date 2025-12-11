@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>博客 - MuXinCG2004</title>
+    <title>Blog - MuXinCG2004</title>
     <!-- Tailwind CSS - 使用官方CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome - 使用国内CDN -->
@@ -52,7 +52,7 @@
 
     <main class="container mx-auto px-4 pt-24 pb-16 max-w-4xl">
         <h1 class="text-3xl font-bold mb-8">
-            <i class="fa-solid fa-blog text-primary dark:text-primary-dark mr-3"></i>博客文章
+            <i class="fa-solid fa-blog text-primary dark:text-primary-dark mr-3"></i>Blog Posts
         </h1>
 
         <!-- 搜索框 -->
@@ -61,7 +61,7 @@
                 <input
                     type="text"
                     id="search-input"
-                    placeholder="搜索文章标题、标签或内容..."
+                    placeholder="Search by title, tags, or content..."
                     class="w-full px-4 py-3 pl-12 rounded-xl glass-panel border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark transition-all"
                 >
                 <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -75,7 +75,7 @@
         <!-- 文件夹筛选 -->
         <div class="mb-6 flex gap-3 flex-wrap">
             <button class="category-filter px-4 py-2 rounded-full text-sm font-medium transition-all bg-primary text-white" data-category="all">
-                <i class="fa-solid fa-list mr-2"></i>全部
+                <i class="fa-solid fa-list mr-2"></i>All
             </button>
             
                 
@@ -136,9 +136,26 @@
                         
                         Development
                         
-                        <span class="ml-2 text-sm font-normal text-gray-500">(1)</span>
+                        <span class="ml-2 text-sm font-normal text-gray-500">(2)</span>
                     </h2>
                     <div class="space-y-4">
+                        
+                        <a href="post/2025-12-11-markdown-showcase.html" class="post-item block glass-panel rounded-xl p-5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-title="Markdown Showcase - Testing All Features" data-summary="A comprehensive test of all markdown rendering features including code, math, tables, and more" data-tags="Markdown, Test, Demo" data-category="Development">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-lg font-bold text-primary dark:text-primary-dark">Markdown Showcase - Testing All Features</h3>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">2025-12-11</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">A comprehensive test of all markdown rendering features including code, math, tables, and more</p>
+                            <div class="flex gap-2 flex-wrap">
+                                
+                                    <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Markdown</span>
+                                
+                                    <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Test</span>
+                                
+                                    <span class="text-xs px-2 py-1 bg-primary/10 text-primary dark:bg-primary-dark/10 dark:text-primary-dark rounded">Demo</span>
+                                
+                            </div>
+                        </a>
                         
                         <a href="post/2025-12-11-hello-world.html" class="post-item block glass-panel rounded-xl p-5 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1" data-title="Hello World - 我的第一篇开发日志" data-summary="记录开始写博客的第一天" data-tags="Development, Getting, Started" data-category="Development">
                             <div class="flex justify-between items-start mb-2">
@@ -191,10 +208,10 @@
             
         </div>
 
-        <!-- 无搜索结果提示 -->
+        <!-- No search results message -->
         <div id="no-results" class="text-center py-16 text-gray-500 dark:text-gray-400 hidden">
             <i class="fa-solid fa-search text-6xl mb-4"></i>
-            <p>未找到匹配的文章</p>
+            <p>No matching posts found</p>
         </div>
     </main>
 
@@ -251,7 +268,7 @@
 
             // 显示结果计数
             if (visibleCount > 0) {
-                searchResultsCount.textContent = `找到 ${visibleCount} 篇相关文章`;
+                searchResultsCount.textContent = `Found ${visibleCount} matching post${visibleCount !== 1 ? 's' : ''}`;
                 searchResultsCount.classList.remove('hidden');
                 postsContainer.classList.remove('hidden');
                 noResults.classList.add('hidden');
