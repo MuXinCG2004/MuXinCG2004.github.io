@@ -456,7 +456,7 @@
                                     <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">None</p>
                                     <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
                                         <span>HTML</span>
-                                        <span class="update-date" data-date="2025-12-10T17:21:15Z">更新于 2025-12-10</span>
+                                        <span class="update-date" data-date="2025-12-10T17:22:52Z">更新于 2025-12-10</span>
                                     </div>
                                 </a>
                             
@@ -486,10 +486,10 @@
                         <span data-i18n="recent-blog">最近博客</span>
                         <a href="blog.html" class="ml-auto text-sm font-normal text-primary dark:text-primary-dark hover:underline" data-i18n="view-all">查看全部 →</a>
                     </h2>
-                    <div class="space-y-4">
+                    <div class="space-y-4" id="recent-posts-container">
                         
                             
-                                <a href="post/2025-12-10-two-sum.html" class="block p-4 bg-gray-50 dark:bg-gray-700 rounded-xl repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
+                                <a href="post/2025-12-10-two-sum.html" class="blog-post-item block p-4 bg-gray-50 dark:bg-gray-700 rounded-xl repo-item hover:bg-gray-100 dark:hover:bg-gray-600" data-lang="zh">
                                     <div class="flex justify-between items-start mb-2">
                                         <h3 class="text-lg font-semibold text-primary dark:text-primary-dark">LeetCode 1. 两数之和 - 三种解法详解</h3>
                                         <span class="text-sm text-gray-500 dark:text-gray-400">2025-12-10</span>
@@ -544,7 +544,8 @@
                 'recent-projects': '最近项目',
                 'recent-blog': '最近博客',
                 'view-all': '查看全部 →',
-                'github-activity': 'GitHub 活动'
+                'github-activity': 'GitHub 活动',
+                'months': ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
             },
             'en': {
                 'visit-github': 'Visit my GitHub',
@@ -556,7 +557,8 @@
                 'recent-projects': 'Recent Projects',
                 'recent-blog': 'Recent Blog',
                 'view-all': 'View All →',
-                'github-activity': 'GitHub Activity'
+                'github-activity': 'GitHub Activity',
+                'months': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
             }
         };
 
@@ -617,6 +619,9 @@
 
                 // 更新图表标签
                 updateChartLanguage(lang);
+
+                // 筛选博客文章
+                filterBlogPosts(lang);
             }
 
             // 更新图表语言
@@ -633,14 +638,17 @@
                         existingChart.destroy();
                     }
 
+                    // 使用当前语言的月份标签
+                    const monthLabels = i18n[lang]['months'];
+
                     // 创建新图表
                     new Chart(chartCanvas, {
                         type: 'line',
                         data: {
-                            labels: ["\u4e00\u6708", "\u4e8c\u6708", "\u4e09\u6708", "\u56db\u6708", "\u4e94\u6708", "\u516d\u6708", "\u4e03\u6708", "\u516b\u6708", "\u4e5d\u6708", "\u5341\u6708", "\u5341\u4e00\u6708", "\u5341\u4e8c\u6708"],
+                            labels: monthLabels,
                             datasets: [{
                                 label: i18n[lang]['github-activity'],
-                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23],
+                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24],
                                 borderColor: isDark ? '#14b8a6' : '#0d9488',
                                 backgroundColor: isDark ? 'rgba(168, 85, 247, 0.1)' : 'rgba(106, 17, 203, 0.1)',
                                 tension: 0.4,
@@ -680,6 +688,41 @@
                             }
                         }
                     });
+                }
+            }
+
+            // 根据语言筛选博客文章
+            function filterBlogPosts(lang) {
+                const postsContainer = document.getElementById('recent-posts-container');
+                if (!postsContainer) return;
+
+                const allPosts = postsContainer.querySelectorAll('.blog-post-item');
+                let visibleCount = 0;
+
+                allPosts.forEach(post => {
+                    const postLang = post.getAttribute('data-lang') || 'en';
+                    if (postLang === lang) {
+                        post.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+
+                // 如果没有匹配的博客，显示提示
+                const noPostsMsg = postsContainer.querySelector('.no-posts-message');
+                if (visibleCount === 0) {
+                    if (!noPostsMsg) {
+                        const msg = document.createElement('div');
+                        msg.className = 'no-posts-message p-6 text-center text-gray-500 dark:text-gray-400';
+                        msg.innerHTML = '<i class="fa-solid fa-blog text-4xl mb-3"></i><p>' +
+                            (lang === 'zh' ? '暂无中文博客文章' : 'No English blog posts yet') + '</p>';
+                        postsContainer.appendChild(msg);
+                    }
+                } else {
+                    if (noPostsMsg) {
+                        noPostsMsg.remove();
+                    }
                 }
             }
 
