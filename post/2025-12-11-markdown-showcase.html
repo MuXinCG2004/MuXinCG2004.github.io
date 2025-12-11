@@ -608,15 +608,15 @@ WHERE u.created_at &gt; '2024-01-01';</code></pre></div>
 <p>The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.</p>
 <p>Einstein's famous equation: $E = mc^2$.</p>
 <h3>Block Math</h3>
-<p><div class="math-block">$$
+<div class="math-block">$$
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
-$$</div></p>
-<p><div class="math-block">$$
+$$</div>
+<div class="math-block">$$
 \sum_{i=1}^{n} i = \frac{n(n+1)}{2}
-$$</div></p>
-<p><div class="math-block">$$
+$$</div>
+<div class="math-block">$$
 \frac{\partial^2 u}{\partial t^2} = c^2 \nabla^2 u
-$$</div></p>
+$$</div>
 <h2>10. Emojis</h2>
 <p>😊 🎉 🚀 🔥 ❤️ ⭐</p>
 <p>✅ ❌ ⚠️ 💡 📚 📝</p>
@@ -865,15 +865,23 @@ $$</div></p>
 
             // 数学公式渲染
             if (typeof renderMathInElement !== 'undefined') {
-                renderMathInElement(document.getElementById('content'), {
-                    delimiters: [
-                        {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\[', right: '\\]', display: true},
-                        {left: '\\(', right: '\\)', display: false}
-                    ],
-                    throwOnError: false
-                });
+                try {
+                    renderMathInElement(document.getElementById('content'), {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false},
+                            {left: '\\[', right: '\\]', display: true},
+                            {left: '\\(', right: '\\)', display: false}
+                        ],
+                        throwOnError: false,
+                        strict: false
+                    });
+                    console.log('KaTeX 渲染成功');
+                } catch (error) {
+                    console.error('KaTeX 渲染失败:', error);
+                }
+            } else {
+                console.warn('renderMathInElement 未定义，KaTeX 可能未加载完成');
             }
 
             // 代码高亮
