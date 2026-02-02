@@ -3,1317 +3,583 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziheng Zhang - 个人主页</title>
-    <!-- 网页图标，使用用户头像并确保是圆形的 -->
-    
-    <link rel="icon" href="https://avatars.githubusercontent.com/u/142805986?v=4" type="image/png">
-    <!-- 使用SVG过滤器确保头像显示为圆形 -->
-    <svg width="0" height="0" style="position:absolute;">
-        <filter id="roundAvatar">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="blur"/>
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
-            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-        </filter>
-    </svg>
-    <style>
-        link[rel="icon"] {
-            filter: url(#roundAvatar);
-        }
-    </style>
-    
-    <!-- Tailwind CSS - 使用官方CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome - 使用国内CDN -->
+    <title>Ziheng Zhang - Curriculum Vitae</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Serif+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Chart.js -->
-    <script src="https://unpkg.com/chart.js@4.4.0/dist/chart.umd.js"></script>
-    <!-- Google Fonts - JetBrains Mono for terminal -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- 配置 Tailwind -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#0d9488',
-                            dark: '#14b8a6'
-                        },
-                        secondary: {
-                            DEFAULT: '#06b6d4',
-                            dark: '#22d3ee'
-                        },
-                        'primary-dark': '#14b8a6',
-                        'secondary-dark': '#22d3ee'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 3s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        },
-                    },
-                },
-            }
-        }
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .text-gradient {
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            .bg-gradient-custom {
-                background: linear-gradient(135deg, #0d9488, #06b6d4);
-            }
-            .card-hover {
-                transition: all 0.3s ease;
-            }
-            .card-hover:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            }
-            /* 云母效果和边框光效 */
-            .glass-panel {
-                background: rgba(255, 255, 255, 0.6);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-                position: relative;
-                overflow: hidden;
-            }
-            .glass-panel::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, #0d9488, transparent);
-                animation: border-glow 4s ease-in-out infinite;
-            }
-            .glass-panel::before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, #06b6d4, transparent);
-                animation: border-glow 4s ease-in-out infinite reverse;
-            }
-            /* 深色模式下的边框光效 */
-            .dark .glass-panel::after {
-                background: linear-gradient(90deg, transparent, #14b8a6, transparent);
-            }
-            .dark .glass-panel::before {
-                background: linear-gradient(90deg, transparent, #22d3ee, transparent);
-            }
-            .dark .glass-panel {
-                background: rgba(17, 24, 39, 0.6);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-            }
-            @keyframes border-glow {
-                0%, 100% { opacity: 0.3; }
-                50% { opacity: 1; }
-            }
-        }
-    </style>
     <style>
-        body {
-            transition: background-color 0.3s ease, color 0.3s ease;
+        :root {
+            --primary: #1e3a5f;
+            --accent: #c9a227;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
         }
-        
-        /* 背景样式 */
-        body {
-            
-            background-color: #121212;
-            
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        /* 在没有背景图片时使用默认背景色 */
-        
-        
-        /* 背景图片容器 */
-        .bg-container {
-            
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* 简洁纯色背景 */
+        .page-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
             z-index: -1;
-            overflow: hidden;
-            
-        }
-        
-        /* 背景图片 */
-        .bg-image {
-            
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('background.png');
-            background-size: cover;
-            background-position: center;
-            filter: blur(4px);
-            transform: scale(1.1); /* 略微放大以避免边缘出现空白 */
-            
-        }
-        
-        /* 背景遮罩 */
-        .bg-overlay {
-            
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #f3f4f6;
-            opacity: 0.6;
-            
-        }
-        
-        /* 深色模式下的背景遮罩 */
-        .dark .bg-overlay {
-            
-            background-color: #121212;
-            
-        }
-        
-        /* 动画样式 */
-        .avatar-glow {
-            animation: glow 3s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
-            }
-            to {
-                box-shadow: 0 0 20px rgba(106, 17, 203, 0.8);
-            }
-        }
-        .animate-fade-in {
-            animation: fadeIn 0.8s ease-in;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .readme-content {
-            animation: slideIn 0.8s ease-out;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .repo-item {
-            transition: all 0.3s ease;
-        }
-        .repo-item:hover {
-            transform: translateX(5px);
-        }
-        .tech-icon {
-            filter: drop-shadow(0 0 5px rgba(106, 17, 203, 0.5));
         }
 
-        /* 命令行界面样式 */
-        #terminal-cli {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 900px;
-            max-height: 80vh;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            z-index: 9999;
-            display: none;
-            flex-direction: column;
-            font-family: 'JetBrains Mono', monospace;
+        /* 顶部装饰条 */
+        .top-bar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
         }
 
-        .dark #terminal-cli {
-            background: rgba(17, 24, 39, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .cv-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
         }
 
-        #terminal-cli.active {
+        /* 头部区域 */
+        .cv-header {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-top: none;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
             display: flex;
+            gap: 2rem;
+            align-items: flex-start;
         }
 
-        #terminal-header {
-            background: linear-gradient(135deg, #0d9488, #06b6d4);
-            padding: 12px 20px;
-            border-radius: 12px 12px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .avatar-container {
+            flex-shrink: 0;
         }
 
-        #terminal-title {
-            color: white;
-            font-weight: 600;
-            font-size: 14px;
+        .avatar {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            padding: 3px;
+            background: white;
         }
 
-        #terminal-close {
-            color: white;
-            cursor: pointer;
-            font-size: 24px;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: background-color 0.2s;
-        }
-
-        #terminal-close:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        #terminal-output {
+        .header-info {
             flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            color: #374151;
-            background: transparent;
         }
 
-        .dark #terminal-output {
-            color: #d1d5db;
+        .cv-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.5px;
         }
 
-        #terminal-input-line {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.02);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 12px 12px;
-        }
-
-        .dark #terminal-input-line {
-            background: rgba(255, 255, 255, 0.02);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        #terminal-prompt {
-            color: #0d9488;
-            margin-right: 10px;
-            font-weight: 600;
-        }
-
-        .dark #terminal-prompt {
-            color: #14b8a6;
-        }
-
-        #terminal-input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: #1f2937;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-        }
-
-        .dark #terminal-input {
-            color: #f9fafb;
-        }
-
-        .terminal-line {
-            margin: 8px 0;
-            line-height: 1.6;
-        }
-
-        .terminal-error {
-            color: #ef4444;
-        }
-
-        .terminal-success {
-            color: #0d9488;
+        .cv-title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
             font-weight: 500;
         }
 
-        .dark .terminal-success {
-            color: #14b8a6;
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem 1.5rem;
+            font-size: 0.9rem;
         }
 
-        .terminal-info {
-            color: #06b6d4;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text);
         }
 
-        .dark .terminal-info {
-            color: #22d3ee;
+        .contact-item i {
+            color: var(--primary);
+            width: 16px;
+            text-align: center;
         }
 
-        .terminal-post-content {
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.02);
-            border-left: 3px solid #0d9488;
-            border-radius: 4px;
-            max-height: 400px;
-            overflow-y: auto;
+        .contact-item a {
+            color: var(--text);
+            text-decoration: none;
         }
 
-        .dark .terminal-post-content {
-            background: rgba(255, 255, 255, 0.05);
-            border-left-color: #14b8a6;
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* 主体区域 */
+        .cv-main {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .cv-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cv-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* 研究兴趣 */
+        .interests-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .interest-tag {
+            padding: 0.35rem 0.9rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* 教育经历 */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-main h4 {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.15rem;
+        }
+
+        .edu-main p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .edu-period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* 发表论文 */
+        .pub-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .pub-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+            line-height: 1.5;
+        }
+
+        .pub-authors {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .pub-venue {
+            color: var(--primary);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .pub-links {
+            margin-top: 0.5rem;
+        }
+
+        .pub-link {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: var(--primary);
+            color: white;
+            font-size: 0.75rem;
+            text-decoration: none;
+            margin-right: 0.4rem;
+        }
+
+        .pub-link:hover {
+            background: var(--accent);
+        }
+
+        /* 获奖 */
+        .award-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .award-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .award-name {
+            font-weight: 500;
+        }
+
+        .award-org {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .award-year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* 会议经历 */
+        .conf-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent);
+        }
+
+        .conf-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .conf-name {
+            font-weight: 500;
+        }
+
+        .conf-detail {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Blog 入口按钮 */
+        .blog-entry {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .blog-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .blog-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* 过渡动画 */
+        .transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .transition-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+
+            .cv-name {
+                font-size: 1.8rem;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* 打印样式 */
+        @media print {
+            .blog-entry, .transition-overlay, .top-bar {
+                display: none;
+            }
+            body {
+                background: white;
+            }
+            .cv-header, .cv-main {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
         }
     </style>
 </head>
-<body class="text-gray-800 dark:text-gray-200 min-h-screen">
-    <!-- 命令行界面 -->
-    <div id="terminal-cli">
-        <div id="terminal-header">
-            <span id="terminal-title">MuXinCG2004@blog:~$</span>
-            <span id="terminal-close">&times;</span>
+<body>
+    <div class="page-bg"></div>
+    <div class="transition-overlay" id="transition-overlay"></div>
+
+    <div class="top-bar"></div>
+
+    <div class="cv-wrapper">
+        <!-- 头部 -->
+        <div class="cv-header">
+            <div class="header-content">
+                <div class="avatar-container">
+                    <img src="resume_avatar.jpg" alt="Ziheng Zhang" class="avatar">
+                </div>
+                <div class="header-info">
+                    <h1 class="cv-name">Ziheng Zhang</h1>
+                    <p class="cv-title">Undergraduate in Computer Science, Shandong University</p>
+                    <div class="contact-grid">
+                        
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:202322130196@mail.sdu.edu.cn">202322130196@mail.sdu.edu.cn</a>
+                        </div>
+                        
+                        
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>(+86) 18660861219</span>
+                        </div>
+                        
+                        
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Shandong University, China</span>
+                        </div>
+                        
+                        
+                        
+                        <div class="contact-item">
+                            <i class="fa-brands fa-github"></i>
+                            <a href="https://github.com/MuXinCG2004" target="_blank">GitHub</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="terminal-output"></div>
-        <div id="terminal-input-line">
-            <span id="terminal-prompt">$</span>
-            <input type="text" id="terminal-input" autocomplete="off" />
+
+        <!-- 主体内容 -->
+        <div class="cv-main">
+            <!-- About -->
+            
+            <div class="cv-section">
+                <h2 class="section-title">About</h2>
+                <p style="text-align: justify; line-height: 1.8;">Undergraduate student majoring in Computer Science at Shandong University. Recipient of the National Scholarship, Second Prize in the National Mathematical Modeling Contest, and First Prize (Provincial) in the National System Capability Competition. Proficient in Python and C/C++ programming with a solid foundation in algorithms and data structures. Experienced in applying machine learning and optimization algorithms to solve real-world problems. Currently conducting research training in the Elite Class of the School of Computer Science.</p>
+            </div>
+            
+
+            <!-- 研究兴趣 -->
+            
+
+            <!-- 教育经历 -->
+            
+            <div class="cv-section">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="edu-item">
+                    <div class="edu-main">
+                        <h4>Shandong University</h4>
+                        <p>B.Eng. - Computer Science and Technology</p>
+                        
+                        <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.25rem;">GPA: 91.06/100 | Rank: 12/227 (Top 5.2%)</p>
+                        
+                    </div>
+                    <div class="edu-period">Sep 2023 - Jun 2027</div>
+                </div>
+                
+            </div>
+            
+
+            <!-- 发表论文 -->
+            
+
+            <!-- Projects -->
+            
+            <div class="cv-section">
+                <h2 class="section-title">Projects</h2>
+                
+                <div class="pub-item">
+                    <div class="pub-title">ML-based Production Optimization System</div>
+                    <div class="pub-authors">CUMCM - National Second Prize</div>
+                    <div class="pub-venue">Sep 2024</div>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Built a profit optimization model for multi-process production scheduling. Designed and implemented both traditional simulated annealing and an ML-enhanced version that predicts optimal search directions, significantly improving convergence speed and solution quality.</p>
+                    
+                    <p style="margin-top: 0.3rem; font-size: 0.85rem;"><strong>Tech:</strong> Python, NumPy, Pandas, scikit-learn</p>
+                    
+                </div>
+                
+                <div class="pub-item">
+                    <div class="pub-title">OceanBase Database Performance Tuning</div>
+                    <div class="pub-authors">System Capability Competition - 10th Place Nationally</div>
+                    <div class="pub-venue">Sep 2024 - Jan 2025</div>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">Participated in performance optimization of OceanBase distributed database. Responsible for query performance analysis, system monitoring, bottleneck identification, and parameter tuning including memory allocation and concurrency control.</p>
+                    
+                    <p style="margin-top: 0.3rem; font-size: 0.85rem;"><strong>Tech:</strong> OceanBase, Distributed Database, Performance Tuning</p>
+                    
+                </div>
+                
+            </div>
+            
+
+            <!-- 获奖 -->
+            
+            <div class="cv-section">
+                <h2 class="section-title">Awards & Honors</h2>
+                
+                <div class="award-item">
+                    <div>
+                        <span class="award-name">National Scholarship</span>
+                        <span class="award-org"> - Ministry of Education, China</span>
+                    </div>
+                    <span class="award-year">Oct 2025</span>
+                </div>
+                
+                <div class="award-item">
+                    <div>
+                        <span class="award-name">Second Prize, National Mathematical Modeling Contest (CUMCM)</span>
+                        <span class="award-org"> - National</span>
+                    </div>
+                    <span class="award-year">Nov 2024</span>
+                </div>
+                
+                <div class="award-item">
+                    <div>
+                        <span class="award-name">First Prize (Provincial) &amp; 10th Place (National Finals), System Capability Competition</span>
+                        <span class="award-org"> - National</span>
+                    </div>
+                    <span class="award-year">Jan 2025</span>
+                </div>
+                
+            </div>
+            
+
+            <!-- 会议经历 -->
+            
+
+            <!-- Skills -->
+            
+            <div class="cv-section">
+                <h2 class="section-title">Skills</h2>
+                <div class="interests-list">
+                    
+                    <span class="interest-tag">Python</span>
+                    
+                    <span class="interest-tag">C/C++</span>
+                    
+                    <span class="interest-tag">Golang</span>
+                    
+                    <span class="interest-tag">Git</span>
+                    
+                    <span class="interest-tag">Linux</span>
+                    
+                    <span class="interest-tag">Docker</span>
+                    
+                    <span class="interest-tag">LaTeX</span>
+                    
+                    <span class="interest-tag">Data Structures &amp; Algorithms</span>
+                    
+                </div>
+            </div>
+            
         </div>
     </div>
-    <!-- 背景容器 -->
-    <div class="bg-container">
-        <div class="bg-image"></div>
-        <div class="bg-overlay"></div>
+    <div class="blog-entry">
+        <button class="blog-btn" id="blog-btn">
+            <i class="fa-solid fa-arrow-right"></i>
+            <span>Blog</span>
+        </button>
     </div>
-    
-    <!-- 顶部导航栏 -->
-    <nav class="fixed w-full top-0 z-50 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <!-- 顶栏左上角显示头像和用户名 -->
-            <div class="flex items-center space-x-3">
-                
-                <img 
-                    src="https://avatars.githubusercontent.com/u/142805986?v=4" 
-                    alt="Ziheng Zhang" 
-                    class="w-8 h-8 rounded-full border-2 border-white dark:border-gray-700 shadow-sm"
-                >
-                
-                <span class="font-bold text-lg">Ziheng Zhang</span>
-            </div>
-            <div class="flex items-center space-x-4">
-                <!-- 博客链接 -->
-                <a href="blog.html" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors" title="博客">
-                    <i class="fa-solid fa-blog text-gray-700 dark:text-gray-300"></i>
-                </a>
 
-                <!-- 语言切换 -->
-                <button id="language-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative" title="切换语言">
-                    <span class="text-gray-700 dark:text-gray-300 font-medium text-sm">
-                        <span class="lang-text">中文</span>
-                    </span>
-                </button>
-
-                <!-- 极简模式开关 -->
-                <button id="minimal-mode-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors relative">
-                    <span class="sr-only">切换极简模式</span>
-                    <i class="fa-solid fa-columns text-gray-700 dark:text-gray-300"></i>
-                </button>
-
-                <!-- 深色模式切换 -->
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fa-solid fa-moon dark:hidden text-gray-700"></i>
-                    <i class="fa-solid fa-sun hidden dark:block text-yellow-400"></i>
-                </button>
-                <a href="https://github.com/MuXinCG2004" target="_blank" rel="noopener noreferrer" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fa-brands fa-github text-xl"></i>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 主要内容 -->
-    <main class="container mx-auto px-4 pt-24 pb-16">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- 左侧个人信息 -->
-            <div class="lg:col-span-1 animate-fade-in">
-                <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 card-hover">
-                    <!-- 头像 -->
-                    <div class="flex justify-center mb-6">
-                        <img 
-                            src="https://avatars.githubusercontent.com/u/142805986?v=4" 
-                            alt="Ziheng Zhang" 
-                            class="w-36 h-36 rounded-full border-4 border-white dark:border-gray-700 shadow-lg avatar-glow"
-                        >
-                    </div>
-                    <!-- 基本信息 -->
-                    <div class="text-center mb-6">
-                        <h1 class="text-2xl font-bold mb-2">Ziheng Zhang</h1>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4">Student</p>
-                        <a 
-                            href="https://github.com/MuXinCG2004" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-custom text-white font-medium hover:opacity-90 transition-opacity"
-                        >
-                            <i class="fa-brands fa-github mr-2"></i>
-                            <span data-i18n="visit-github">访问我的 GitHub</span>
-                        </a>
-                    </div>
-                    <!-- 统计信息 -->
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-primary dark:text-primary-dark mb-1">2</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="total-repos">总仓库数</div>
-                        </div>
-                        <div class="bg-gray-100 dark:bg-gray-700 rounded-xl p-4 text-center">
-                            <div class="text-2xl font-bold text-secondary dark:text-secondary-dark mb-1">0</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-400" data-i18n="total-stars">总 Stars</div>
-                        </div>
-                    </div>
-                    <!-- 技术标签 -->
-                <div class="mt-6">
-                    <h3 class="text-lg font-semibold mb-3" data-i18n="tech-stack">技术栈</h3>
-                    <div class="flex flex-wrap gap-2">
-                        
-                            
-                                <span class="px-3 py-1 rounded-full text-sm flex items-center text-white dark:text-white" style="background-color: #6a11cb;">
-                                    <i class="fa-solid fa-code mr-1 tech-icon"></i>
-                                    HTML
-                                </span>
-                            
-                        
-                    </div>
-                </div>
-                </div>
-                
-                <!-- 活动图表 -->
-                <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.2s;">
-                    <h3 class="text-lg font-semibold mb-3" data-i18n="activity-overview">GitHub 活动概览</h3>
-                    <div class="h-64">
-                        <canvas id="activityChart"></canvas>
-                    </div>
-                </div>
-
-                <!-- 最近仓库 -->
-                <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 card-hover animate-fade-in" style="animation-delay: 0.3s;">
-                    <h2 class="text-xl font-bold mb-4 flex items-center">
-                        <i class="fa-solid fa-folder-open text-primary dark:text-primary-dark mr-2"></i>
-                        <span data-i18n="recent-projects">最近项目</span>
-                    </h2>
-                    <div class="space-y-3">
-                        
-                            
-                                <a href="https://github.com/MuXinCG2004/MuXinCG2004.github.io" target="_blank" rel="noopener noreferrer" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
-                                    <div class="flex justify-between items-start mb-1">
-                                        <h3 class="text-base font-semibold text-primary dark:text-primary-dark">MuXinCG2004.github.io</h3>
-                                        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center">
-                                            <i class="fa-solid fa-star mr-1"></i>
-                                            0
-                                        </span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-xs mb-1 line-clamp-2">None</p>
-                                    <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-                                        <span>HTML</span>
-                                        <span class="update-date" data-date="2025-12-11T04:50:44Z">2025-12-11</span>
-                                    </div>
-                                </a>
-                            
-                                <a href="https://github.com/MuXinCG2004/MuXinCG2004" target="_blank" rel="noopener noreferrer" class="block p-3 bg-gray-50 dark:bg-gray-700 rounded-lg repo-item hover:bg-gray-100 dark:hover:bg-gray-600">
-                                    <div class="flex justify-between items-start mb-1">
-                                        <h3 class="text-base font-semibold text-primary dark:text-primary-dark">MuXinCG2004</h3>
-                                        <span class="text-xs text-gray-500 dark:text-gray-400 flex items-center">
-                                            <i class="fa-solid fa-star mr-1"></i>
-                                            0
-                                        </span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-xs mb-1 line-clamp-2">𝗔𝘄𝗲𝘀𝗼𝗺𝗲 𝗚𝗶𝘁𝗛𝘂𝗯 𝗣𝗿𝗼𝗳𝗶𝗹𝗲. Feel free to 𝗙𝗼𝗿𝗸 and please consider giving a 𝗦𝘁𝗮𝗿 or following. Thank you.</p>
-                                    <div class="flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-                                        <span>None</span>
-                                        <span class="update-date" data-date="2025-12-11T03:51:12Z">2025-12-11</span>
-                                    </div>
-                                </a>
-                            
-                        
-                    </div>
-                </div>
-            </div>
-
-            <!-- 右侧内容区域 -->
-            <div class="lg:col-span-2">
-                <!-- 最近博客 - 置顶显眼位置 -->
-                <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 card-hover animate-fade-in border-2 border-primary/20 dark:border-primary-dark/20">
-                    <h2 class="text-3xl font-bold mb-5 flex items-center">
-                        <i class="fa-solid fa-blog text-primary dark:text-primary-dark mr-3 text-2xl"></i>
-                        <span data-i18n="recent-blog">最近博客</span>
-                        <a href="blog.html" class="ml-auto text-base font-normal text-primary dark:text-primary-dark hover:underline" data-i18n="view-all">查看全部 →</a>
-                    </h2>
-                    <div class="space-y-4" id="recent-posts-container">
-                        
-                            
-                                <a href="post/2025-12-11-markdown-showcase.html" class="blog-post-item block p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl repo-item hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-600 dark:hover:to-gray-700 border border-gray-200 dark:border-gray-600" data-lang="en">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="text-xl font-bold text-primary dark:text-primary-dark">Markdown Showcase - Testing All Features</h3>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">2025-12-11</span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">A comprehensive test of all markdown rendering features including code, math, tables, and more</p>
-                                    <div class="flex gap-2 flex-wrap">
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Markdown</span>
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Test</span>
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Demo</span>
-                                        
-                                    </div>
-                                </a>
-                            
-                                <a href="post/2025-12-11-hello-world.html" class="blog-post-item block p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl repo-item hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-600 dark:hover:to-gray-700 border border-gray-200 dark:border-gray-600" data-lang="zh">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="text-xl font-bold text-primary dark:text-primary-dark">Hello World - 我的第一篇开发日志</h3>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">2025-12-11</span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">记录开始写博客的第一天</p>
-                                    <div class="flex gap-2 flex-wrap">
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Development</span>
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Getting</span>
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Started</span>
-                                        
-                                    </div>
-                                </a>
-                            
-                                <a href="post/2025-12-11-life-journey.html" class="blog-post-item block p-5 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl repo-item hover:bg-gradient-to-r hover:from-gray-100 hover:to-gray-200 dark:hover:from-gray-600 dark:hover:to-gray-700 border border-gray-200 dark:border-gray-600" data-lang="en">
-                                    <div class="flex justify-between items-start mb-2">
-                                        <h3 class="text-xl font-bold text-primary dark:text-primary-dark">My Life Journey</h3>
-                                        <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">2025-12-11</span>
-                                    </div>
-                                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-3 leading-relaxed">Reflecting on my journey and experiences</p>
-                                    <div class="flex gap-2 flex-wrap">
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Life</span>
-                                        
-                                            <span class="text-xs px-3 py-1 bg-primary/20 text-primary dark:bg-primary-dark/20 dark:text-primary-dark rounded-full font-medium">Thoughts</span>
-                                        
-                                    </div>
-                                </a>
-                            
-                        
-                    </div>
-                </div>
-
-                <!-- README 内容 -->
-                <div class="glass-panel bg-white/30 dark:bg-gray-800/30 rounded-2xl shadow-xl p-6 mt-6 readme-content">
-                    <h2 class="text-2xl font-bold mb-4 flex items-center">
-                        <i class="fa-solid fa-file-lines text-primary dark:text-primary-dark mr-2"></i>
-                        <span data-i18n="introduction">个人介绍</span>
-                    </h2>
-                    <div class="prose dark:prose-invert max-w-none" id="readme-content">
-                        <a href="#"><img align="left" alt="React" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Welcome.svg" /></a>
-<div align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=Hi%2C+I'm+MuXinCG.;I'm+a+full-stack+engineer.;I'm+also+a+student+at+SDU.;My+focus+is+AI+Agent+research.;Welcome+to+my+blog!" alt="Typing SVG" /></a>
-</div>
-<br/><h1> About Me  </h1>
-<h3>
-<ul>
-<li><strong>Development Experience</strong>: 3 years of experience in C/C++/Golang development, proficient in Python and Rust</li>
-</ul>
-<ul>
-<li><strong>System Environment</strong>: Over 2 years of experience with Linux systems, familiar with Docker containerized deployment</li>
-</ul>
-<ul>
-<li><strong>Education Background</strong>: Currently pursuing a Bachelor’s degree in Computer Science and Technology at Shandong University</li>
-</ul>
-<ul>
-<li><strong>Technical Interests</strong>: Algorithm optimization, open-source contributions</li>
-</ul>
-</h3>
-<a href="#--about-me--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a>
-<br/><br/>
-<h1> My Skill Sets <a href="#-my-skill-sets--"><img src = "https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/skill.gif" width = 32px></a> </h1>
-<h3>Languages</h3>
-<a href="https://en.cppreference.com/w/c" target="_blank"><img align="left" alt="C" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" /></a>
-<a href="https://en.cppreference.com/w/" target="_blank"><img align="left" alt="C++" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" /></a>
-<a href="https://www.java.com/" target="_blank"><img align="left" alt="Java" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/java.svg" /></a>
-<a href="https://www.python.org/" target="_blank"><img align="left" alt="Python" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/python.svg" /></a>
-<a href="https://www.rust-lang.org/" target="_blank"><img align="left" alt="Rust" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/languages/rust.svg" /></a>
-<br/><br/>
-<h3>Libraries</h3>
-<a href="https://nodejs.org/en" target="_blank"><img align="left" alt="Node.js" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/libraries/node.js.gif" /></a>
-<br/><br/>
-<h3>Database</h3>
-<a href="https://www.mysql.com/" target="_blank"><img align="left" alt="MySQL" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/databases/mysql.svg" /></a>
-<br/><br/>
-<h3>Tools</h3>
-<a href="https://git-scm.com/" target="_blank"><img align="left" alt="Git" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/Github.svg" /></a>
-<a href="https://www.docker.com/" target="_blank"><img align="left" alt="Docker" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/tools/docker.svg" /></a>
-<a href="https://www.linux.org/" target="_blank"><img align="left" alt="Linux" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" /></a>
-<a href="https://code.visualstudio.com/" target="_blank"><img align="left" alt="VS Code" width="50px" style="padding:10px;" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" /></a>
-<br/><br/>
-<a href="#-my-skill-sets--"><img src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/colorful_line.gif"></a>
-<br/>
-<div style="display: flex; align-items: center">
-  <h1>
-<p>    My GitHub Stats</p>
-  </h1>
-</div>
-<div align="center">
-<img src="https://komarev.com/ghpvc/?username=MuXinCG2004&color=blueviolet&style=for-the-badge&label=PROFILE+VIEWS" alt="Profile Views" />
-</div>
-<table align="center">
-  <tr>
-    <td align="center" width="45%">
-        <a href="#-my-github-stats--"><img width="100%" src="https://gh-readme-profile.vercel.app/api?username=MuXinCG2004&theme=neon-dark&border_width=0&border_radius=15.2&hide_border=true" alt="MuXinCG2004" /></a>
-    </td>
-    <td align="center" width="55%">
-        <a href="#-my-github-stats--"><img width="100%" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=MuXinCG2004&theme=2077" alt="MuXinCG2004" /></a>
-    </td>
-  </tr>
-</table>
-<a align="center" href="#-my-github-stats--"><img align="center" src="https://raw.githubusercontent.com/BEPb/BEPb/output/github-contribution-grid-snake.svg" alt="GitHub Streak" /></a>
-<br/><br/>
-<div align="center">
-<h3>Random Dev Quote</h3>
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="" />
-</div>
-<br/>
-<div align="center">
-<h3>Fun Fact</h3>
-<blockquote>"Code is like humor. When you have to explain it, it's bad." – Cory House</blockquote>
-</div>
-<br/>
-<a href="#"><img align="left" alt="Finish" width="100%" style="padding:10px;" src="https://raw.githubusercontent.com/HighAmbition211/HighAmbition211/auxiliary/others/Finish.svg" /></a>
-                    </div>
-                </div>
-                <style>
-                    /* GitHub风格的README样式 */
-                    #readme-content {
-                        line-height: 1.6;
-                    }
-                    #readme-content img {
-                        max-width: 100%;
-                        height: auto;
-                        display: inline-block;
-                    }
-                    #readme-content img[align="center"] {
-                        display: block;
-                        margin: 0 auto;
-                    }
-                    #readme-content img[align="left"] {
-                        float: left;
-                        margin-right: 1rem;
-                    }
-                    #readme-content img[align="right"] {
-                        float: right;
-                        margin-left: 1rem;
-                    }
-                    #readme-content [align="center"] {
-                        text-align: center;
-                    }
-                    #readme-content [align="left"] {
-                        text-align: left;
-                    }
-                    #readme-content [align="right"] {
-                        text-align: right;
-                    }
-                    #readme-content table {
-                        width: auto;
-                        margin: 1rem auto;
-                        border-collapse: collapse;
-                    }
-                    #readme-content table td,
-                    #readme-content table th {
-                        padding: 0.5rem 1rem;
-                        border: none;
-                    }
-                    #readme-content h1 {
-                        clear: both;
-                        padding-top: 1rem;
-                    }
-                    #readme-content h3 {
-                        clear: both;
-                        font-weight: 600;
-                        margin: 1rem 0;
-                    }
-                    #readme-content br {
-                        clear: both;
-                    }
-                    #readme-content ul {
-                        list-style: none;
-                        padding-left: 0;
-                    }
-                    #readme-content li {
-                        margin: 0.5rem 0;
-                    }
-                    /* 清除浮动 */
-                    #readme-content::after {
-                        content: "";
-                        display: table;
-                        clear: both;
-                    }
-                </style>
-            </div>
-        </div>
-    </main>
-
-    <!-- 页脚 -->
-    <footer class="glass-panel bg-white/30 dark:bg-gray-800/30 shadow-inner py-6">
-        <div class="container mx-auto px-4 text-center text-gray-600 dark:text-gray-400">
-            <p>© 2025 Ziheng Zhang. <a href="https://github.com/SRInternet/Home_Page/" target="_blank">个人主页</a>由 Flask + Tailwind CSS 驱动。</p>
-            <div class="mt-3 space-x-4">
-                <!-- 联系方式图标，仅在配置了有效URL时显示 -->
-                
-                
-                
-                
-                
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
     <script>
-        // 国际化翻译数据
-        const i18n = {
-            'zh': {
-                'visit-github': '访问我的 GitHub',
-                'total-repos': '总仓库数',
-                'total-stars': '总 Stars',
-                'tech-stack': '技术栈',
-                'activity-overview': 'GitHub 活动概览',
-                'introduction': '个人介绍',
-                'recent-projects': '最近项目',
-                'recent-blog': '最近博客',
-                'view-all': '查看全部 →',
-                'github-activity': 'GitHub 活动',
-                'months': ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
-            },
-            'en': {
-                'visit-github': 'Visit my GitHub',
-                'total-repos': 'Total Repos',
-                'total-stars': 'Total Stars',
-                'tech-stack': 'Tech Stack',
-                'activity-overview': 'GitHub Activity Overview',
-                'introduction': 'Introduction',
-                'recent-projects': 'Recent Projects',
-                'recent-blog': 'Recent Blog',
-                'view-all': 'View All →',
-                'github-activity': 'GitHub Activity',
-                'months': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-            }
-        };
-
-        // 深色模式切换
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const languageToggle = document.getElementById('language-toggle');
-            const htmlElement = document.documentElement;
-            
-            // 检查本地存储或系统偏好
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            // 根据配置设置初始主题
-            const configDarkMode = 'auto';
-            if (savedTheme) {
-                htmlElement.classList.toggle('dark', savedTheme === 'dark');
-            } else if (configDarkMode === 'auto') {
-                htmlElement.classList.toggle('dark', prefersDark);
-            } else if (configDarkMode === 'dark') {
-                htmlElement.classList.add('dark');
-            }
-            
-            // 主题切换事件
-            themeToggle.addEventListener('click', function() {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
-            });
-            
-            // 监听系统主题变化
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-                if (configDarkMode === 'auto' && !localStorage.getItem('theme')) {
-                    htmlElement.classList.toggle('dark', e.matches);
-                }
-            });
-
-            /* 语言切换功能 */
-            let currentLang = localStorage.getItem('language') || 'en';
-
-            // 切换语言函数
-            function setLanguage(lang) {
-                currentLang = lang;
-                localStorage.setItem('language', lang);
-
-                // 更新所有带有 data-i18n 属性的元素
-                document.querySelectorAll('[data-i18n]').forEach(elem => {
-                    const key = elem.getAttribute('data-i18n');
-                    if (i18n[lang] && i18n[lang][key]) {
-                        elem.textContent = i18n[lang][key];
-                    }
-                });
-
-                // 更新语言切换按钮文本
-                const langText = document.querySelector('.lang-text');
-                if (langText) {
-                    langText.textContent = lang === 'zh' ? '中文' : 'EN';
-                }
-
-                // 更新图表标签
-                updateChartLanguage(lang);
-
-                // 筛选博客文章
-                filterBlogPosts(lang);
-            }
-
-            // 更新图表语言
-            function updateChartLanguage(lang) {
-                const chartCanvas = document.getElementById('activityChart');
-                if (chartCanvas && window.Chart) {
-                    // 重新创建图表以更新语言
-                    const isDark = htmlElement.classList.contains('dark');
-                    const textColor = isDark ? '#9CA3AF' : '#4B5563';
-
-                    // 获取现有的 chart 实例并销毁
-                    const existingChart = Chart.getChart(chartCanvas);
-                    if (existingChart) {
-                        existingChart.destroy();
-                    }
-
-                    // 使用当前语言的月份标签
-                    const monthLabels = i18n[lang]['months'];
-
-                    // 创建新图表
-                    new Chart(chartCanvas, {
-                        type: 'line',
-                        data: {
-                            labels: monthLabels,
-                            datasets: [{
-                                label: i18n[lang]['github-activity'],
-                                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34],
-                                borderColor: isDark ? '#14b8a6' : '#0d9488',
-                                backgroundColor: isDark ? 'rgba(168, 85, 247, 0.1)' : 'rgba(106, 17, 203, 0.1)',
-                                tension: 0.4,
-                                fill: true
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    display: false
-                                },
-                                tooltip: {
-                                    mode: 'index',
-                                    intersect: false
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    grid: {
-                                        color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                                    },
-                                    ticks: {
-                                        color: textColor
-                                    }
-                                },
-                                x: {
-                                    grid: {
-                                        display: false
-                                    },
-                                    ticks: {
-                                        color: textColor
-                                    }
-                                }
-                            }
-                        }
-                    });
-                }
-            }
-
-            // 根据语言筛选博客文章
-            function filterBlogPosts(lang) {
-                const postsContainer = document.getElementById('recent-posts-container');
-                if (!postsContainer) return;
-
-                const allPosts = postsContainer.querySelectorAll('.blog-post-item');
-                let visibleCount = 0;
-
-                allPosts.forEach(post => {
-                    const postLang = post.getAttribute('data-lang') || 'en';
-                    if (postLang === lang) {
-                        post.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        post.style.display = 'none';
-                    }
-                });
-
-                // 如果没有匹配的博客，显示提示
-                const noPostsMsg = postsContainer.querySelector('.no-posts-message');
-                if (visibleCount === 0) {
-                    if (!noPostsMsg) {
-                        const msg = document.createElement('div');
-                        msg.className = 'no-posts-message p-6 text-center text-gray-500 dark:text-gray-400';
-                        msg.innerHTML = '<i class="fa-solid fa-blog text-4xl mb-3"></i><p>' +
-                            (lang === 'zh' ? '暂无中文博客文章' : 'No English blog posts yet') + '</p>';
-                        postsContainer.appendChild(msg);
-                    }
-                } else {
-                    if (noPostsMsg) {
-                        noPostsMsg.remove();
-                    }
-                }
-            }
-
-            // 语言切换按钮事件
-            languageToggle.addEventListener('click', function() {
-                const newLang = currentLang === 'zh' ? 'en' : 'zh';
-                setLanguage(newLang);
-            });
-
-            // 初始化语言
-            setLanguage(currentLang);
-
-            /* 极简模式功能 */
-            const minimalModeToggle = document.getElementById('minimal-mode-toggle');
-            // 修改选择器，包含所有板块，修复转义字符
-            const contentSections = document.querySelectorAll('div.lg\\:col-span-1, div.lg\\:col-span-2 > div');
-            const bgImage = document.querySelector('.bg-image');
-            let isMinimalMode = false;
-            
-            // 极简模式切换事件处理
-            minimalModeToggle.addEventListener('click', () => {
-                isMinimalMode = !isMinimalMode;
-                
-                if (isMinimalMode) {
-                    // 进入极简模式：隐藏所有板块，背景blur效果逐渐消失
-                    contentSections.forEach(section => {
-                        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(20px)';
-                        section.style.pointerEvents = 'none';
-                    });
-                    
-                    // 移除背景模糊效果
-                    if (bgImage) {
-                        bgImage.style.transition = 'filter 0.5s ease';
-                        bgImage.style.filter = 'blur(0px)';
-                    }
-                    
-                    // 给极简模式按钮添加激活样式
-                    minimalModeToggle.classList.add('bg-primary/20', 'dark:bg-primary-dark/20');
-                    minimalModeToggle.querySelector('i').classList.add('text-primary', 'dark:text-primary-dark');
-                } else {
-                    // 退出极简模式：显示所有板块，恢复背景blur效果
-                    contentSections.forEach(section => {
-                        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        section.style.opacity = '1';
-                        section.style.transform = 'translateY(0)';
-                        section.style.pointerEvents = 'auto';
-                    });
-                    
-                    // 恢复背景模糊效果
-                    if (bgImage) {
-                        bgImage.style.transition = 'filter 0.5s ease';
-                        bgImage.style.filter = 'blur(4px)';
-                    }
-                    
-                    // 移除极简模式按钮的激活样式
-                    minimalModeToggle.classList.remove('bg-primary/20', 'dark:bg-primary-dark/20');
-                    minimalModeToggle.querySelector('i').classList.remove('text-primary', 'dark:text-primary-dark');
-                }
-            });
-
-            // 添加页面滚动动画
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.card-hover:not(.animate-fade-in)').forEach(card => {
-                observer.observe(card);
-            });
-
-            /* ========== 命令行界面 ========== */
-            const terminal = {
-                element: document.getElementById('terminal-cli'),
-                output: document.getElementById('terminal-output'),
-                input: document.getElementById('terminal-input'),
-                closeBtn: document.getElementById('terminal-close'),
-                history: [],
-                historyIndex: -1,
-                posts: [{"category": "Development", "date": "2025-12-11", "html": "\u003ch1\u003eMarkdown Showcase\u003c/h1\u003e\n\u003cp\u003eThis is a comprehensive demonstration of all supported Markdown features in this blog system.\u003c/p\u003e\n\u003ch2\u003e1. Text Formatting\u003c/h2\u003e\n\u003cp\u003e\u003cstrong\u003eBold text\u003c/strong\u003e using double asterisks or \u003cstrong\u003edouble underscores\u003c/strong\u003e.\u003c/p\u003e\n\u003cp\u003e\u003cem\u003eItalic text\u003c/em\u003e using single asterisks or _single underscores_.\u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003e\u003cem\u003eBold and italic\u003c/strong\u003e\u003c/em\u003e combined.\u003c/p\u003e\n\u003cp\u003e~~Strikethrough~~ text (if supported).\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003eInline code\u003c/code\u003e with backticks.\u003c/p\u003e\n\u003ch2\u003e2. Headers\u003c/h2\u003e\n\u003ch1\u003eH1 Header\u003c/h1\u003e\n\u003ch2\u003eH2 Header\u003c/h2\u003e\n\u003ch3\u003eH3 Header\u003c/h3\u003e\n\u003ch4\u003eH4 Header\u003c/h4\u003e\n\u003ch5\u003eH5 Header\u003c/h5\u003e\n\u003ch6\u003eH6 Header\u003c/h6\u003e\n\u003ch2\u003e3. Lists\u003c/h2\u003e\n\u003ch3\u003eUnordered Lists\u003c/h3\u003e\n\u003cul\u003e\n\u003cli\u003eItem 1\u003c/li\u003e\n\u003cli\u003eItem 2\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e  - Nested item 2.1\u003c/p\u003e\n\u003cp\u003e  - Nested item 2.2\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eItem 3\u003c/li\u003e\n\u003c/ul\u003e\n\u003cul\u003e\n\u003cli\u003eAlternative syntax\u003c/li\u003e\n\u003cli\u003eUsing asterisks\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eOrdered Lists\u003c/h3\u003e\n\u003col\u003e\n\u003cli\u003eFirst item\u003c/li\u003e\n\u003cli\u003eSecond item\u003c/li\u003e\n\u003cli\u003eThird item\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e   1. Nested 3.1\u003c/p\u003e\n\u003cp\u003e   2. Nested 3.2\u003c/p\u003e\n\u003ch3\u003eTodo Lists\u003c/h3\u003e\n\u003cul\u003e\n\u003cli style=\"list-style: none;\"\u003e\u003cinput type=\"checkbox\" checked disabled style=\"margin-right: 0.5em;\"\u003eCompleted task\u003c/li\u003e\n\u003cli style=\"list-style: none;\"\u003e\u003cinput type=\"checkbox\"  disabled style=\"margin-right: 0.5em;\"\u003eIncomplete task\u003c/li\u003e\n\u003cli style=\"list-style: none;\"\u003e\u003cinput type=\"checkbox\" checked disabled style=\"margin-right: 0.5em;\"\u003eAnother done task\u003c/li\u003e\n\u003cli style=\"list-style: none;\"\u003e\u003cinput type=\"checkbox\"  disabled style=\"margin-right: 0.5em;\"\u003eWork in progress\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003e4. Links and Images\u003c/h2\u003e\n\u003cp\u003e\u003ca href=\"https://github.com\"\u003eVisit GitHub\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003e\u003ca href=\"https://github.com \"GitHub Homepage\"\"\u003eLink with title\u003c/a\u003e\u003c/p\u003e\n\u003cimg src=\"https://via.placeholder.com/400x200?text=Sample+Image\" alt=\"Alt text for image\" /\u003e\n\u003ch2\u003e5. Blockquotes\u003c/h2\u003e\n\u003cblockquote\u003eThis is a blockquote.\u003c/blockquote\u003e\n\u003cblockquote\u003eIt can span multiple lines.\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003cstrong\u003eNote\u003c/strong\u003e: Blockquotes can contain other markdown elements.\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e- Like lists\u003c/blockquote\u003e\n\u003cblockquote\u003e- And \u003cstrong\u003eformatting\u003c/strong\u003e\u003c/blockquote\u003e\n\u003ch2\u003e6. Code Blocks\u003c/h2\u003e\n\u003ch3\u003ePython\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-python\"\u003edef fibonacci(n):\n    \"\"\"Calculate the nth Fibonacci number.\"\"\"\n    if n \u0026lt;= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# Test the function\nresult = fibonacci(10)\nprint(f\"The 10th Fibonacci number is: {result}\")\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3\u003eJavaScript\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-javascript\"\u003e// Arrow function example\nconst multiply = (a, b) =\u0026gt; a * b;\n\n// Async/await example\nasync function fetchData(url) {\n    try {\n        const response = await fetch(url);\n        const data = await response.json();\n        return data;\n    } catch (error) {\n        console.error(\u0027Error:\u0027, error);\n    }\n}\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3\u003eC++\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-cpp\"\u003e#include \u0026lt;iostream\u0026gt;\n#include \u0026lt;vector\u0026gt;\n\nclass Solution {\npublic:\n    int maxProfit(vector\u0026lt;int\u0026gt;\u0026 prices) {\n        int minPrice = INT_MAX;\n        int maxProfit = 0;\n\n        for (int price : prices) {\n            minPrice = min(minPrice, price);\n            maxProfit = max(maxProfit, price - minPrice);\n        }\n\n        return maxProfit;\n    }\n};\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3\u003eBash\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-bash\"\u003e#!/bin/bash\n\n# System information script\necho \"System Information\"\necho \"==================\"\nuname -a\necho \"\"\necho \"Memory Usage:\"\nfree -h\necho \"\"\necho \"Disk Usage:\"\ndf -h\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3\u003eJSON\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-json\"\u003e{\n  \"name\": \"markdown-showcase\",\n  \"version\": \"1.0.0\",\n  \"author\": {\n    \"name\": \"Developer\",\n    \"email\": \"dev@example.com\"\n  },\n  \"dependencies\": {\n    \"react\": \"^18.0.0\",\n    \"tailwindcss\": \"^3.0.0\"\n  }\n}\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch3\u003eSQL\u003c/h3\u003e\n\u003cdiv class=\"code-block\"\u003e\u003cpre\u003e\u003ccode class=\"language-sql\"\u003e-- Create users table\nCREATE TABLE users (\n    id SERIAL PRIMARY KEY,\n    username VARCHAR(50) UNIQUE NOT NULL,\n    email VARCHAR(100) UNIQUE NOT NULL,\n    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Insert sample data\nINSERT INTO users (username, email)\nVALUES (\u0027john_doe\u0027, \u0027john@example.com\u0027);\n\n-- Query with JOIN\nSELECT u.username, p.title\nFROM users u\nINNER JOIN posts p ON u.id = p.user_id\nWHERE u.created_at \u0026gt; \u00272024-01-01\u0027;\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003ch2\u003e7. Tables\u003c/h2\u003e\n\u003ch3\u003eSimple Table\u003c/h3\u003e\n\u003cdiv class=\"table-wrapper\"\u003e\u003ctable\u003e\u003cthead\u003e\u003ctr\u003e\u003cth style=\"text-align:left\"\u003eLanguage\u003c/th\u003e\u003cth style=\"text-align:left\"\u003eParadigm\u003c/th\u003e\u003cth style=\"text-align:left\"\u003eYear\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003ePython\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003eMulti-paradigm\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003e1991\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003eJavaScript\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003eMulti-paradigm\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003e1995\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003eRust\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003eMulti-paradigm\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003e2010\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003eGo\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003eProcedural\u003c/td\u003e\u003ctd style=\"text-align:left\"\u003e2009\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e\n\u003ch3\u003eAligned Table\u003c/h3\u003e\n\u003cdiv class=\"table-wrapper\"\u003e\u003ctable\u003e\u003cthead\u003e\u003ctr\u003e\u003cth style=\"text-align:left\"\u003eLeft Aligned\u003c/th\u003e\u003cth style=\"text-align:center\"\u003eCenter Aligned\u003c/th\u003e\u003cth style=\"text-align:right\"\u003eRight Aligned\u003c/th\u003e\u003c/tr\u003e\u003c/thead\u003e\u003ctbody\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003eLeft\u003c/td\u003e\u003ctd style=\"text-align:center\"\u003eCenter\u003c/td\u003e\u003ctd style=\"text-align:right\"\u003eRight\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003eText\u003c/td\u003e\u003ctd style=\"text-align:center\"\u003eText\u003c/td\u003e\u003ctd style=\"text-align:right\"\u003eText\u003c/td\u003e\u003c/tr\u003e\u003ctr\u003e\u003ctd style=\"text-align:left\"\u003e100\u003c/td\u003e\u003ctd style=\"text-align:center\"\u003e200\u003c/td\u003e\u003ctd style=\"text-align:right\"\u003e300\u003c/td\u003e\u003c/tr\u003e\u003c/tbody\u003e\u003c/table\u003e\u003c/div\u003e\n\u003ch2\u003e8. Horizontal Rules\u003c/h2\u003e\n\u003chr\u003e\n\u003cp\u003eThree or more hyphens, asterisks, or underscores.\u003c/p\u003e\n\u003chr\u003e\n\u003cp\u003eAnother horizontal rule.\u003c/p\u003e\n\u003ch2\u003e9. Mathematics (KaTeX)\u003c/h2\u003e\n\u003ch3\u003eInline Math\u003c/h3\u003e\n\u003cp\u003eThe quadratic formula is $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$.\u003c/p\u003e\n\u003cp\u003eEinstein\u0027s famous equation: $E = mc^2$.\u003c/p\u003e\n\u003ch3\u003eBlock Math\u003c/h3\u003e\n\u003cdiv class=\"math-block\"\u003e$$\n\\int_{-\\infty}^{\\infty} e^{-x^2} dx = \\sqrt{\\pi}\n$$\u003c/div\u003e\n\u003cdiv class=\"math-block\"\u003e$$\n\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}\n$$\u003c/div\u003e\n\u003cdiv class=\"math-block\"\u003e$$\n\\frac{\\partial^2 u}{\\partial t^2} = c^2 \\nabla^2 u\n$$\u003c/div\u003e\n\u003ch2\u003e10. Emojis\u003c/h2\u003e\n\u003cp\u003e\ud83d\ude0a \ud83c\udf89 \ud83d\ude80 \ud83d\udd25 \u2764\ufe0f \u2b50\u003c/p\u003e\n\u003cp\u003e\u2705 \u274c \u26a0\ufe0f \ud83d\udca1 \ud83d\udcda \ud83d\udcdd\u003c/p\u003e\n\u003cp\u003e\ud83d\udcbb \u2615 \ud83d\udc4d \ud83d\udc40 \ud83e\udd14\u003c/p\u003e\n\u003ch2\u003e11. Nested Structures\u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003eFirst level\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e   - Bullet point\u003c/p\u003e\n\u003cp\u003e   - Another bullet\u003c/p\u003e\n\u003cp\u003e     - Nested deeper\u003c/p\u003e\n\u003cp\u003e       - Even deeper\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003eSecond level\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e   \u003e A blockquote inside a list\u003c/p\u003e\n\u003cp\u003e   \u003e\u003c/p\u003e\n\u003cp\u003e   \u003e With multiple lines\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e\u003cstrong\u003eThird level\u003c/strong\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e   ```python\u003c/p\u003e\n\u003cp\u003e   # Code block in a list\u003c/p\u003e\n\u003cp\u003e   def hello():\u003c/p\u003e\n\u003cp\u003e       print(\"Hello, World!\")\u003c/p\u003e\n\u003cp\u003e   ```\u003c/p\u003e\n\u003ch2\u003e12. Complex Example\u003c/h2\u003e\n\u003cp\u003eHere\u0027s a complex example combining multiple features:\u003c/p\u003e\n\u003cblockquote\u003e\u003cstrong\u003eAlgorithm Complexity Analysis\u003c/strong\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003eConsider the following Python implementation:\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e```python\u003c/blockquote\u003e\n\u003cblockquote\u003edef binary_search(arr, target):\u003c/blockquote\u003e\n\u003cblockquote\u003eleft, right = 0, len(arr) - 1\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003ewhile left \u003c= right:\u003c/blockquote\u003e\n\u003cblockquote\u003emid = (left + right) // 2\u003c/blockquote\u003e\n\u003cblockquote\u003eif arr[mid] == target:\u003c/blockquote\u003e\n\u003cblockquote\u003ereturn mid\u003c/blockquote\u003e\n\u003cblockquote\u003eelif arr[mid] \u003c target:\u003c/blockquote\u003e\n\u003cblockquote\u003eleft = mid + 1\u003c/blockquote\u003e\n\u003cblockquote\u003eelse:\u003c/blockquote\u003e\n\u003cblockquote\u003eright = mid - 1\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003ereturn -1\u003c/blockquote\u003e\n\u003cblockquote\u003e```\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003cstrong\u003eTime Complexity\u003c/strong\u003e: $O(\\log n)$\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003cstrong\u003eSpace Complexity\u003c/strong\u003e: $O(1)$\u003c/blockquote\u003e\n\u003cblockquote\u003e\u003c/blockquote\u003e\n\u003cblockquote\u003e| Operation | Best Case | Average Case | Worst Case |\u003c/blockquote\u003e\n\u003cblockquote\u003e|-----------|:---------:|:------------:|:----------:|\u003c/blockquote\u003e\n\u003cblockquote\u003e| Search    | $O(1)$    | $O(\\log n)$  | $O(\\log n)$|\u003c/blockquote\u003e\n\u003ch2\u003e13. Special Characters\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003eAmpersand: \u0026\u003c/li\u003e\n\u003cli\u003eLess than: \u003c\u003c/li\u003e\n\u003cli\u003eGreater than: \u003e\u003c/li\u003e\n\u003cli\u003eQuote: \"\u003c/li\u003e\n\u003cli\u003eApostrophe: \u0027\u003c/li\u003e\n\u003cli\u003eCopyright: \u00a9\u003c/li\u003e\n\u003cli\u003eRegistered: \u00ae\u003c/li\u003e\n\u003cli\u003eTrademark: \u2122\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003e14. HTML Elements (if supported)\u003c/h2\u003e\n\u003cdiv style=\"background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; color: white; text-align: center;\"\u003e\n    \u003ch3\u003eStyled HTML Block\u003c/h3\u003e\n    \u003cp\u003eThis is raw HTML with inline styles!\u003c/p\u003e\n\u003c/div\u003e\n\u003cbr\u003e\n\u003cdetails\u003e\n\u003csummary\u003eClick to expand\u003c/summary\u003e\n\u003cp\u003eThis content is hidden by default!\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003eYou can include\u003c/li\u003e\n\u003cli\u003eAny markdown here\u003c/li\u003e\n\u003cli\u003eIncluding \u003ccode\u003ecode\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/details\u003e\n\u003ch2\u003e15. Escape Characters\u003c/h2\u003e\n\u003cp\u003eYou can escape special characters with backslash:\u003c/p\u003e\n\u003cul\u003e\n\u003cli\u003e\\*Not italic\\*\u003c/li\u003e\n\u003cli\u003e\\\u003cstrong\u003eNot bold\\\u003c/strong\u003e\u003c/li\u003e\n\u003cli\u003e\\# Not a header\u003c/li\u003e\n\u003cli\u003e\\\u003ccode\u003eNot code\\\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eConclusion\u003c/h2\u003e\n\u003cp\u003eThis showcase demonstrates the full range of Markdown capabilities supported by this blog system. Feel free to use this as a reference for writing your own posts!\u003c/p\u003e\n\u003chr\u003e\n\u003cp\u003e\u003cem\u003eLast updated: 2025-12-11\u003c/em\u003e\u003c/p\u003e", "lang": "en", "path": "Development/2025-12-11-markdown-showcase.md", "slug": "2025-12-11-markdown-showcase", "summary": "A comprehensive test of all markdown rendering features including code, math, tables, and more", "tags": ["Markdown", "Test", "Demo"], "title": "Markdown Showcase - Testing All Features"}, {"category": "Development", "date": "2025-12-11", "html": "\u003ch1\u003eHello World\u003c/h1\u003e\n\u003cp\u003e\u8fd9\u662f\u6211\u7684\u7b2c\u4e00\u7bc7\u5f00\u53d1\u65e5\u5fd7\uff01\u003c/p\u003e\n\u003ch2\u003e\u4e3a\u4ec0\u4e48\u5199\u535a\u5ba2\u003c/h2\u003e\n\u003cp\u003e\u8bb0\u5f55\u5b66\u4e60\u8fc7\u7a0b\uff0c\u5206\u4eab\u6280\u672f\u5fc3\u5f97\u3002\u003c/p\u003e\n\u003ch2\u003e\u63a5\u4e0b\u6765\u7684\u8ba1\u5212\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003e\u5b66\u4e60\u66f4\u591a\u6280\u672f\u003c/li\u003e\n\u003cli\u003e\u5206\u4eab\u66f4\u591a\u7ecf\u9a8c\u003c/li\u003e\n\u003cli\u003e\u6301\u7eed\u8fdb\u6b65\u003c/li\u003e\n\u003c/ul\u003e", "lang": "zh", "path": "Development/2025-12-11-hello-world.md", "slug": "2025-12-11-hello-world", "summary": "\u8bb0\u5f55\u5f00\u59cb\u5199\u535a\u5ba2\u7684\u7b2c\u4e00\u5929", "tags": ["Development", "Getting", "Started"], "title": "Hello World - \u6211\u7684\u7b2c\u4e00\u7bc7\u5f00\u53d1\u65e5\u5fd7"}, {"category": "Life", "date": "2025-12-11", "html": "\u003ch1\u003eMy Life Journey\u003c/h1\u003e\n\u003cp\u003eLife is a beautiful adventure filled with lessons and growth.\u003c/p\u003e\n\u003ch2\u003eWhat I\u0027ve Learned\u003c/h2\u003e\n\u003cul\u003e\n\u003cli\u003eEvery experience teaches us something\u003c/li\u003e\n\u003cli\u003eIt\u0027s important to stay curious\u003c/li\u003e\n\u003cli\u003eBalance is key\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eLooking Forward\u003c/h2\u003e\n\u003cp\u003eExcited for what the future holds!\u003c/p\u003e", "lang": "en", "path": "Life/2025-12-11-life-journey.md", "slug": "2025-12-11-life-journey", "summary": "Reflecting on my journey and experiences", "tags": ["Life", "Thoughts"], "title": "My Life Journey"}],
-                postsTree: {"Algorithm": {"_files": [{"date": "2025-12-10", "name": "2025-12-10-two-sum", "path": "Algorithm/2025-12-10-two-sum.md", "title": "LeetCode 1. \u4e24\u6570\u4e4b\u548c - \u4e09\u79cd\u89e3\u6cd5\u8be6\u89e3"}], "_folders": {}}, "Development": {"_files": [{"date": "2025-12-11", "name": "2025-12-11-markdown-showcase", "path": "Development/2025-12-11-markdown-showcase.md", "title": "Markdown Showcase - Testing All Features"}, {"date": "2025-12-11", "name": "2025-12-11-hello-world", "path": "Development/2025-12-11-hello-world.md", "title": "Hello World - \u6211\u7684\u7b2c\u4e00\u7bc7\u5f00\u53d1\u65e5\u5fd7"}], "_folders": {}}, "Life": {"_files": [{"date": "2025-12-11", "name": "2025-12-11-life-journey", "path": "Life/2025-12-11-life-journey.md", "title": "My Life Journey"}], "_folders": {}}},
-
-                commands: {
-                    help: () => {
-                        return `<div class="terminal-success">Available commands:</div>
-                                <div class="terminal-info">  ls              - List blog posts with index</div>
-                                <div class="terminal-info">  tree            - Display folder structure</div>
-                                <div class="terminal-info">  cat [index]     - Read a blog post by index (e.g., cat 0)</div>
-                                <div class="terminal-info">  cd [page]       - Navigate to page (blog/home)</div>
-                                <div class="terminal-info">  whoami          - Display user info</div>
-                                <div class="terminal-info">  neofetch        - System information</div>
-                                <div class="terminal-info">  clear           - Clear terminal</div>
-                                <div class="terminal-info">  exit            - Close terminal</div>`;
-                    },
-
-                    tree: () => {
-                        let output = '<div class="terminal-success">posts/</div>';
-                        let treeText = '';
-
-                        function printTree(node, prefix = '', isLast = true) {
-                            let result = '';
-                            const folders = Object.keys(node).filter(k => !k.startsWith('_'));
-
-                            folders.forEach((folder, index) => {
-                                const isLastFolder = index === folders.length - 1 && (!node[folder]['_files'] || node[folder]['_files'].length === 0);
-                                const connector = isLastFolder ? '└── ' : '├── ';
-                                const extension = isLastFolder ? '    ' : '│   ';
-
-                                result += prefix + connector + '<span class="terminal-info">' + folder + '/</span><br>';
-
-                                const files = node[folder]['_files'] || [];
-                                files.forEach((file, fIndex) => {
-                                    const isLastFile = fIndex === files.length - 1 && Object.keys(node[folder]['_folders'] || {}).length === 0;
-                                    const fileConnector = isLastFile ? '└── ' : '├── ';
-                                    result += prefix + extension + fileConnector + file.name + '.md<br>';
-                                });
-
-                                if (node[folder]['_folders']) {
-                                    result += printTree(node[folder]['_folders'], prefix + extension, false);
-                                }
-                            });
-
-                            return result;
-                        }
-
-                        treeText = printTree(terminal.postsTree);
-                        output += '<div style="line-height: 1.4;">' + treeText + '</div>';
-
-                        // 统计信息
-                        let totalFiles = 0;
-                        let totalFolders = 0;
-
-                        function countItems(node) {
-                            Object.keys(node).forEach(key => {
-                                if (!key.startsWith('_')) {
-                                    totalFolders++;
-                                    if (node[key]['_files']) {
-                                        totalFiles += node[key]['_files'].length;
-                                    }
-                                    if (node[key]['_folders']) {
-                                        countItems(node[key]['_folders']);
-                                    }
-                                }
-                            });
-                        }
-
-                        countItems(terminal.postsTree);
-                        output += '<br><div style="opacity: 0.7;">' + totalFolders + ' directories, ' + totalFiles + ' files</div>';
-
-                        return output;
-                    },
-
-                    ls: () => {
-                        if (terminal.posts.length === 0) {
-                            return '<div class="terminal-error">No posts found</div>';
-                        }
-                        let output = '<div class="terminal-success">Blog Posts:</div>';
-                        terminal.posts.forEach((post, idx) => {
-                            output += `<div class="terminal-info">  [${idx}] ${post.date} - ${post.title}</div>`;
-                        });
-                        output += '<div style="margin-top: 10px; opacity: 0.7;">Use "cat [index]" to read a post (e.g., cat 0)</div>';
-                        return output;
-                    },
-
-                    cat: (args) => {
-                        if (args.length === 0) {
-                            return '<div class="terminal-error">Usage: cat [index]</div><div>Example: cat 0</div>';
-                        }
-
-                        const index = parseInt(args[0]);
-                        if (isNaN(index) || index < 0 || index >= terminal.posts.length) {
-                            return `<div class="terminal-error">Invalid index: ${args[0]}</div><div>Use "ls" to see available posts</div>`;
-                        }
-
-                        const post = terminal.posts[index];
-                        let output = `<div class="terminal-success" style="font-size: 16px; margin-bottom: 10px;">${post.title}</div>`;
-                        output += `<div class="terminal-info" style="margin-bottom: 15px;">Date: ${post.date} | Tags: ${post.tags.join(', ')}</div>`;
-
-                        if (post.summary) {
-                            output += `<div style="margin-bottom: 15px; font-style: italic; opacity: 0.8;">${post.summary}</div>`;
-                        }
-
-                        output += `<div class="terminal-post-content">`;
-                        output += `<div style="margin-bottom: 10px;">📝 To read the full article, visit:</div>`;
-                        output += `<a href="post/${post.slug}.html" target="_blank" style="color: #0d9488; text-decoration: underline;">post/${post.slug}.html</a>`;
-                        output += `</div>`;
-
-                        return output;
-                    },
-
-                    cd: (args) => {
-                        const page = args[0];
-                        if (page === 'blog') {
-                            setTimeout(() => window.location.href = 'blog.html', 500);
-                            return '<div class="terminal-success">Navigating to blog...</div>';
-                        } else if (page === 'home' || page === '~') {
-                            setTimeout(() => window.location.href = 'index.html', 500);
-                            return '<div class="terminal-success">Navigating to home...</div>';
-                        } else {
-                            return '<div class="terminal-error">Unknown page: ' + page + '</div>';
-                        }
-                    },
-
-                    whoami: () => {
-                        return `<div class="terminal-success">Ziheng Zhang</div>
-                                <div class="terminal-info">Student</div>
-                                <div class="terminal-info">GitHub: https://github.com/MuXinCG2004</div>`;
-                    },
-
-                    neofetch: () => {
-                        const isDark = htmlElement.classList.contains('dark');
-                        return `<pre class="terminal-success" style="line-height: 1.3; font-size: 11px; font-family: monospace;">
-            __,aaPPPPPPPPaa,__                 <span class="terminal-info" style="font-weight: bold;">Ziheng Zhang@blog</span>
-         ,adP"""'          \`""Yb,_             <span style="opacity: 0.6;">-------------------------</span>
-      ,adP'                     \`"Yb,          <span class="terminal-info">OS:</span> Web Blog System
-    ,dP'     ,aadPP"""""YYba,_     \`"Y,        <span class="terminal-info">Host:</span> GitHub Pages
-   ,P'    ,aP"'            \`""Ya,     "Y,      <span class="terminal-info">Kernel:</span> Python + Flask
-  ,P'    aP'     _________     \`"Ya    \`Yb,   <span class="terminal-info">Uptime:</span> ${new Date().getFullYear() - 2024} years
- ,P'    d"    ,adP""""""""Yba,    \`Y,    "Y,  <span class="terminal-info">Shell:</span> Terminal CLI (~ key)
-,d'   ,d'   ,dP"            \`Yb,   \`Y,    \`Y, <span class="terminal-info">Theme:</span> ${isDark ? 'Dark Mode' : 'Light Mode'}
-d'   ,d'   ,d'    ,dP""Yb,    \`Y,   \`Y,    \`b <span class="terminal-info">Icons:</span> Font Awesome 6.4
-8    d'    d'   ,d"      "b,   \`Y,   \`8,    Y,<span class="terminal-info">Terminal:</span> JetBrains Mono
-8    8     8    d'    _   \`Y,   \`8    \`8    \`b<span class="terminal-info">DE:</span> Tailwind CSS 3.x
-8    8     8    8     8    \`8    8     8     8 <span class="terminal-info">WM:</span> JavaScript SPA
-8    Y,    Y,   \`b, ,aP     P    8    ,P     8 <span class="terminal-info">Repos:</span> 2
-I,   \`Y,   \`Ya    """"     d'   ,P    d"    ,P<span class="terminal-info">Stars:</span> 0
-\`Y,   \`8,    \`Ya         ,8"   ,P'   ,P'    d'<span class="terminal-info">Posts:</span> ${terminal.posts.length}
- \`Y,   \`Ya,    \`Ya,,__,,d"'   ,P'   ,P"    ,P <span class="terminal-info">Languages:</span> 中文/English
-  \`Y,    \`Ya,     \`""""'     ,P'   ,d"    ,P' <span class="terminal-info">Bio:</span> Student
-   \`Yb,    \`"Ya,_          ,d"    ,P'    ,P'  <span class="terminal-info">Site:</span> https://muxincg2004.github.io
-     \`Yb,      ""YbaaaaaadP"     ,P'    ,P'   <span class="terminal-info">Memory:</span> ~${(performance.memory ? (performance.memory.usedJSHeapSize / 1048576).toFixed(2) : 'N/A')} MB
-       \`Yba,                   ,d'    ,dP'
-          \`"Yba,__       __,adP"     dP"
-              \`"""""""""""""'
-                        </pre>`;
-                    },
-
-                    clear: () => {
-                        terminal.output.innerHTML = '';
-                        return '';
-                    },
-
-                    exit: () => {
-                        terminal.close();
-                        return '';
-                    }
-                },
-
-                open: function() {
-                    this.element.classList.add('active');
-                    this.input.focus();
-                    if (this.output.innerHTML === '') {
-                        this.print('<div class="terminal-success">Welcome to the terminal! Type "help" for available commands.</div>');
-                    }
-                },
-
-                close: function() {
-                    this.element.classList.remove('active');
-                },
-
-                print: function(text) {
-                    const line = document.createElement('div');
-                    line.className = 'terminal-line';
-                    line.innerHTML = text;
-                    this.output.appendChild(line);
-                    this.output.scrollTop = this.output.scrollHeight;
-                },
-
-                execute: function(input) {
-                    const parts = input.trim().split(' ');
-                    const command = parts[0].toLowerCase();
-                    const args = parts.slice(1);
-
-                    this.print(`<div class="terminal-info">$ ${input}</div>`);
-
-                    if (this.commands[command]) {
-                        const output = this.commands[command](args);
-                        if (output) this.print(output);
-                    } else if (input.trim() === '') {
-                        return;
-                    } else {
-                        this.print(`<div class="terminal-error">Command not found: ${command}</div>`);
-                    }
-
-                    this.history.push(input);
-                    this.historyIndex = this.history.length;
-                }
-            };
-
-            // 按 ~ 键打开终端
-            document.addEventListener('keydown', (e) => {
-                if (e.key === '`' || e.key === '~') {
-                    e.preventDefault();
-                    terminal.open();
-                } else if (e.key === 'Escape') {
-                    terminal.close();
-                }
-            });
-
-            // 终端关闭按钮
-            terminal.closeBtn.addEventListener('click', () => terminal.close());
-
-            // 终端输入处理
-            terminal.input.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter') {
-                    const input = terminal.input.value;
-                    terminal.execute(input);
-                    terminal.input.value = '';
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    if (terminal.historyIndex > 0) {
-                        terminal.historyIndex--;
-                        terminal.input.value = terminal.history[terminal.historyIndex];
-                    }
-                } else if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    if (terminal.historyIndex < terminal.history.length - 1) {
-                        terminal.historyIndex++;
-                        terminal.input.value = terminal.history[terminal.historyIndex];
-                    } else {
-                        terminal.historyIndex = terminal.history.length;
-                        terminal.input.value = '';
-                    }
-                }
-            });
+        document.getElementById('blog-btn').addEventListener('click', function() {
+            document.getElementById('transition-overlay').classList.add('active');
+            setTimeout(function() {
+                window.location.href = 'home.html';
+            }, 400);
         });
     </script>
 </body>
