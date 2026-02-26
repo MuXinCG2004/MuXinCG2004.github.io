@@ -1,0 +1,28 @@
+---
+import PageLayout from '@/layouts/CommonPage.astro'
+import ProjectSection from '@/components/projects/ProjectSection.astro'
+
+const headings = [
+  { depth: 2, slug: 'competition-projects', text: 'Competition Projects' }
+]
+---
+
+<PageLayout title='Projects' {headings} view>
+  <p>Here are some projects I have worked on.</p>
+
+  <h2 id='competition-projects'>Competition Projects</h2>
+  <ProjectSection
+    projects={[
+      {
+        name: 'ML-based Production Optimization System',
+        description: 'CUMCM National Second Prize — Built a profit optimization model for multi-process production scheduling. Designed simulated annealing and ML-enhanced versions. (Python, NumPy, Pandas, scikit-learn)',
+        links: [{ type: 'github', href: 'https://github.com/MuXinCG2004' }]
+      },
+      {
+        name: 'OceanBase Database Performance Tuning',
+        description: 'System Capability Competition — 10th Place Nationally. Performance optimization of OceanBase distributed database including query analysis, monitoring, and parameter tuning. (OceanBase, Distributed Database)',
+        links: [{ type: 'github', href: 'https://github.com/MuXinCG2004' }]
+      }
+    ]}
+  />
+</PageLayout>

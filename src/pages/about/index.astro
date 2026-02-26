@@ -1,0 +1,128 @@
+---
+import { Timeline } from 'astro-pure/user'
+import PageLayout from '@/layouts/CommonPage.astro'
+import ToolSection from '@/components/about/ToolSection.astro'
+
+const headings = [
+  {
+    depth: 2,
+    slug: 'tools',
+    text: 'Tools'
+  },
+  {
+    depth: 2,
+    slug: 'social-networks',
+    text: 'Social Networks'
+  },
+  {
+    depth: 2,
+    slug: 'education',
+    text: 'Education'
+  },
+  {
+    depth: 2,
+    slug: 'experience',
+    text: 'Experience'
+  },
+  {
+    depth: 2,
+    slug: 'about-blog',
+    text: 'About Blog'
+  }
+]
+---
+
+<PageLayout title='About' {headings} comment>
+  <h2 id='general-talk' class='invisible m-0 h-0'>General Talk</h2>
+  <p class='text-muted-foreground'>Computer Science Undergraduate</p>
+  <p>Hi, I'm Ziheng Zhang, an undergraduate student majoring in Computer Science at Shandong University.</p>
+  <p>
+    Recipient of the National Scholarship, Second Prize in the National Mathematical Modeling Contest (CUMCM),
+    and First Prize (Provincial) in the National System Capability Competition.
+  </p>
+  <p>Proficient in Python and C/C++ programming with a solid foundation in algorithms and data structures.</p>
+  <p>Experienced in applying machine learning and optimization algorithms to solve real-world problems.</p>
+  <p>Currently conducting research training in the Elite Class of the School of Computer Science.</p>
+
+  {/* tools */}
+  <h2 id='tools'>Tools</h2>
+  <p>Here are some tools I use:</p>
+  <ToolSection
+    class='mb-5'
+    title='Development'
+    tools={[
+      {
+        name: 'VS Code',
+        description: 'IDE',
+        href: 'https://code.visualstudio.com/',
+        icon: import('@/assets/tools/vscode.svg?raw')
+      },
+      {
+        name: 'Typora',
+        description: 'Markdown Editor',
+        href: 'https://typora.io/',
+        icon: import('@/assets/tools/typora.svg?raw')
+      }
+    ]}
+  />
+  <ToolSection
+    class='mb-5'
+    title='Environment'
+    tools={[
+      {
+        name: 'Ubuntu',
+        description: 'Linux Distribution',
+        href: 'https://ubuntu.com/',
+        icon: import('@/assets/tools/ubuntu.svg?raw')
+      }
+    ]}
+  />
+
+  {/* social-networks */}
+  <h2 id='social-networks'>Social Networks</h2>
+  <p>You can find me on:</p>
+  <ul>
+    <li><a href='https://github.com/MuXinCG2004' target='_blank'>GitHub</a></li>
+  </ul>
+
+  <h2 id='education'>Education</h2>
+  <Timeline
+    events={[
+      {
+        date: '2023-09-01',
+        content: '<a href="https://www.sdu.edu.cn/" target="_blank">Shandong University — B.Eng. in Computer Science and Technology</a>'
+      }
+    ]}
+  />
+
+  <h2 id='experience'>Experience</h2>
+  <Timeline
+    events={[
+      {
+        date: '2025-10-01',
+        content: 'National Scholarship — Ministry of Education, China'
+      },
+      {
+        date: '2024-11-01',
+        content: 'Second Prize, National Mathematical Modeling Contest (CUMCM)'
+      },
+      {
+        date: '2025-01-01',
+        content: 'First Prize (Provincial) & 10th Place (National Finals), System Capability Competition'
+      }
+    ]}
+  />
+
+  {/* about-blog */}
+  <h2 id='about-blog'>About Blog</h2>
+  <p>This blog is built with the following technologies:</p>
+  <ul>
+    <li>
+      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
+        href='https://github.com/cworld1/astro-theme-pure'
+        target='_blank'>Astro Theme Pure</a
+      >
+    </li>
+    <li>Hosting: <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a></li>
+  </ul>
+</PageLayout>
