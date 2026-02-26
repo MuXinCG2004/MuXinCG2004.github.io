@@ -1,24 +1,13 @@
 // @ts-check
 
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-// Adapter
-// import vercel from '@astrojs/vercel'
-// import node from '@astrojs/node'
-// Integrations
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import { remarkAlert } from 'remark-github-blockquote-alert'
 import remarkMath from 'remark-math'
-import UnoCSS from 'unocss/astro'
 
-// Others
-// import { visualizer } from 'rollup-plugin-visualizer'
-
-// Local integrations
-// Local rehype & remark plugins
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
-// Shiki
 import {
   addCopyButton,
   addLanguage,
@@ -31,23 +20,8 @@ import config from './src/site.config.ts'
 
 // https://astro.build/config
 export default defineConfig({
-  // Top-Level Options
   site: 'https://muxincg2004.github.io',
-  // Deploy to a sub path; See https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
-  // base: '/astro-pure/',
   trailingSlash: 'never',
-
-  // Adapter
-  // https://docs.astro.build/en/guides/deploy/
-  // 1. Vercel (serverless)
-  // adapter: vercel(),
-  // output: 'server',
-  // 2. Vercel (static)
-  // adapter: vercelStatic(),
-  // 3. Local (standalone)
-  // adapter: node({ mode: 'standalone' }),
-  // output: 'server',
-  // ---
 
   image: {
     responsiveStyles: true,
@@ -56,29 +30,13 @@ export default defineConfig({
     }
   },
 
-  integrations: [
-    // astro-pure will automatically add sitemap, mdx & unocss
-    // sitemap(),
-    // mdx(),
-    AstroPureIntegration(config)
-    // (await import('@playform/compress')).default({
-    //   SVG: false,
-    //   Exclude: ['index.*.js']
-    // }),
+  integrations: [AstroPureIntegration(config)],
 
-    // Temporary fix vercel adapter
-    // static build method is not needed
-  ],
-  // root: './my-project-directory',
-
-  // Prefetch Options
   prefetch: true,
-  // Server Options
   server: {
     host: true,
     allowedHosts: ['muxincg2004.github.io']
   },
-  // Markdown Options
   markdown: {
     remarkPlugins: [remarkMath, remarkAlert],
     rehypePlugins: [
@@ -93,7 +51,6 @@ export default defineConfig({
         }
       ]
     ],
-    // https://docs.astro.build/en/guides/syntax-highlighting/
     shikiConfig: {
       themes: {
         light: 'github-light',
@@ -111,13 +68,5 @@ export default defineConfig({
   },
   experimental: {
     contentIntellisense: true
-  },
-  vite: {
-    plugins: [
-      //   visualizer({
-      //     emitFile: true,
-      //     filename: 'stats.html'
-      //   })
-    ]
   }
 })
