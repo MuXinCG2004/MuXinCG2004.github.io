@@ -97,6 +97,10 @@ export const integ: IntegrationUserConfig = {
     options: {
       className: 'zoomable'
     }
+  },
+  waline: {
+    enable: false,
+    server: ''
   }
 }
 
