@@ -61,3 +61,19 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
 </PageLayout>
 
 {integ.mediumZoom.enable && <MediumZoom />}
+
+<div id='reading-progress' aria-hidden='true'></div>
+<script is:inline>
+  ;(function () {
+    const bar = document.getElementById('reading-progress')
+    if (!bar) return
+    function updateProgress() {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
+      bar.style.width = (progress * 100) + '%'
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true })
+    updateProgress()
+  })()
+</script>

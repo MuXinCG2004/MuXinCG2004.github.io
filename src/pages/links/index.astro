@@ -9,8 +9,7 @@ import FriendList from '@/components/links/FriendList.astro'
 const headings = [
   { depth: 2, slug: 'common-links', text: 'Common Links' },
   { depth: 2, slug: 'special-links', text: 'Special Links' },
-  { depth: 2, slug: 'apply-links', text: 'Apply Links' },
-  { depth: 2, slug: 'friend-circle', text: 'Friend Circle' }
+  { depth: 2, slug: 'apply-links', text: 'Apply Links' }
 ]
 
 const { friends } = links
@@ -55,6 +54,5 @@ const linksConf = config.integ.links
     <li>请确保你的站点活着. Make sure your site is alive.</li>
     <li>博客内容不违反国家法律. Content does not violate common laws.</li>
   </ul>
-  <h2 id='friend-circle'>Friend Circle</h2>
-  <p>Coming soon...</p>
+
 </PageLayout>
