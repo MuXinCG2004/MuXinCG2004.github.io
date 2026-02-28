@@ -1,0 +1,156 @@
+---
+import { Icon } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+---
+
+<PageLayout meta={{ title: 'Resume' }}>
+  <main class="flex w-full flex-col items-center py-8">
+    <div class="w-full max-w-3xl flex flex-col gap-y-6">
+
+      {/* ===== Header ===== */}
+      <section class="animate flex flex-col items-center gap-6 sm:flex-row sm:items-start">
+        <img
+          src="/resume_avatar.jpg"
+          alt="Ziheng Zhang"
+          class="h-28 w-28 rounded-full border-2 border-border object-cover p-0.5"
+        />
+        <div class="flex flex-col items-center gap-y-2 sm:items-start">
+          <h1 class="text-3xl font-bold">Ziheng Zhang</h1>
+          <p class="text-lg text-muted-foreground">CS Undergraduate @ Shandong University</p>
+          <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            <a href="https://github.com/MuXinCG2004" target="_blank" class="inline-flex items-center gap-1 hover:text-primary transition-colors">
+              <Icon name="github" class="size-4" />
+              <span>GitHub</span>
+            </a>
+            <a href="mailto:202322130196@mail.sdu.edu.cn" class="inline-flex items-center gap-1 hover:text-primary transition-colors">
+              <Icon name="email" class="size-4" />
+              <span>Email</span>
+            </a>
+            <a href="/" class="inline-flex items-center gap-1 hover:text-primary transition-colors">
+              <Icon name="link" class="size-4" />
+              <span>Blog</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-border" />
+
+      {/* ===== Education ===== */}
+      <section class="animate resume-section">
+        <h2 class="resume-heading">Education</h2>
+        <div class="flex flex-col gap-y-1">
+          <div class="flex flex-col gap-x-4 sm:flex-row sm:items-baseline sm:justify-between">
+            <a href="https://www.sdu.edu.cn/" target="_blank" class="text-base font-semibold">Shandong University</a>
+            <span class="text-sm text-muted-foreground">Sep 2023 &ndash; Jun 2027</span>
+          </div>
+          <p class="text-sm text-muted-foreground">B.Eng. in Computer Science and Technology</p>
+          <p class="text-sm text-muted-foreground">Elite Class, School of Computer Science</p>
+        </div>
+      </section>
+
+      <hr class="border-border" />
+
+      {/* ===== Awards & Honors ===== */}
+      <section class="animate resume-section" style="animation-delay:100ms">
+        <h2 class="resume-heading">Awards &amp; Honors</h2>
+        <ul class="flex flex-col gap-y-2 text-sm">
+          <li class="flex flex-col gap-x-4 sm:flex-row sm:items-baseline">
+            <span class="min-w-14 font-medium text-muted-foreground">2025</span>
+            <span>National Scholarship &mdash; Ministry of Education, China</span>
+          </li>
+          <li class="flex flex-col gap-x-4 sm:flex-row sm:items-baseline">
+            <span class="min-w-14 font-medium text-muted-foreground">2024</span>
+            <span>Second Prize, National Mathematical Modeling Contest (CUMCM)</span>
+          </li>
+          <li class="flex flex-col gap-x-4 sm:flex-row sm:items-baseline">
+            <span class="min-w-14 font-medium text-muted-foreground">2025</span>
+            <span>First Prize (Provincial) &amp; 10th Place (National Finals), System Capability Competition</span>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="border-border" />
+
+      {/* ===== Skills ===== */}
+      <section class="animate resume-section" style="animation-delay:200ms">
+        <h2 class="resume-heading">Skills</h2>
+        <div class="flex flex-col gap-y-3">
+          <div class="flex flex-col gap-y-1 sm:flex-row sm:gap-x-4">
+            <span class="min-w-24 text-sm font-medium">Languages</span>
+            <div class="flex flex-wrap gap-2">
+              {['Python', 'C/C++', 'Golang'].map((s) => (
+                <span class="rounded-full bg-secondary px-3 py-0.5 text-xs text-secondary-foreground">{s}</span>
+              ))}
+            </div>
+          </div>
+          <div class="flex flex-col gap-y-1 sm:flex-row sm:gap-x-4">
+            <span class="min-w-24 text-sm font-medium">Tools</span>
+            <div class="flex flex-wrap gap-2">
+              {['Git', 'Linux', 'Docker', 'LaTeX'].map((s) => (
+                <span class="rounded-full bg-secondary px-3 py-0.5 text-xs text-secondary-foreground">{s}</span>
+              ))}
+            </div>
+          </div>
+          <div class="flex flex-col gap-y-1 sm:flex-row sm:gap-x-4">
+            <span class="min-w-24 text-sm font-medium">Other</span>
+            <div class="flex flex-wrap gap-2">
+              {['Data Structures & Algorithms'].map((s) => (
+                <span class="rounded-full bg-secondary px-3 py-0.5 text-xs text-secondary-foreground">{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-border" />
+
+      {/* ===== Projects ===== */}
+      <section class="animate resume-section" style="animation-delay:300ms">
+        <h2 class="resume-heading">Projects</h2>
+        <div class="flex flex-col gap-y-4">
+          <div>
+            <div class="flex flex-col gap-x-3 sm:flex-row sm:items-baseline sm:justify-between">
+              <h3 class="text-base font-semibold">ML-based Production Optimization System</h3>
+              <a href="https://github.com/MuXinCG2004" target="_blank" class="text-xs text-muted-foreground hover:text-primary transition-colors">
+                GitHub &rarr;
+              </a>
+            </div>
+            <p class="mt-1 text-sm text-muted-foreground">
+              CUMCM National Second Prize &mdash; Built a profit optimization model for multi-process production scheduling.
+              Designed simulated annealing and ML-enhanced versions. (Python, NumPy, Pandas, scikit-learn)
+            </p>
+          </div>
+          <div>
+            <div class="flex flex-col gap-x-3 sm:flex-row sm:items-baseline sm:justify-between">
+              <h3 class="text-base font-semibold">OceanBase Database Performance Tuning</h3>
+              <a href="https://github.com/MuXinCG2004" target="_blank" class="text-xs text-muted-foreground hover:text-primary transition-colors">
+                GitHub &rarr;
+              </a>
+            </div>
+            <p class="mt-1 text-sm text-muted-foreground">
+              System Capability Competition &mdash; 10th Place Nationally. Performance optimization of OceanBase
+              distributed database including query analysis, monitoring, and parameter tuning. (OceanBase, Distributed Database)
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</PageLayout>
+
+<style>
+  .resume-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .resume-heading {
+    font-size: 1.125rem;
+    font-weight: 700;
+    padding-left: 0.75rem;
+    border-left: 3px solid hsl(var(--primary));
+    line-height: 1.4;
+  }
+</style>
