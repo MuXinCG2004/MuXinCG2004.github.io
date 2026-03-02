@@ -4,7 +4,7 @@ import type { ShikiTransformer } from 'shiki'
 export {
   transformerNotationDiff,
   transformerNotationHighlight
-} from './shiki-official-transformers'
+} from '@shikijs/transformers'
 
 function parseMetaString(str = '') {
   return Object.fromEntries(

@@ -34,8 +34,7 @@ export default defineConfig({
 
   prefetch: true,
   server: {
-    host: true,
-    allowedHosts: ['muxincg2004.github.io']
+    host: true
   },
   markdown: {
     remarkPlugins: [remarkMath, remarkAlert],
