@@ -1,5 +1,5 @@
 ---
-title: 'XOR 排列构造 - Codeforces Easy Version 题解'
+title: 'XOR Convenience - Codeforces 题解'
 publishDate: 2026-02-26
 description: '构造排列使得每个位置的值与某后续位置值的异或等于下标，核心思路是让所有异或结果统一指向最后一个位置。'
 tags:
@@ -8,6 +8,8 @@ tags:
   - 构造
   - 位运算
 language: '中文'
+series: 'Codeforces 题解'
+seriesOrder: 1
 ---
 
 构造排列使得每个中间位置的值都能在后缀中找到与之异或等于下标的元素。本文从条件分析出发，推导出一个简洁的构造方案。

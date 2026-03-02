@@ -7,6 +7,8 @@ tags:
   - Codeforces
   - 贪心
 language: '中文'
+series: 'Codeforces 题解'
+seriesOrder: 3
 ---
 
 青蛙掌握了 $n$ 种魔法跳跃，每种跳跃有最大距离限制，但每隔一定次数会触发回退诅咒。本文分析如何以最少的回退次数到达目标点。

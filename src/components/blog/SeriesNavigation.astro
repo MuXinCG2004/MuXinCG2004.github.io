@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  currentPost: CollectionEntry<'blog'>
+  posts: CollectionEntry<'blog'>[]
+}
+
+const { currentPost, posts } = Astro.props
+
+const seriesName = currentPost.data.series
+if (!seriesName) return
+
+const seriesPosts = posts
+  .filter((p) => p.data.series === seriesName)
+  .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
+
+if (seriesPosts.length <= 1) return
+---
+
+<nav class="mb-6 rounded-xl border bg-muted/30 p-4">
+  <h2 class="mb-3 text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+    {seriesName}
+    <span class="ml-1 text-xs font-normal">({seriesPosts.length} 篇)</span>
+  </h2>
+  <ol class="flex flex-col gap-1">
+    {seriesPosts.map((post, index) => {
+      const isCurrent = post.id === currentPost.id
+      return (
+        <li>
+          {isCurrent ? (
+            <span class="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-1.5 text-sm font-medium text-primary">
+              <span class="min-w-5 text-center text-xs font-semibold">{index + 1}</span>
+              {post.data.title}
+            </span>
+          ) : (
+            <a
+              href={`/blog/${post.id}`}
+              class="flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted/50 hover:text-foreground"
+            >
+              <span class="min-w-5 text-center text-xs">{index + 1}</span>
+              {post.data.title}
+            </a>
+          )}
+        </li>
+      )
+    })}
+  </ol>
+</nav>

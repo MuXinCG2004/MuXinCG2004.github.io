@@ -127,3 +127,55 @@ export const addCopyButton = (timeout?: number): ShikiTransformer => {
     }
   }
 }
+
+// Collapse long code blocks
+export const addCollapsible = (threshold: number = 15): ShikiTransformer => {
+  return {
+    name: 'shiki-transformer-collapsible',
+    pre(node) {
+      const lines = this.source.split('\n')
+      // Don't count trailing empty line
+      const lineCount = lines[lines.length - 1] === '' ? lines.length - 1 : lines.length
+      if (lineCount <= threshold) return
+
+      node.properties['data-collapsible'] = ''
+      node.properties['data-collapsed'] = ''
+
+      const button = h(
+        'button',
+        {
+          class: 'collapse-toggle',
+          onclick: `
+            const block = this.closest('[data-collapsible]');
+            if (block.hasAttribute('data-collapsed')) {
+              block.removeAttribute('data-collapsed');
+            } else {
+              block.setAttribute('data-collapsed', '');
+            }
+          `
+        },
+        [
+          h('span', { class: 'collapse-text-expand' }, '展开'),
+          h('span', { class: 'collapse-text-collapse' }, '收起'),
+          h(
+            'svg',
+            {
+              class: 'collapse-chevron',
+              viewBox: '0 0 24 24',
+              width: '16',
+              height: '16',
+              fill: 'none',
+              stroke: 'currentColor',
+              'stroke-width': '2',
+              'stroke-linecap': 'round',
+              'stroke-linejoin': 'round'
+            },
+            [h('polyline', { points: '6 9 12 15 18 9' })]
+          )
+        ]
+      )
+
+      node.children.push(button)
+    }
+  }
+}

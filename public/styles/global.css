@@ -207,6 +207,76 @@ span.katex-display {
   }
 }
 
+/* Code block collapsible */
+.astro-code[data-collapsible] {
+  position: relative;
+}
+.astro-code[data-collapsed] {
+  max-height: 28rem;
+  overflow: hidden;
+}
+.astro-code[data-collapsed]::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+  background: linear-gradient(
+    to top,
+    hsl(var(--muted) / 1) 0%,
+    hsl(var(--muted) / 0) 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+.astro-code .collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.5rem 0;
+  border: none;
+  background: none;
+  color: hsl(var(--muted-foreground) / var(--un-text-opacity, 1));
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  position: relative;
+  z-index: 4;
+}
+.astro-code .collapse-toggle:hover {
+  color: hsl(var(--foreground) / var(--un-text-opacity, 1));
+}
+.astro-code[data-collapsed] .collapse-toggle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.astro-code .collapse-chevron {
+  transition: transform 0.2s;
+}
+.astro-code[data-collapsed] .collapse-chevron {
+  transform: rotate(0deg);
+}
+.astro-code:not([data-collapsed]) .collapse-chevron {
+  transform: rotate(180deg);
+}
+.astro-code[data-collapsed] .collapse-text-expand {
+  display: inline;
+}
+.astro-code[data-collapsed] .collapse-text-collapse {
+  display: none;
+}
+.astro-code:not([data-collapsed]) .collapse-text-expand {
+  display: none;
+}
+.astro-code:not([data-collapsed]) .collapse-text-collapse {
+  display: inline;
+}
+
 /* Scroll bar */
 :root {
   --scrollbar-width: 6px;

@@ -1,5 +1,5 @@
 ---
-title: 'MEX Reordering - Codeforces Round 1073 题解'
+title: 'MEX Reordering - Codeforces 题解'
 publishDate: 2026-03-01
 description: '重排数组使得任意前缀与后缀的 MEX 不相等，关键在于分析零和一的出现次数。'
 tags:
@@ -7,6 +7,8 @@ tags:
   - Codeforces
   - 构造
 language: '中文'
+series: 'Codeforces 题解'
+seriesOrder: 2
 ---
 
 判断能否重排数组，使得对所有分割点，前缀的 MEX 与后缀的 MEX 不相等。本文分析了零和一的数量对答案的决定性影响。
