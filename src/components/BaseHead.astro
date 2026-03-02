@@ -26,12 +26,16 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 {/* Font preloads */}
 <link rel='preload' href='/fonts/Satoshi-Variable.woff2' as='font' type='font/woff2' crossorigin />
 <link
-  rel='preload'
+  rel='prefetch'
   href='/fonts/Satoshi-VariableItalic.woff2'
   as='font'
   type='font/woff2'
   crossorigin
 />
+
+{/* CDN preconnect */}
+{config.npmCDN && <link rel='dns-prefetch' href={new URL(config.npmCDN).origin} />}
+{config.npmCDN && <link rel='preconnect' href={new URL(config.npmCDN).origin} crossorigin />}
 
 {/* Canonical URL */}
 <link rel='canonical' href={canonicalURL} />

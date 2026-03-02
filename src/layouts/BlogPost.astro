@@ -82,3 +82,26 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
     updateProgress()
   })()
 </script>
+
+<script is:inline>
+  ;(function () {
+    // Optimize TOC: replace aggressive 100ms setInterval polling with
+    // requestAnimationFrame-throttled 200ms polling to reduce layout thrashing
+    var _setInterval = window.setInterval
+    window.setInterval = function (fn, ms) {
+      if (ms <= 100 && typeof fn === 'function') {
+        var ticking = false
+        return _setInterval.call(window, function () {
+          if (!ticking) {
+            ticking = true
+            requestAnimationFrame(function () {
+              fn()
+              ticking = false
+            })
+          }
+        }, 200)
+      }
+      return _setInterval.apply(window, arguments)
+    }
+  })()
+</script>

@@ -1,14 +1,14 @@
 ---
 title: 'CS229 机器学习 - 线性回归'
 publishDate: 2026-03-02
-description: ''
+description: '介绍线性回归的基本概念与变量定义、概率解释、最小均方算法(梯度下降)以及局部加权线性回归。'
 tags:
   - 机器学习
   - CS229
   - 笔记
 # language: 'zh'
 series: 'CS229 机器学习'
-seriesOrder: 2
+seriesOrder: 1
 ---
 
 在这篇博客中，我们来讨论线性回归问题，笔者才疏学浅，如有出错，请读者多多指正。

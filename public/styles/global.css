@@ -33,7 +33,7 @@
 
 /* Katex */
 span.katex-display {
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.5rem;
 }
 .katex-html {
