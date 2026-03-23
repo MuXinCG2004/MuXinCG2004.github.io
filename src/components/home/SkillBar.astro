@@ -1,0 +1,58 @@
+---
+interface Props {
+  name: string
+  level: number
+  icon?: string
+}
+
+const { name, level, icon } = Astro.props
+const clampedLevel = Math.max(0, Math.min(100, level))
+
+// Color gradient based on proficiency
+function getLevelColor(lvl: number): string {
+  if (lvl >= 80) return 'hsl(142, 71%, 45%)'   // green
+  if (lvl >= 60) return 'hsl(217, 91%, 60%)'    // blue
+  if (lvl >= 40) return 'hsl(45, 93%, 47%)'     // amber
+  return 'hsl(0, 84%, 60%)'                      // red
+}
+const barColor = getLevelColor(clampedLevel)
+---
+
+<div class="skill-bar-item flex flex-col gap-y-1">
+  <div class="flex items-center justify-between text-sm">
+    <span class="font-medium text-foreground">
+      {icon && <span class="mr-1">{icon}</span>}
+      {name}
+    </span>
+    <span class="text-muted-foreground">{clampedLevel}%</span>
+  </div>
+  <div class="skill-bar-track h-2 w-full overflow-hidden rounded-full bg-muted">
+    <div
+      class="skill-bar-fill h-full rounded-full transition-all duration-1000 ease-out"
+      style={`width: 0%; background-color: ${barColor};`}
+      data-level={clampedLevel}
+    />
+  </div>
+</div>
+
+<script is:inline>
+  ;(function () {
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            const bar = entry.target.querySelector('.skill-bar-fill')
+            if (bar) {
+              bar.style.width = bar.dataset.level + '%'
+            }
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+    document.querySelectorAll('.skill-bar-item').forEach(function (el) {
+      observer.observe(el)
+    })
+  })()
+</script>

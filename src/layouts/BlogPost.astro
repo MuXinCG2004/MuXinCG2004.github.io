@@ -8,6 +8,7 @@ import 'katex/dist/katex.min.css'
 import { MediumZoom } from 'astro-pure/advanced'
 import { ArticleBottom, Copyright, Hero, TOC } from 'astro-pure/components/pages'
 import PageLayout from '@/layouts/ContentLayout.astro'
+import Giscus from '@/components/blog/Giscus.astro'
 import RelatedPosts from '@/components/blog/RelatedPosts.astro'
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro'
 import { integ } from '@/site-config'
@@ -38,7 +39,7 @@ const socialImage = heroImage
   ? typeof heroImage.src === 'string'
     ? heroImage.src
     : heroImage.src.src
-  : '/images/social-card.png'
+  : `/og/${id}.png`
 const articleDate = updatedDate?.toISOString() ?? publishDate.toISOString()
 const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-text-opacity))'
 ---
@@ -52,12 +53,19 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
 
   <Hero {data} {remarkPluginFrontmatter} slot='header' />
 
+  <div class="busuanzi-count flex items-center gap-x-4 text-sm text-muted-foreground mb-4" slot="header">
+    <span id="busuanzi_container_page_pv" style="display:none">
+      Views: <span id="busuanzi_value_page_pv"></span>
+    </span>
+  </div>
+
   <SeriesNavigation currentPost={Astro.props.post} {posts} />
 
   <slot />
 
   <Fragment slot='bottom'>
     <RelatedPosts currentPost={Astro.props.post} {posts} />
+    {data.comment !== false && <Giscus />}
     <Copyright {data} />
     <ArticleBottom collections={posts} {id} class='mt-3 sm:mt-6' />
   </Fragment>

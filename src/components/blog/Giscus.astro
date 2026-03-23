@@ -1,0 +1,62 @@
+---
+// Giscus comment system component
+// Configure at https://giscus.app and replace the placeholder values below
+---
+
+<section class="giscus-container mt-8">
+  <div class="giscus"></div>
+</section>
+
+<script is:inline>
+  ;(function () {
+    function getTheme() {
+      return document.documentElement.dataset.theme === 'dark'
+        ? 'dark_dimmed'
+        : 'light'
+    }
+
+    function loadGiscus() {
+      const container = document.querySelector('.giscus')
+      if (!container || container.querySelector('iframe')) return
+
+      const script = document.createElement('script')
+      script.src = 'https://giscus.app/client.js'
+      script.setAttribute('data-repo', 'MuXinCG2004/muxincg2004.github.io')
+      script.setAttribute('data-repo-id', 'R_kgDORZejhw')
+      script.setAttribute('data-category', 'Announcements')
+      script.setAttribute('data-category-id', 'DIC_kwDORZejh84C5FQo')
+      script.setAttribute('data-mapping', 'pathname')
+      script.setAttribute('data-strict', '0')
+      script.setAttribute('data-reactions-enabled', '1')
+      script.setAttribute('data-emit-metadata', '0')
+      script.setAttribute('data-input-position', 'bottom')
+      script.setAttribute('data-theme', getTheme())
+      script.setAttribute('data-lang', 'en')
+      script.setAttribute('data-loading', 'lazy')
+      script.setAttribute('crossorigin', 'anonymous')
+      script.async = true
+      container.appendChild(script)
+    }
+
+    // Sync theme changes with giscus iframe
+    function updateGiscusTheme() {
+      const iframe = document.querySelector('iframe.giscus-frame')
+      if (!iframe) return
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme: getTheme() } } },
+        'https://giscus.app'
+      )
+    }
+
+    // Watch for theme changes
+    const observer = new MutationObserver(function () {
+      updateGiscusTheme()
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    })
+
+    loadGiscus()
+  })()
+</script>

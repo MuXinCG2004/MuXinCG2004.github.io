@@ -10,6 +10,7 @@ interface Project {
   image?: string
   name: string
   description: string
+  tags?: string[]
   links: {
     type: string
     href: string
@@ -91,6 +92,15 @@ const projectIconSet: Record<string, iconsType> = {
                   )
                 })}
               </div>
+              {project.tags && project.tags.length > 0 && (
+                <div class='flex flex-wrap gap-1.5'>
+                  {project.tags.map((tag) => (
+                    <span class='inline-flex items-center rounded-full bg-muted px-2 py-0.5 text-xs text-muted-foreground'>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )
