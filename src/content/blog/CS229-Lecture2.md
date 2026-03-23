@@ -1,5 +1,5 @@
 ---
-title: 'CS229 Machine Learning - Classification and Logistic Regression'
+title: 'CS229 Machine Learning - Logistic Regression'
 publishDate: 2026-03-02
 description: '从回归问题转向分类问题，介绍逻辑回归模型、S形函数及多类别分类方法。'
 tags:
