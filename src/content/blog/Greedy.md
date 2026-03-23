@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 贪心'
+title: 'Algorithm Review - Greedy'
 publishDate: 2026-03-10
 description: '复习经典贪心策略，包括区间调度、区间合并等问题。'
 tags:

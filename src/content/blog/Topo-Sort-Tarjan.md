@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 拓扑排序与 Tarjan'
+title: 'Algorithm Review - Topological Sort and Tarjan'
 publishDate: 2026-03-10
 description: '复习拓扑排序（Kahn 算法）和 Tarjan 算法求强连通分量、割点与桥。'
 tags:

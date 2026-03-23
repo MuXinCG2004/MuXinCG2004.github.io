@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 二分图与网络流'
+title: 'Algorithm Review - Bipartite Graphs and Network Flow'
 publishDate: 2026-03-10
 description: '复习匈牙利算法求二分图最大匹配和 Dinic 算法求最大流。'
 tags:

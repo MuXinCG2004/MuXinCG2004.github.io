@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 最短路'
+title: 'Algorithm Review - Shortest Path'
 publishDate: 2026-03-10
 description: '复习 Dijkstra、Floyd 和 SPFA 三种最短路算法的写法与适用场景。'
 tags:

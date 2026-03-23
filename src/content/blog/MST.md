@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 最小生成树'
+title: 'Algorithm Review - Minimum Spanning Tree'
 publishDate: 2026-03-10
 description: '复习 Kruskal 和 Prim 两种最小生成树算法的写法与适用场景。'
 tags:

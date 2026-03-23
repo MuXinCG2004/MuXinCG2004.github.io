@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 单调栈和单调队列'
+title: 'Algorithm Review - Monotone Stack and Queue'
 publishDate: 2026-03-10
 description: '复习单调栈和单调队列的基本写法与经典例题，单调栈解决下一个更大元素问题，单调队列解决滑动窗口最值问题。'
 tags:

@@ -1,5 +1,5 @@
 ---
-title: 'XOR Convenience - Codeforces 题解'
+title: 'XOR Convenience - Codeforces Solution'
 publishDate: 2026-02-26
 description: '构造排列使得每个位置的值与某后续位置值的异或等于下标，核心思路是让所有异或结果统一指向最后一个位置。'
 tags:

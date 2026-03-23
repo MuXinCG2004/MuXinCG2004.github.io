@@ -1,5 +1,5 @@
 ---
-title: 'MEX Reordering - Codeforces 题解'
+title: 'MEX Reordering - Codeforces Solution'
 publishDate: 2026-03-01
 description: '重排数组使得任意前缀与后缀的 MEX 不相等，关键在于分析零和一的出现次数。'
 tags:

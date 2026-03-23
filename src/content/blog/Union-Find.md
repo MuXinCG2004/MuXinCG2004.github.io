@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 并查集'
+title: 'Algorithm Review - Union-Find'
 publishDate: 2026-03-10
 description: '复习并查集的路径压缩、按秩合并以及带权并查集的写法。'
 tags:

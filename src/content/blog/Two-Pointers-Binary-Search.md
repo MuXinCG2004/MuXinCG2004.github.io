@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 双指针与二分'
+title: 'Algorithm Review - Two Pointers and Binary Search'
 publishDate: 2026-03-10
 description: '复习双指针（尺取法）、二分答案和三分法，掌握区间收缩与单调性搜索的核心技巧。'
 tags:

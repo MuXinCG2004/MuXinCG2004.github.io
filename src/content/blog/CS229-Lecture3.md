@@ -1,5 +1,5 @@
 ---
-title: 'CS229 机器学习 - 广义线性模型'
+title: 'CS229 Machine Learning - Generalized Linear Models'
 publishDate: 2026-03-02
 description: '介绍指数族分布及其性质，展示如何构造广义线性模型，将最小二乘回归和逻辑回归统一在同一框架下。'
 tags:

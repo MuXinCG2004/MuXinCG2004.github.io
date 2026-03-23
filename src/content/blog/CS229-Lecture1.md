@@ -1,5 +1,5 @@
 ---
-title: 'CS229 机器学习 - 线性回归'
+title: 'CS229 Machine Learning - Linear Regression'
 publishDate: 2026-03-02
 description: '介绍线性回归的基本概念与变量定义、概率解释、最小均方算法(梯度下降)以及局部加权线性回归。'
 tags:

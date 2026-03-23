@@ -1,5 +1,5 @@
 ---
-title: 'CS229 机器学习 - 引言与概述'
+title: 'CS229 Machine Learning - Introduction and Overview'
 publishDate: 2026-03-02
 description: 'Stanford CS229 机器学习课程笔记系列，涵盖监督学习、无监督学习与强化学习核心内容。'
 tags:

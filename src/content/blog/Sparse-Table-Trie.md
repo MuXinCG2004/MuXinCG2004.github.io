@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - ST 表与字典树'
+title: 'Algorithm Review - Sparse Table and Trie'
 publishDate: 2026-03-10
 description: '复习 ST 表解决 RMQ 问题和字典树（Trie）的前缀查询写法。'
 tags:

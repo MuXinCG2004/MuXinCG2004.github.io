@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 数学'
+title: 'Algorithm Review - Mathematics'
 publishDate: 2026-03-10
 description: '复习快速幂、欧拉筛、GCD/exGCD、组合数、Lucas 定理和矩阵快速幂。'
 tags:

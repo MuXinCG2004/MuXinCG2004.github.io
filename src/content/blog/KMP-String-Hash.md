@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - KMP 与字符串哈希'
+title: 'Algorithm Review - KMP and String Hashing'
 publishDate: 2026-03-10
 description: '复习 KMP 字符串匹配算法和双哈希字符串匹配的写法。'
 tags:

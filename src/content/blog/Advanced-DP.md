@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 进阶动态规划'
+title: 'Algorithm Review - Advanced Dynamic Programming'
 publishDate: 2026-03-10
 description: '复习区间 DP、树形 DP、数位 DP 和状压 DP 的写法与经典例题。'
 tags:

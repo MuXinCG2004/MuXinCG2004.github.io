@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 前缀和与差分'
+title: 'Algorithm Review - Prefix Sum and Difference Array'
 publishDate: 2026-03-10
 description: '复习一维/二维前缀和与差分数组，掌握区间求和与区间修改的基本技巧。'
 tags:

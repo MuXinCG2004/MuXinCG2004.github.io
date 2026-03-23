@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - Manacher 与 AC 自动机'
+title: 'Algorithm Review - Manacher and AC Automaton'
 publishDate: 2026-03-10
 description: '复习 Manacher 算法求最长回文子串和 AC 自动机多模式匹配的写法。'
 tags:

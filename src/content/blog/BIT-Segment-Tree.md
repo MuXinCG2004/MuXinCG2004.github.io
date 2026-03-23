@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 树状数组与线段树'
+title: 'Algorithm Review - Binary Indexed Tree and Segment Tree'
 publishDate: 2026-03-10
 description: '复习树状数组（BIT）和线段树的写法，掌握单点修改、区间修改与区间查询。'
 tags:

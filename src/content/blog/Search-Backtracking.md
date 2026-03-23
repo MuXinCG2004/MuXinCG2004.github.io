@@ -1,5 +1,5 @@
 ---
-title: '算法复习系列 - 搜索与回溯'
+title: 'Algorithm Review - Search and Backtracking'
 publishDate: 2026-03-10
 description: '复习 BFS、DFS 与回溯法，掌握网格搜索、全排列、组合等经典问题的写法。'
 tags:

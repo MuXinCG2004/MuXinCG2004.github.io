@@ -1,5 +1,5 @@
 ---
-title: 'XOR Array - Codeforces 题解'
+title: 'XOR Array - Codeforces Solution'
 publishDate: 2026-03-03
 description: '构造正整数数组使得恰好只有指定子数组的异或值为零，利用前缀异或的唯一重复实现精确控制。'
 tags:
