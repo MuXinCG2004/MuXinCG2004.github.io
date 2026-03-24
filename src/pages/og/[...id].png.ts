@@ -20,7 +20,7 @@ export async function GET({ props }: APIContext) {
   const { post } = props
   const { title, description, publishDate, tags } = post.data
 
-  const dateStr = publishDate.toLocaleDateString('zh-CN', {
+  const dateStr = publishDate.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
