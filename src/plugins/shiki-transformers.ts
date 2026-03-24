@@ -155,8 +155,8 @@ export const addCollapsible = (threshold: number = 15): ShikiTransformer => {
           `
         },
         [
-          h('span', { class: 'collapse-text-expand' }, '展开'),
-          h('span', { class: 'collapse-text-collapse' }, '收起'),
+          h('span', { class: 'collapse-text-expand' }, 'Expand'),
+          h('span', { class: 'collapse-text-collapse' }, 'Collapse'),
           h(
             'svg',
             {

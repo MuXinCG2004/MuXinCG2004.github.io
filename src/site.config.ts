@@ -72,15 +72,6 @@ export const theme: ThemeUserConfig = {
 }
 
 export const integ: IntegrationUserConfig = {
-  links: {
-    logbook: [],
-    applyTip: [
-      { name: 'Name', val: theme.title },
-      { name: 'Desc', val: theme.description || 'Null' },
-      { name: 'Link', val: 'https://muxincg2004.github.io/' },
-      { name: 'Avatar', val: 'https://github.com/MuXinCG2004.png' }
-    ]
-  },
   pagefind: true,
   quote: {
     server: 'https://v1.hitokoto.cn/?c=i',
