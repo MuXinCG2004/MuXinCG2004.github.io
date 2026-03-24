@@ -1,14 +1,14 @@
 ---
 title: 'XOR Array - Codeforces Solution'
 publishDate: 2026-03-03
-description: '构造正整数数组使得恰好只有指定子数组的异或值为零，利用前缀异或的唯一重复实现精确控制。'
+description: 'Construct a positive integer array where exactly the specified subarrays have XOR value zero, using prefix XOR with unique repetition.'
 tags:
-  - 算法
+  - Algorithm
   - Codeforces
-  - 构造
-  - 位运算
-language: '中文'
-series: 'Codeforces 题解'
+  - Construction
+  - Bit Manipulation
+language: 'en'
+series: 'Codeforces Solutions'
 seriesOrder: 4
 ---
 

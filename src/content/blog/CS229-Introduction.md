@@ -1,13 +1,13 @@
 ---
 title: 'CS229 Machine Learning - Introduction and Overview'
 publishDate: 2026-03-02
-description: 'Stanford CS229 机器学习课程笔记系列，涵盖监督学习、无监督学习与强化学习核心内容。'
+description: 'Stanford CS229 Machine Learning course notes covering supervised learning, unsupervised learning, and reinforcement learning.'
 tags:
-  - 机器学习
+  - Machine Learning
   - CS229
-  - 笔记
-language: '中文'
-series: 'CS229 机器学习'
+  - Notes
+language: 'en'
+series: 'CS229 Machine Learning'
 seriesOrder: 1
 ---
 

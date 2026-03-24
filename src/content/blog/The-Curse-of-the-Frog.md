@@ -1,13 +1,13 @@
 ---
 title: 'The Curse of the Frog - Codeforces Solution'
 publishDate: 2026-03-02
-description: '青蛙在数轴上跳跃，每种跳跃有最大距离和周期性回退惩罚，求到达目标点的最少回退次数。'
+description: 'A frog jumps on a number line with max distance and periodic penalty per jump type. Find the minimum penalty count to reach the target.'
 tags:
-  - 算法
+  - Algorithm
   - Codeforces
-  - 贪心
-language: '中文'
-series: 'Codeforces 题解'
+  - Greedy
+language: 'en'
+series: 'Codeforces Solutions'
 seriesOrder: 3
 ---
 

@@ -1,12 +1,12 @@
 ---
 title: 'Algorithm Review - Two Pointers and Binary Search'
 publishDate: 2026-03-10
-description: '复习双指针（尺取法）、二分答案和三分法，掌握区间收缩与单调性搜索的核心技巧。'
+description: 'Review of two pointers (sliding window), binary search on answer, and ternary search.'
 tags:
-  - 算法
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 5
 ---
 

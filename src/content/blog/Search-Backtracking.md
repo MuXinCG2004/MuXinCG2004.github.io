@@ -1,12 +1,12 @@
 ---
 title: 'Algorithm Review - Search and Backtracking'
 publishDate: 2026-03-10
-description: '复习 BFS、DFS 与回溯法，掌握网格搜索、全排列、组合等经典问题的写法。'
+description: 'Review of BFS, DFS, and backtracking for grid search, permutations, combinations, and other classic problems.'
 tags:
-  - 算法
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 7
 ---
 

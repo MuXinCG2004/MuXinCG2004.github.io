@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - KMP and String Hashing'
 publishDate: 2026-03-10
-description: '复习 KMP 字符串匹配算法和双哈希字符串匹配的写法。'
+description: 'Review of KMP string matching algorithm and double-hash string matching.'
 tags:
-  - 算法
-  - 字符串
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - String
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 17
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Union-Find'
 publishDate: 2026-03-10
-description: '复习并查集的路径压缩、按秩合并以及带权并查集的写法。'
+description: 'Review of Union-Find with path compression, union by rank, and weighted Union-Find.'
 tags:
-  - 算法
-  - 数据结构
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Data Structure
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 10
 ---
 

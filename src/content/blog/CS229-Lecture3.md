@@ -1,13 +1,13 @@
 ---
 title: 'CS229 Machine Learning - Generalized Linear Models'
 publishDate: 2026-03-02
-description: '介绍指数族分布及其性质，展示如何构造广义线性模型，将最小二乘回归和逻辑回归统一在同一框架下。'
+description: 'Introduction to exponential family distributions and generalized linear models, unifying linear regression and logistic regression.'
 tags:
-  - 机器学习
+  - Machine Learning
   - CS229
-  - 笔记
-language: '中文'
-series: 'CS229 机器学习'
+  - Notes
+language: 'en'
+series: 'CS229 Machine Learning'
 seriesOrder: 3
 ---
 

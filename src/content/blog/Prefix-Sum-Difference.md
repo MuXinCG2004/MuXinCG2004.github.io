@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Prefix Sum and Difference Array'
 publishDate: 2026-03-10
-description: '复习一维/二维前缀和与差分数组，掌握区间求和与区间修改的基本技巧。'
+description: 'Review of 1D/2D prefix sums and difference arrays for range sum queries and range updates.'
 tags:
-  - 算法
-  - 数据结构
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Data Structure
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 4
 ---
 

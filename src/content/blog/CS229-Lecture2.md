@@ -1,13 +1,13 @@
 ---
 title: 'CS229 Machine Learning - Logistic Regression'
 publishDate: 2026-03-02
-description: '从回归问题转向分类问题，介绍逻辑回归模型、S形函数及多类别分类方法。'
+description: 'From regression to classification: logistic regression model, sigmoid function, and multi-class classification.'
 tags:
-  - 机器学习
+  - Machine Learning
   - CS229
-  - 笔记
-# language: 'zh'
-series: 'CS229 机器学习'
+  - Notes
+language: 'en'
+series: 'CS229 Machine Learning'
 seriesOrder: 2
 ---
 

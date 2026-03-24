@@ -1,13 +1,13 @@
 ---
 title: 'CS229 Machine Learning - Linear Regression'
 publishDate: 2026-03-02
-description: '介绍线性回归的基本概念与变量定义、概率解释、最小均方算法(梯度下降)以及局部加权线性回归。'
+description: 'Introduction to linear regression: variable definitions, probabilistic interpretation, LMS algorithm (gradient descent), and locally weighted regression.'
 tags:
-  - 机器学习
+  - Machine Learning
   - CS229
-  - 笔记
-# language: 'zh'
-series: 'CS229 机器学习'
+  - Notes
+language: 'en'
+series: 'CS229 Machine Learning'
 seriesOrder: 1
 ---
 

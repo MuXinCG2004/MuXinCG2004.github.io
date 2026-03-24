@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Monotone Stack and Queue'
 publishDate: 2026-03-10
-description: '复习单调栈和单调队列的基本写法与经典例题，单调栈解决下一个更大元素问题，单调队列解决滑动窗口最值问题。'
+description: 'Review of monotone stack and monotone queue: next greater element and sliding window extrema.'
 tags:
-  - 算法
-  - 数据结构
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Data Structure
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 3
 ---
 

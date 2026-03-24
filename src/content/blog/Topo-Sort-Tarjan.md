@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Topological Sort and Tarjan'
 publishDate: 2026-03-10
-description: '复习拓扑排序（Kahn 算法）和 Tarjan 算法求强连通分量、割点与桥。'
+description: 'Review of topological sort (Kahn''s algorithm) and Tarjan''s algorithm for SCCs, articulation points, and bridges.'
 tags:
-  - 算法
-  - 图论
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Graph Theory
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 15
 ---
 

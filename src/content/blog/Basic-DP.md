@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Basic Dynamic Programming'
 publishDate: 2026-03-10
-description: '复习背包问题（01/完全/多重）、最长递增子序列 LIS 和最长公共子序列 LCS。'
+description: 'Review of knapsack problems (0/1, unbounded, bounded), Longest Increasing Subsequence (LIS), and Longest Common Subsequence (LCS).'
 tags:
-  - 算法
-  - 动态规划
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Dynamic Programming
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 8
 ---
 

@@ -1,14 +1,14 @@
 ---
 title: 'XOR Convenience - Codeforces Solution'
 publishDate: 2026-02-26
-description: '构造排列使得每个位置的值与某后续位置值的异或等于下标，核心思路是让所有异或结果统一指向最后一个位置。'
+description: 'Construct a permutation where each value XORed with a later value equals the index. Core idea: direct all XOR results to the last position.'
 tags:
-  - 算法
+  - Algorithm
   - Codeforces
-  - 构造
-  - 位运算
-language: '中文'
-series: 'Codeforces 题解'
+  - Construction
+  - Bit Manipulation
+language: 'en'
+series: 'Codeforces Solutions'
 seriesOrder: 1
 ---
 

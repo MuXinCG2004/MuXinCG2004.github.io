@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Advanced Dynamic Programming'
 publishDate: 2026-03-10
-description: '复习区间 DP、树形 DP、数位 DP 和状压 DP 的写法与经典例题。'
+description: 'Review of interval DP, tree DP, digit DP, and bitmask DP with classic examples.'
 tags:
-  - 算法
-  - 动态规划
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Dynamic Programming
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 9
 ---
 

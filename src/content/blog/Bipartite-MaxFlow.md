@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Bipartite Graphs and Network Flow'
 publishDate: 2026-03-10
-description: '复习匈牙利算法求二分图最大匹配和 Dinic 算法求最大流。'
+description: 'Review of Hungarian algorithm for bipartite matching and Dinic''s algorithm for maximum flow.'
 tags:
-  - 算法
-  - 图论
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Graph Theory
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 16
 ---
 

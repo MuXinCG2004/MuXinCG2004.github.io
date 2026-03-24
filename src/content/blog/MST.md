@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Minimum Spanning Tree'
 publishDate: 2026-03-10
-description: '复习 Kruskal 和 Prim 两种最小生成树算法的写法与适用场景。'
+description: 'Review of Kruskal''s and Prim''s algorithms for minimum spanning trees.'
 tags:
-  - 算法
-  - 图论
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Graph Theory
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 14
 ---
 

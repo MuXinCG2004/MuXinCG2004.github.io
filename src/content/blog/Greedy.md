@@ -1,12 +1,12 @@
 ---
 title: 'Algorithm Review - Greedy'
 publishDate: 2026-03-10
-description: '复习经典贪心策略，包括区间调度、区间合并等问题。'
+description: 'Review of classic greedy strategies including interval scheduling and interval merging.'
 tags:
-  - 算法
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 6
 ---
 

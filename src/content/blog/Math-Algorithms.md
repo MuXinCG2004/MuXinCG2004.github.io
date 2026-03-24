@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Mathematics'
 publishDate: 2026-03-10
-description: '复习快速幂、欧拉筛、GCD/exGCD、组合数、Lucas 定理和矩阵快速幂。'
+description: 'Review of fast exponentiation, Euler sieve, GCD/exGCD, combinatorics, Lucas'' theorem, and matrix exponentiation.'
 tags:
-  - 算法
-  - 数学
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Math
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 19
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Shortest Path'
 publishDate: 2026-03-10
-description: '复习 Dijkstra、Floyd 和 SPFA 三种最短路算法的写法与适用场景。'
+description: 'Review of Dijkstra''s, Floyd''s, and SPFA shortest path algorithms.'
 tags:
-  - 算法
-  - 图论
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Graph Theory
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 13
 ---
 

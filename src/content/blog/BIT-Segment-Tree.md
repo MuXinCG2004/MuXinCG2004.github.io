@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Binary Indexed Tree and Segment Tree'
 publishDate: 2026-03-10
-description: '复习树状数组（BIT）和线段树的写法，掌握单点修改、区间修改与区间查询。'
+description: 'Review of Binary Indexed Tree (BIT) and Segment Tree for point updates, range updates, and range queries.'
 tags:
-  - 算法
-  - 数据结构
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Data Structure
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 11
 ---
 

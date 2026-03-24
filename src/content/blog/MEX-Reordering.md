@@ -1,13 +1,13 @@
 ---
 title: 'MEX Reordering - Codeforces Solution'
 publishDate: 2026-03-01
-description: '重排数组使得任意前缀与后缀的 MEX 不相等，关键在于分析零和一的出现次数。'
+description: 'Rearrange an array so that no prefix and suffix share the same MEX value. Key insight: analyze occurrences of zero and one.'
 tags:
-  - 算法
+  - Algorithm
   - Codeforces
-  - 构造
-language: '中文'
-series: 'Codeforces 题解'
+  - Construction
+language: 'en'
+series: 'Codeforces Solutions'
 seriesOrder: 2
 ---
 

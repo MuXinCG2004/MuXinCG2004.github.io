@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Manacher and AC Automaton'
 publishDate: 2026-03-10
-description: '复习 Manacher 算法求最长回文子串和 AC 自动机多模式匹配的写法。'
+description: 'Review of Manacher''s algorithm for longest palindromic substring and Aho-Corasick automaton for multi-pattern matching.'
 tags:
-  - 算法
-  - 字符串
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - String
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 18
 ---
 

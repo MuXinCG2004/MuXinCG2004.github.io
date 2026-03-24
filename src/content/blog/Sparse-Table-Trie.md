@@ -1,13 +1,13 @@
 ---
 title: 'Algorithm Review - Sparse Table and Trie'
 publishDate: 2026-03-10
-description: '复习 ST 表解决 RMQ 问题和字典树（Trie）的前缀查询写法。'
+description: 'Review of Sparse Table for RMQ problems and Trie for prefix queries.'
 tags:
-  - 算法
-  - 数据结构
-  - 复习
-language: '中文'
-series: '算法复习'
+  - Algorithm
+  - Data Structure
+  - Review
+language: 'en'
+series: 'Algorithm Review'
 seriesOrder: 12
 ---
 
