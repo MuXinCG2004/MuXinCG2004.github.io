@@ -8,7 +8,7 @@ tags:
   - Notes
 language: 'en'
 series: 'CS229 Machine Learning'
-seriesOrder: 1
+seriesOrder: 0
 ---
 
 Stanford CS229 是最经典的机器学习入门课程之一。本系列将系统整理课程的核心知识点，从线性回归到深度学习，逐步构建机器学习的完整知识体系。
