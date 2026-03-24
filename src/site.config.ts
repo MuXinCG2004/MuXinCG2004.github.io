@@ -13,10 +13,10 @@ export const theme: ThemeUserConfig = {
   favicon: '/favicon/favicon.ico',
   /** Specify the default language for this site. */
   locale: {
-    lang: 'zh-CN',
-    attrs: 'zh_CN',
+    lang: 'en',
+    attrs: 'en_US',
     // Date locale
-    dateLocale: 'zh-CN',
+    dateLocale: 'en-US',
     dateOptions: {
       day: 'numeric',
       month: 'long',
@@ -42,7 +42,6 @@ export const theme: ThemeUserConfig = {
     menu: [
       { title: 'Blog', link: '/blog' },
       { title: 'Projects', link: '/projects' },
-      { title: 'Links', link: '/links' },
       { title: 'Resume', link: '/resume' },
       { title: 'About', link: '/about' }
     ]
@@ -68,7 +67,7 @@ export const theme: ThemeUserConfig = {
     /** Blog page size for pagination (optional) */
     blogPageSize: 8,
     // Currently support weibo, x, bluesky
-    share: ['weibo', 'x', 'bluesky']
+    share: ['x', 'bluesky']
   }
 }
 
