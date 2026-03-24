@@ -74,8 +74,8 @@ export const theme: ThemeUserConfig = {
 export const integ: IntegrationUserConfig = {
   pagefind: true,
   quote: {
-    server: 'https://v1.hitokoto.cn/?c=i',
-    target: `(data) => data.hitokoto || 'Error'`
+    server: '',
+    target: `(data) => ''`
   },
   typography: {
     class: 'prose text-base text-muted-foreground',
