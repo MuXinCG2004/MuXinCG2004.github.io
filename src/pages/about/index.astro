@@ -1,19 +1,9 @@
 ---
 import { Timeline } from 'astro-pure/user'
 import PageLayout from '@/layouts/CommonPage.astro'
-import ToolSection from '@/components/about/ToolSection.astro'
+import ProjectSection from '@/components/projects/ProjectSection.astro'
 
 const headings = [
-  {
-    depth: 2,
-    slug: 'tools',
-    text: 'Tools'
-  },
-  {
-    depth: 2,
-    slug: 'social-networks',
-    text: 'Social Networks'
-  },
   {
     depth: 2,
     slug: 'education',
@@ -26,8 +16,8 @@ const headings = [
   },
   {
     depth: 2,
-    slug: 'about-blog',
-    text: 'About Blog'
+    slug: 'projects',
+    text: 'Projects'
   }
 ]
 ---
@@ -48,101 +38,6 @@ const headings = [
       Download my Resume (PDF)
     </a>
   </p>
-
-  {/* tools */}
-  <h2 id='tools'>Tools</h2>
-  <p>Here are some tools I use:</p>
-  <ToolSection
-    class='mb-5'
-    title='Development'
-    tools={[
-      {
-        name: 'VS Code',
-        description: 'IDE',
-        href: 'https://code.visualstudio.com/',
-        icon: import('@/assets/tools/vscode.svg?raw')
-      },
-      {
-        name: 'Neovim',
-        description: 'Terminal Editor',
-        href: 'https://neovim.io/',
-        icon: import('@/assets/tools/neovim.svg?raw')
-      },
-      {
-        name: 'Typora',
-        description: 'Markdown Editor',
-        href: 'https://typora.io/',
-        icon: import('@/assets/tools/typora.svg?raw')
-      },
-      {
-        name: 'Jupyter',
-        description: 'Interactive Computing',
-        href: 'https://jupyter.org/',
-        icon: import('@/assets/tools/jupyter.svg?raw')
-      },
-      {
-        name: 'iTerm2',
-        description: 'Terminal Emulator',
-        href: 'https://iterm2.com/',
-        icon: import('@/assets/tools/iterm2.svg?raw')
-      },
-      {
-        name: 'Claude',
-        description: 'AI Assistant',
-        href: 'https://claude.ai/',
-        icon: import('@/assets/tools/claude.svg?raw')
-      }
-    ]}
-  />
-  <ToolSection
-    class='mb-5'
-    title='Environment'
-    tools={[
-      {
-        name: 'macOS',
-        description: 'Operating System',
-        href: 'https://www.apple.com/macos/',
-        icon: import('@/assets/tools/macos.svg?raw')
-      },
-      {
-        name: 'Ubuntu',
-        description: 'Linux Distribution',
-        href: 'https://ubuntu.com/',
-        icon: import('@/assets/tools/ubuntu.svg?raw')
-      },
-      {
-        name: 'Windows',
-        description: 'Operating System',
-        href: 'https://www.microsoft.com/windows/',
-        icon: import('@/assets/tools/windows.svg?raw')
-      },
-      {
-        name: 'WSL',
-        description: 'Windows Subsystem for Linux',
-        href: 'https://learn.microsoft.com/en-us/windows/wsl/',
-        icon: import('@/assets/tools/wsl.svg?raw')
-      },
-      {
-        name: 'Conda',
-        description: 'Environment Manager',
-        href: 'https://docs.conda.io/',
-        icon: import('@/assets/tools/conda.svg?raw')
-      },
-      {
-        name: 'GitHub',
-        description: 'Code Hosting',
-        href: 'https://github.com/',
-        icon: import('@/assets/tools/github.svg?raw')
-      }
-    ]}
-  />
-
-  {/* social-networks */}
-  <h2 id='social-networks'>Social Networks</h2>
-  <p>You can find me on:</p>
-  <ul>
-    <li><a href='https://github.com/MuXinCG2004' target='_blank'>GitHub</a></li>
-  </ul>
 
   <h2 id='education'>Education</h2>
   <Timeline
@@ -172,16 +67,51 @@ const headings = [
     ]}
   />
 
-  {/* about-blog */}
-  <h2 id='about-blog'>About Blog</h2>
-  <p>This blog is built with the following technologies:</p>
-  <ul>
-    <li>
-      Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
-        href='https://github.com/cworld1/astro-theme-pure'
-        target='_blank'>Astro Theme Pure</a
-      >
-    </li>
-    <li>Hosting: <a href='https://pages.github.com/' target='_blank'>GitHub Pages</a></li>
-  </ul>
+  <h2 id='projects'>Projects</h2>
+  <p>Here are some projects I have worked on.</p>
+
+  <h3>Competition Projects</h3>
+  <ProjectSection
+    projects={[
+      {
+        name: 'ML-based Production Optimization System',
+        description: 'CUMCM National Second Prize — Built a profit optimization model for multi-process production scheduling. Designed simulated annealing and ML-enhanced versions.',
+        tags: ['Python', 'NumPy', 'Pandas', 'scikit-learn'],
+        links: [{ type: 'github', href: 'https://github.com/MuXinCG2004' }]
+      },
+      {
+        name: 'OceanBase Database Performance Tuning',
+        description: 'System Capability Competition — 10th Place Nationally. Performance optimization of OceanBase distributed database including query analysis, monitoring, and parameter tuning.',
+        tags: ['OceanBase', 'Distributed Database', 'SQL'],
+        links: [{ type: 'github', href: 'https://github.com/MuXinCG2004' }]
+      }
+    ]}
+  />
+
+  <h3>Research Projects</h3>
+  <ProjectSection
+    projects={[
+      {
+        name: 'EvoScientist',
+        description: 'Ongoing research training in the Elite Class of the School of Computer Science at Shandong University.',
+        tags: ['Research', 'Computer Science'],
+        links: [{ type: 'github', href: 'https://github.com/EvoScientist/EvoScientist' }]
+      }
+    ]}
+  />
+
+  <h3>Open Source</h3>
+  <ProjectSection
+    projects={[
+      {
+        name: "MuXinCG's Blog",
+        description: 'Personal blog built with Astro and astro-pure theme. Features algorithm reviews, CS229 lecture notes, and more.',
+        tags: ['Astro', 'TypeScript', 'UnoCSS'],
+        links: [
+          { type: 'github', href: 'https://github.com/MuXinCG2004/muxincg2004.github.io' },
+          { type: 'site', href: 'https://muxincg2004.github.io' }
+        ]
+      }
+    ]}
+  />
 </PageLayout>
