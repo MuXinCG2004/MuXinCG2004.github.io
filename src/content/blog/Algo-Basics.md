@@ -1,23 +1,16 @@
 ---
-title: 'Algorithm Miscellany'
+title: 'Algorithm Miscellany - Basics'
 publishDate: 2026-03-10
-description: 'Miscellaneous algorithm notes covering high-dimensional prefix sums, subset sum DP (SOSDP), and ternary search.'
+description: 'Algorithm Miscellany series: ternary search, discretization, and other fundamental techniques.'
 tags:
   - Algorithm
-  - Dynamic Programming
   - Review
 language: 'en'
-series: 'Algorithm Review'
-seriesOrder: 20
+series: 'Algorithm Miscellany'
+seriesOrder: 1
 ---
 
 最近为了准备保研的机试，开始看`OI-WIKI`并且刷题，这个博客主要用来记录我还不熟悉，或者冷门的一些算法和trick技巧
-
-## 高维前缀和
-
-
-### 高维前缀和的拓展-子集和DP(SOSDP)
-
 
 ## 三分
 
@@ -44,3 +37,6 @@ auto ternary_search = [&](auto f, double lo, double hi) {
     return (lo + hi) / 2;
 };
 ```
+
+## 离散化
+
