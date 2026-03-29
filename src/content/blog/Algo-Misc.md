@@ -10,3 +10,4 @@ series: 'Algorithm Miscellany'
 seriesOrder: 8
 ---
 
+## bitset
