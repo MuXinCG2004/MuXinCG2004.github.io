@@ -7,7 +7,7 @@ tags:
   - Review
 language: 'en'
 series: 'Algorithm Miscellany'
-seriesOrder: 8
+seriesOrder: 9
 ---
 
 ## bitset

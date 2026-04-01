@@ -7,7 +7,7 @@ tags:
   - Review
 language: 'en'
 series: 'Algorithm Miscellany'
-seriesOrder: 5
+seriesOrder: 6
 ---
 
 ## 并查集

@@ -12,6 +12,37 @@ seriesOrder: 1
 
 最近为了准备保研的机试，开始看`OI-WIKI`并且刷题，这个博客主要用来记录我还不熟悉，或者冷门的一些算法和trick技巧
 
+## bitset
+
+### 介绍
+
+`std::bitset`是标准库中的一个存储`0/1`的大小不可变容器。严格来讲，它并不属于STL
+
+### 使用
+
+我们可以使用以下代码来指定大小
+
+```cpp
+std::bitset<1000> bs; // a bitset with 1000 bits
+```
+
+构造函数有以下几种
+
+- `bitset()`:每一位都是`false`
+- `bitset(unsigned long val)`:设为`val`的二进制形式
+- `bitset(const string& str)`:设为01串`str`
+
+运算符也有以下几种
+
+- `operator[]`:访问其特定的一位
+- `operator == / operator !=`:比较两个`bitset`内容是否完全一样
+- `operator&/operator&=/operator|/operator|= / operator^ / operator ^= /operator~`:进行按位与/或/异或/取反操作
+- 
+
+
+## 树上前缀和和树上差分
+
+
 ## 三分
 
 二分法可以用于近似求出函数的零点．如果需要求出单峰函数的极值点，通常需要使用三分法
