@@ -37,6 +37,14 @@ std::bitset<1000> bs; // a bitset with 1000 bits
 - `operator[]`:访问其特定的一位
 - `operator == / operator !=`:比较两个`bitset`内容是否完全一样
 - `operator&/operator&=/operator|/operator|= / operator^ / operator ^= /operator~`:进行按位与/或/异或/取反操作
+- `operator<< / operator>> / operator<<= / operator>>=`:进行二进制左移/右移
+
+此外还有成员函数
+
+- `count()`:返回`true`的数量
+- `size()`:返回`bitset`的大小
+- `test(pos)`:它和`vector`中的`at()`的作用是一样的，和`[]`
+- `any()`:若存在某一位是`true`则返回`true`,否则返回`false`
 - 
 
 
