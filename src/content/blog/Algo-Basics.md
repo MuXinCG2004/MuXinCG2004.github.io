@@ -9,7 +9,6 @@ language: 'en'
 series: 'Algorithm Miscellany'
 seriesOrder: 1
 ---
-
 最近为了准备保研的机试，开始看`OI-WIKI`并且刷题，这个博客主要用来记录我还不熟悉，或者冷门的一些算法和trick技巧
 
 ## bitset
@@ -45,11 +44,22 @@ std::bitset<1000> bs; // a bitset with 1000 bits
 - `size()`:返回`bitset`的大小
 - `test(pos)`:它和`vector`中的`at()`的作用是一样的，和`[]`
 - `any()`:若存在某一位是`true`则返回`true`,否则返回`false`
-- 
-
+-
 
 ## 树上前缀和和树上差分
 
+一维前缀和还可以推广到有根树(树根为1)的情景。通过预处理前缀和，可以快速求解树上一段路径的前缀和。
+
+### 点权的情形
+
+首先考虑权值存储在结点处的情形。设结点$x$处有权值$a_x$。可以通过递推关系
+
+$$
+S_1 = a_1, S_x = S_{fa(x)} + a_x
+
+$$
+
+求出从
 
 ## 三分
 
@@ -78,4 +88,3 @@ auto ternary_search = [&](auto f, double lo, double hi) {
 ```
 
 ## 离散化
-
