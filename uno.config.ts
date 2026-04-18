@@ -218,8 +218,7 @@ const rules: Rule<object>[] = [
 
 export default defineConfig({
   presets: [
-    // presetMini(), // required
-    presetWind3(), // original full version
+    presetWind3(),
     presetTypography(typographyConfig)
   ],
   rules,

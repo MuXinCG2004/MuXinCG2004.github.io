@@ -60,22 +60,28 @@ const GET = async (context: AstroGlobal) => {
   return rss({
     // Basic configs
     trailingSlash: false,
-    xmlns: { h: 'http://www.w3.org/TR/html4/' },
-    stylesheet: '/scripts/pretty-feed-v3.xsl',
+    xmlns: { media: 'http://search.yahoo.com/mrss/' },
 
     // Contents
     title: config.title,
     description: config.description,
     site: import.meta.env.SITE,
     items: await Promise.all(
-      allPostsByDate.map(async (post) => ({
-        pubDate: post.data.publishDate,
-        link: `/blog/${post.id}`,
-        customData: `<h:img src="${typeof post.data.heroImage?.src === 'string' ? post.data.heroImage?.src : post.data.heroImage?.src.src}" />
-          <enclosure url="${typeof post.data.heroImage?.src === 'string' ? post.data.heroImage?.src : post.data.heroImage?.src.src}" />`,
-        content: await renderContent(post, siteUrl),
-        ...post.data
-      }))
+      allPostsByDate.map(async (post) => {
+        const heroSrc =
+          typeof post.data.heroImage?.src === 'string'
+            ? post.data.heroImage?.src
+            : post.data.heroImage?.src.src
+        return {
+          pubDate: post.data.publishDate,
+          link: `/blog/${post.id}`,
+          customData: heroSrc
+            ? `<media:content url="${new URL(heroSrc, siteUrl).href}" medium="image" />`
+            : undefined,
+          content: await renderContent(post, siteUrl),
+          ...post.data
+        }
+      })
     )
   })
 }

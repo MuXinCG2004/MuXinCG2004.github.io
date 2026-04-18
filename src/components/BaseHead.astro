@@ -1,5 +1,4 @@
 ---
-import { prod } from 'astro-pure/server'
 import type { SiteMeta } from 'astro-pure/types'
 import config from '@/site-config'
 
@@ -9,7 +8,7 @@ const { articleDate, description, ogImage, title } = Astro.props
 
 const siteTitle = `${title} ${config.titleDelimiter} ${config.title}`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', Astro.url).href
+const socialImageURL = ogImage ? new URL(ogImage, Astro.url).href : undefined
 ---
 
 <meta charset='utf-8' />
@@ -25,13 +24,7 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 
 {/* Font preloads */}
 <link rel='preload' href='/fonts/Satoshi-Variable.woff2' as='font' type='font/woff2' crossorigin />
-<link
-  rel='prefetch'
-  href='/fonts/Satoshi-VariableItalic.woff2'
-  as='font'
-  type='font/woff2'
-  crossorigin
-/>
+<link rel='prefetch' href='/fonts/Satoshi-VariableItalic.woff2' crossorigin />
 
 {/* CDN preconnect */}
 {config.npmCDN && <link rel='dns-prefetch' href={new URL(config.npmCDN).origin} />}
@@ -56,9 +49,13 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 <meta content={canonicalURL} property='og:url' />
 <meta content={config.title} property='og:site_name' />
 <meta content={config.locale.attrs} property='og:locale' />
-<meta content={socialImageURL} property='og:image' />
-<meta content='1200' property='og:image:width' />
-<meta content='630' property='og:image:height' />
+{socialImageURL && (
+  <>
+    <meta content={socialImageURL} property='og:image' />
+    <meta content='1200' property='og:image:width' />
+    <meta content='630' property='og:image:height' />
+  </>
+)}
 {
   articleDate && (
     <>
@@ -69,13 +66,29 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 }
 
 {/* Twitter */}
-<meta content='summary_large_image' property='twitter:card' />
+<meta content={socialImageURL ? 'summary_large_image' : 'summary'} property='twitter:card' />
 <meta content={canonicalURL} property='twitter:url' />
 <meta content={title} property='twitter:title' />
 <meta content={description} property='twitter:description' />
-<meta content={socialImageURL} property='twitter:image' />
+{socialImageURL && <meta content={socialImageURL} property='twitter:image' />}
 
 {/* JSON-LD Structured Data */}
+<script
+  is:inline
+  type='application/ld+json'
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: config.title,
+    url: Astro.site?.href,
+    description: config.description,
+    inLanguage: config.locale.attrs,
+    author: {
+      '@type': 'Person',
+      name: config.author
+    }
+  })}
+/>
 {
   articleDate && (
     <script
@@ -88,7 +101,13 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
         description: description,
         image: socialImageURL,
         datePublished: articleDate,
+        inLanguage: config.locale.attrs,
+        mainEntityOfPage: canonicalURL.href,
         author: {
+          '@type': 'Person',
+          name: config.author
+        },
+        publisher: {
           '@type': 'Person',
           name: config.author
         }
@@ -99,9 +118,6 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 
 {/* Sitemap */}
 <link href='/sitemap-index.xml' rel='sitemap' />
-
-{/* busuanzi page view counter */}
-<script async src='https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' is:inline />
 
 {/* RSS auto-discovery */}
 <link
@@ -116,13 +132,3 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/social-card.png', As
 {/* Styles */}
 <link rel='stylesheet' href='/styles/global.css' />
 
-{
-  /* User script*/
-  prod && (
-    <script>
-      console.log( '%c Astro Theme Pure %c https://github.com/cworld1/astro-theme-pure/',
-      'color:#fff;background:linear-gradient(90deg,#448bff,#44e9ff);padding:5px 0;',
-      'color:#000;background:linear-gradient(90deg,#44e9ff,#ffffff);padding:5px 10px 5px 0px;' )
-    </script>
-  )
-}

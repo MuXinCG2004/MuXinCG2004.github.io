@@ -1,7 +1,7 @@
 ---
-title: 'Algorithm Miscellany - Computational Geometry'
+title: 'Algorithm Miscellany - Search'
 publishDate: 2026-03-10
-description: 'Algorithm Miscellany series: computational geometry-related algorithms.'
+description: 'Algorithm Miscellany series: A* search and iterative deepening search algorithms.'
 tags:
   - Algorithm
   - Review

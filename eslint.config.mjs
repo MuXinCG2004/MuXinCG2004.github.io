@@ -10,6 +10,6 @@ export default [
   ...eslintPluginAstro.configs.recommended,
   // Ignore files
   {
-    ignores: ['public/scripts/*', 'scripts/*', '.astro/', 'src/env.d.ts']
+    ignores: ['public/scripts/*', '.astro/', 'src/type.d.ts']
   }
 ]
