@@ -14,7 +14,8 @@
     "new": "astro-pure new",
     "format": "prettier --write  '**/*.{js,jsx,ts,tsx,md,mdx,astro}'",
     "lint": "eslint --fix 'src/**/*.{js,ts,jsx,tsx,astro}'",
-    "clean": "rm -rf .astro dist"
+    "clean": "bash scripts/clean.sh",
+    "clean:deep": "bash scripts/clean.sh --deep"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",

@@ -18,7 +18,22 @@ seriesOrder: 5
 
 **定义**:设$a,b\in Z$,$a\neq 0$，如果$\exist q \in Z$，使得$b = aq$，那么就说$b$可被$a$整除，记作$a|b$，$b$不被$a$整除记作$a\not{|} b$
 
+整除的性质:
+
+- $a | b \Leftrightarrow -a | b \Leftrightarrow a| -b \Leftrightarrow |a | | |b|$
+- $a | b \and b | c \Rightarrow a | c$
+- 
+
+
 #### 约数
+
+若$a | b$，则称$b$是$a$的**倍数**，$a$是$b$的**约数**
+
+$0$是所有非零整数的倍数，对于证书$b \neq 0$，$b$的约数只有有限个
+
+平凡约数(平凡因数):对于整数$b \neq 0 $，$\pm 1$、$\pm b$是$b$的平凡约数。当$b = \pm 1$时，$b$只有两个平凡约数
+
+
 
 #### 带余数除法
 
