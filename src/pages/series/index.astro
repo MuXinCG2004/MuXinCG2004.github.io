@@ -1,0 +1,57 @@
+---
+import { getBlogCollection } from 'astro-pure/server'
+import { Button } from 'astro-pure/user'
+import { cn } from 'astro-pure/utils'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
+
+const allPosts = await getBlogCollection()
+const counts = new Map<string, number>()
+for (const post of allPosts) {
+  const name = post.data.series
+  if (!name) continue
+  counts.set(name, (counts.get(name) ?? 0) + 1)
+}
+const allSeries = [...counts.entries()].sort((a, b) => b[1] - a[1])
+
+const meta = {
+  description: 'All article series on this blog',
+  title: 'All Series'
+}
+---
+
+<PageLayout {meta}>
+  <Button title='Back' href='/blog' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 text-3xl font-medium'>Series</h1>
+    </div>
+
+    <div id='content' class='animate'>
+      {
+        allSeries.length > 0 ? (
+          <ul class='flex flex-wrap gap-4'>
+            {allSeries.map(([name, val]) => (
+              <li>
+                <Button
+                  href={`/series/${slugify(name)}`}
+                  variant='pill'
+                  class={cn(
+                    'items-start gap-x-1',
+                    val > 2 ? 'rounded-xl px-3 py-1 text-xl' : val > 1 && 'text-lg'
+                  )}
+                >
+                  {name}
+                  <span class={val > 2 ? 'text-base' : 'text-xs'}>{val}</span>
+                </Button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No series yet.</p>
+        )
+      }
+    </div>
+  </main>
+</PageLayout>

@@ -1,0 +1,77 @@
+---
+import type { GetStaticPaths, Page } from 'astro'
+import type { CollectionEntry } from 'astro:content'
+
+import { Paginator, PostPreview } from 'astro-pure/components/pages'
+import { getBlogCollection } from 'astro-pure/server'
+import { Button } from 'astro-pure/user'
+import PageLayout from '@/layouts/BaseLayout.astro'
+import config from '@/site-config'
+
+export const prerender = true
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
+  const allPosts = await getBlogCollection()
+  const uniqueSeries = [
+    ...new Set(allPosts.map((p) => p.data.series).filter((s): s is string => !!s))
+  ]
+
+  return uniqueSeries.flatMap((seriesName) => {
+    const seriesPosts = allPosts
+      .filter((post) => post.data.series === seriesName)
+      .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
+    return paginate(seriesPosts, {
+      pageSize: config.content.blogPageSize,
+      params: { series: slugify(seriesName) },
+      props: { seriesName }
+    })
+  })
+}
+
+interface Props {
+  page: Page<CollectionEntry<'blog'>>
+  seriesName: string
+}
+
+const { page, seriesName } = Astro.props
+
+const meta = {
+  description: `All posts in the series - ${seriesName}`,
+  title: `Series: ${seriesName}`
+}
+
+const paginationProps = {
+  ...(page.url.prev && {
+    prevUrl: {
+      text: `← Previous`,
+      url: page.url.prev
+    }
+  }),
+  ...(page.url.next && {
+    nextUrl: {
+      text: `Next →`,
+      url: page.url.next
+    }
+  })
+}
+---
+
+<PageLayout {meta}>
+  <Button title='Back' href='/series' variant='back' />
+  <main class='mt-6 lg:mt-10'>
+    <div id='content-header' class='animate'>
+      <h1 class='mb-6 flex items-end gap-x-2 text-3xl font-medium'>
+        Series:
+        <span class='text-2xl'>{seriesName}</span>
+      </h1>
+    </div>
+
+    <section id='content' class='animate' aria-label='Blog post list'>
+      <ul class='flex flex-col gap-y-3 text-start'>
+        {page.data.map((post) => <PostPreview as='h2' {post} detailed />)}
+      </ul>
+      <Paginator {...paginationProps} />
+    </section>
+  </main>
+</PageLayout>
