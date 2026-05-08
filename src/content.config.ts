@@ -39,7 +39,9 @@ const blog = defineCollection({
       series: z.string().optional(),
       seriesOrder: z.number().optional(),
       // Special fields
-      comment: z.boolean().default(true)
+      comment: z.boolean().default(true),
+      // AI-generated TL;DR. Filled in by `npm run summaries`; never write by hand.
+      summary: z.string().optional()
     })
 })
 

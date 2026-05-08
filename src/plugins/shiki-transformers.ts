@@ -19,6 +19,13 @@ function parseMetaString(str = '') {
   )
 }
 
+// Stable, short, content-derived id so URLs like #code-abc123-L10 survive across rebuilds.
+function hashSource(str: string): string {
+  let h = 5381
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0
+  return (h >>> 0).toString(36).slice(0, 7)
+}
+
 // Nest a div in the outer layer
 export const updateStyle = (): ShikiTransformer => {
   return {
@@ -176,6 +183,35 @@ export const addCollapsible = (threshold: number = 15): ShikiTransformer => {
       )
 
       node.children.push(button)
+    }
+  }
+}
+
+// Add line numbers + a stable id per block so URL hashes like
+// #code-abc123-L10 or #code-abc123-L10-L20 can highlight ranges client-side.
+// Disable per-block via meta `noLineNumbers`.
+export const addLineNumbers = (): ShikiTransformer => {
+  return {
+    name: 'shiki-transformer-line-numbers',
+    pre(node) {
+      const rawMeta = this.options.meta?.__raw
+      const meta = rawMeta ? parseMetaString(rawMeta) : {}
+      if (meta.noLineNumbers) return
+
+      const id = `code-${hashSource(this.source)}`
+      node.properties['id'] = id
+      node.properties['data-line-numbers'] = ''
+    },
+    code(node) {
+      let lineNo = 1
+      for (const child of node.children) {
+        if (child.type !== 'element') continue
+        const cls = child.properties?.class
+        const classes = Array.isArray(cls) ? cls : typeof cls === 'string' ? cls.split(' ') : []
+        if (classes.includes('line')) {
+          child.properties['data-line'] = lineNo++
+        }
+      }
     }
   }
 }

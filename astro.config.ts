@@ -1,6 +1,7 @@
 // @ts-check
 
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
+import sitemap from '@astrojs/sitemap'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
@@ -8,10 +9,12 @@ import { remarkAlert } from 'remark-github-blockquote-alert'
 import remarkMath from 'remark-math'
 
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
+import remarkMermaid from './src/plugins/remark-mermaid.ts'
 import {
   addCollapsible,
   addCopyButton,
   addLanguage,
+  addLineNumbers,
   addTitle,
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -31,14 +34,21 @@ export default defineConfig({
     }
   },
 
-  integrations: [AstroPureIntegration(config)],
+  integrations: [
+    AstroPureIntegration(config),
+    sitemap({
+      filter: (page) => !page.includes('/og/'),
+      changefreq: 'weekly',
+      priority: 0.7
+    })
+  ],
 
   prefetch: true,
   server: {
     host: true
   },
   markdown: {
-    remarkPlugins: [remarkMath, remarkAlert],
+    remarkPlugins: [remarkMath, remarkAlert, remarkMermaid],
     rehypePlugins: [
       [rehypeKatex, { strict: false }],
       rehypeHeadingIds,
@@ -63,6 +73,7 @@ export default defineConfig({
         addTitle(),
         addLanguage(),
         addCopyButton(2000),
+        addLineNumbers(),
         addCollapsible(15)
       ]
     }

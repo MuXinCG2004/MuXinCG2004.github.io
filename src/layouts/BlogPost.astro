@@ -9,6 +9,7 @@ import { MediumZoom } from 'astro-pure/advanced'
 import { ArticleBottom, Copyright, Hero, TOC } from 'astro-pure/components/pages'
 import PageLayout from '@/layouts/ContentLayout.astro'
 import Giscus from '@/components/blog/Giscus.astro'
+import Mermaid from '@/components/blog/Mermaid.astro'
 import RelatedPosts from '@/components/blog/RelatedPosts.astro'
 import SeriesNavigation from '@/components/blog/SeriesNavigation.astro'
 import { integ } from '@/site-config'
@@ -35,6 +36,18 @@ const {
   updatedDate
 } = data
 
+// Augment astro-pure's "X min read" with word count, formatted for CJK + en.
+const formatWordCount = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(1)}k` : `${n}`)
+const minutesRead = remarkPluginFrontmatter?.minutesRead as string | undefined
+const words = remarkPluginFrontmatter?.words as number | undefined
+const enhancedFrontmatter = {
+  ...remarkPluginFrontmatter,
+  minutesRead:
+    minutesRead && typeof words === 'number'
+      ? `${minutesRead} · ${formatWordCount(words)} words`
+      : minutesRead
+}
+
 const socialImage = heroImage
   ? typeof heroImage.src === 'string'
     ? heroImage.src
@@ -51,9 +64,21 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
 >
   {!!headings.length && <TOC {headings} slot='sidebar' />}
 
-  <Hero {data} {remarkPluginFrontmatter} slot='header' />
+  <Hero {data} remarkPluginFrontmatter={enhancedFrontmatter} slot='header' />
 
   <SeriesNavigation currentPost={Astro.props.post} {posts} />
+
+  {data.summary && (
+    <aside class='tldr not-prose mb-6 mt-2 rounded-xl border border-primary/20 bg-primary/5 px-4 py-3'>
+      <div class='mb-1 flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-primary/80'>
+        <svg class='size-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>
+          <path d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83' />
+        </svg>
+        <span>TL;DR</span>
+      </div>
+      <p class='text-sm leading-relaxed text-foreground/85'>{data.summary}</p>
+    </aside>
+  )}
 
   <slot />
 
@@ -68,19 +93,53 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
 </PageLayout>
 
 {integ.mediumZoom.enable && <MediumZoom />}
+<Mermaid />
 
 <div id='reading-progress' aria-hidden='true'></div>
-<script is:inline>
-  ;(function () {
+<script>
+  let cleanup: (() => void) | null = null
+  document.addEventListener('astro:page-load', () => {
+    cleanup?.()
     const bar = document.getElementById('reading-progress')
     if (!bar) return
-    function updateProgress() {
+    const update = () => {
       const scrollTop = window.scrollY
       const docHeight = document.documentElement.scrollHeight - window.innerHeight
       const progress = docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0
-      bar.style.width = (progress * 100) + '%'
+      bar.style.width = progress * 100 + '%'
     }
-    window.addEventListener('scroll', updateProgress, { passive: true })
-    updateProgress()
-  })()
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    cleanup = () => window.removeEventListener('scroll', update)
+  })
+</script>
+
+<script>
+  // Code-block line linking: parse #code-<hash>-L10 or -L10-L20 and highlight.
+  function applyHashHighlight() {
+    const hash = window.location.hash.slice(1)
+    if (!hash) return
+    document
+      .querySelectorAll('.line.line-link-highlight')
+      .forEach((el) => el.classList.remove('line-link-highlight'))
+
+    const m = hash.match(/^(code-[a-z0-9]+)-L(\d+)(?:-L(\d+))?$/)
+    if (!m) return
+    const [, blockId, startStr, endStr] = m
+    const start = Number(startStr)
+    const end = endStr ? Number(endStr) : start
+    const block = document.getElementById(blockId)
+    if (!block) return
+    let firstHit: HTMLElement | null = null
+    block.querySelectorAll<HTMLElement>('.line[data-line]').forEach((el) => {
+      const n = Number(el.dataset.line)
+      if (n >= start && n <= end) {
+        el.classList.add('line-link-highlight')
+        if (!firstHit) firstHit = el
+      }
+    })
+    firstHit?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+  document.addEventListener('astro:page-load', applyHashHighlight)
+  window.addEventListener('hashchange', applyHashHighlight)
 </script>

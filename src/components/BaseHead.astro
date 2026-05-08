@@ -1,6 +1,6 @@
 ---
 import type { SiteMeta } from 'astro-pure/types'
-import config from '@/site-config'
+import config, { analytics } from '@/site-config'
 
 type Props = SiteMeta
 
@@ -9,6 +9,7 @@ const { articleDate, description, ogImage, title } = Astro.props
 const siteTitle = `${title} ${config.titleDelimiter} ${config.title}`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const socialImageURL = ogImage ? new URL(ogImage, Astro.url).href : undefined
+const enableAnalytics = analytics.enabled && import.meta.env.PROD
 ---
 
 <meta charset='utf-8' />
@@ -128,6 +129,9 @@ const socialImageURL = ogImage ? new URL(ogImage, Astro.url).href : undefined
 />
 
 <meta content={Astro.generator} name='generator' />
+
+{/* Analytics (production only, configured in src/site.config.ts) */}
+{enableAnalytics && <script async defer src={analytics.src} {...analytics.attrs} />}
 
 {/* Styles */}
 <link rel='stylesheet' href='/styles/global.css' />

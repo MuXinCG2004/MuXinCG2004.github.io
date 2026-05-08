@@ -94,5 +94,34 @@ export const integ: IntegrationUserConfig = {
   }
 }
 
+/**
+ * Drop-in analytics snippet. Only emitted in production.
+ *
+ * Defaults to Umami Cloud — sign up at https://cloud.umami.is, add a website,
+ * paste the website-id below, and flip `enabled` to true.
+ *
+ * Self-hosted Umami: change `src` to your instance URL.
+ *
+ * To swap providers, just change `src` + `attrs`. Tested shapes:
+ *   - Umami:    src='.../script.js'  attrs={'data-website-id': '...'}
+ *   - Plausible: src='https://plausible.io/js/script.js' attrs={'data-domain': '...'}
+ *   - GoatCounter: src='//gc.zgo.at/count.js' attrs={'data-goatcounter': '...'}
+ *   - Cloudflare Web Analytics: src='https://static.cloudflareinsights.com/beacon.min.js'
+ *                               attrs={'data-cf-beacon': '{"token":"..."}'}
+ */
+export interface AnalyticsConfig {
+  enabled: boolean
+  src: string
+  attrs: Record<string, string>
+}
+
+export const analytics: AnalyticsConfig = {
+  enabled: false,
+  src: 'https://cloud.umami.is/script.js',
+  attrs: {
+    'data-website-id': 'YOUR-WEBSITE-ID-HERE'
+  }
+}
+
 const config = { ...theme, integ } as Config
 export default config

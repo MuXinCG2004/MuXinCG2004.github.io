@@ -14,11 +14,13 @@
     "new": "astro-pure new",
     "format": "prettier --write  '**/*.{js,jsx,ts,tsx,md,mdx,astro}'",
     "lint": "eslint --fix 'src/**/*.{js,ts,jsx,tsx,astro}'",
+    "summaries": "tsx scripts/generate-summaries.ts",
     "clean": "bash scripts/clean.sh",
     "clean:deep": "bash scripts/clean.sh --deep"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.7.0",
     "@playform/compress": "^0.2.0",
     "@resvg/resvg-js": "^2.6.2",
     "@shikijs/transformers": "^4.0.1",

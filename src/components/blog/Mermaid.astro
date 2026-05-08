@@ -1,0 +1,103 @@
+---
+// Client-only mermaid loader. No-ops on pages without mermaid blocks.
+// Loads mermaid from jsDelivr lazily to keep zero bundle cost on other pages.
+---
+
+<script>
+  type Mermaid = {
+    initialize: (cfg: Record<string, unknown>) => void
+    run: (opts?: { querySelector?: string; nodes?: ArrayLike<Element> }) => Promise<void>
+  }
+  declare global {
+    interface Window {
+      __mermaid?: Mermaid
+      __mermaidLoading?: Promise<Mermaid>
+    }
+  }
+
+  const MERMAID_URL = 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs'
+
+  function getTheme(): 'dark' | 'default' {
+    return document.documentElement.classList.contains('dark') ? 'dark' : 'default'
+  }
+
+  async function loadMermaid(): Promise<Mermaid> {
+    if (window.__mermaid) return window.__mermaid
+    if (!window.__mermaidLoading) {
+      window.__mermaidLoading = import(/* @vite-ignore */ MERMAID_URL).then((m) => {
+        const mermaid = (m.default ?? m) as Mermaid
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: getTheme(),
+          securityLevel: 'loose',
+          fontFamily: 'inherit'
+        })
+        window.__mermaid = mermaid
+        return mermaid
+      })
+    }
+    return window.__mermaidLoading
+  }
+
+  async function render() {
+    const blocks = document.querySelectorAll<HTMLElement>('pre.mermaid:not([data-processed])')
+    if (!blocks.length) return
+    try {
+      const mermaid = await loadMermaid()
+      // Re-init on every navigation so theme follows toggle if it changed
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: getTheme(),
+        securityLevel: 'loose',
+        fontFamily: 'inherit'
+      })
+      await mermaid.run({ nodes: blocks })
+    } catch (err) {
+      console.error('[mermaid] render failed', err)
+    }
+  }
+
+  document.addEventListener('astro:page-load', render)
+
+  // Re-render when the theme toggle flips .dark on <html>
+  const themeObserver = new MutationObserver(async () => {
+    document
+      .querySelectorAll<HTMLElement>('pre.mermaid[data-processed]')
+      .forEach((el) => {
+        const src = el.getAttribute('data-source')
+        if (src) {
+          el.removeAttribute('data-processed')
+          el.innerHTML = src
+        }
+      })
+    render()
+  })
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+
+  // Stash the original source before mermaid mutates the DOM, so theme toggle
+  // can restore and re-render. Run before the first render pass.
+  document.addEventListener('astro:page-load', () => {
+    document
+      .querySelectorAll<HTMLElement>('pre.mermaid:not([data-source])')
+      .forEach((el) => {
+        el.setAttribute('data-source', el.innerHTML)
+      })
+  })
+</script>
+
+<style is:global>
+  pre.mermaid {
+    background: transparent;
+    padding: 0;
+    margin: 1.25rem auto;
+    text-align: center;
+    overflow-x: auto;
+  }
+  pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
