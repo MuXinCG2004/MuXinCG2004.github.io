@@ -131,7 +131,7 @@ const enableAnalytics = analytics.enabled && import.meta.env.PROD
 <meta content={Astro.generator} name='generator' />
 
 {/* Analytics (production only, configured in src/site.config.ts) */}
-{enableAnalytics && <script async defer src={analytics.src} {...analytics.attrs} />}
+{enableAnalytics && <script is:inline async defer src={analytics.src} {...analytics.attrs} />}
 
 {/* Styles */}
 <link rel='stylesheet' href='/styles/global.css' />

@@ -9,4 +9,3 @@ language: 'en'
 series: 'Algorithm Miscellany'
 seriesOrder: 8
 ---
-

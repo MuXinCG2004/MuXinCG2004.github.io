@@ -135,10 +135,10 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
       const n = Number(el.dataset.line)
       if (n >= start && n <= end) {
         el.classList.add('line-link-highlight')
-        if (!firstHit) firstHit = el
+        if (firstHit === null) firstHit = el
       }
     })
-    firstHit?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    ;(firstHit as HTMLElement | null)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
   document.addEventListener('astro:page-load', applyHashHighlight)
   window.addEventListener('hashchange', applyHashHighlight)

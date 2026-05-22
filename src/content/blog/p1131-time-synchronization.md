@@ -1,7 +1,7 @@
 ---
 title: 'P1131 [ZJOI2007] Time Synchronization - Luogu Solution'
 publishDate: 2026-05-06
-description: 'Tree DP on a rooted tree: align all leaf arrival times by only increasing edge weights. Compute the longest root-to-leaf path per subtree and pay the gap on each child branch.'
+description: 'Tree DP: align leaf arrival times by only increasing edge weights. Compute the longest root-to-leaf path per subtree and pay the gap on each child branch.'
 tags:
   - Algorithm
   - Luogu

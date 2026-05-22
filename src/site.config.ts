@@ -116,10 +116,10 @@ export interface AnalyticsConfig {
 }
 
 export const analytics: AnalyticsConfig = {
-  enabled: false,
+  enabled: true,
   src: 'https://cloud.umami.is/script.js',
   attrs: {
-    'data-website-id': 'YOUR-WEBSITE-ID-HERE'
+    'data-website-id': 'f459e826-5123-4810-b769-01656f9045b0'
   }
 }
 
