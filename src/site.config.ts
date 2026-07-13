@@ -1,6 +1,5 @@
 import type { Config, IntegrationUserConfig, ThemeUserConfig } from 'astro-pure/types'
 
-
 export const theme: ThemeUserConfig = {
   // === Basic configuration ===
   /** Title for your website. Will be used in metadata and as browser tab title. */
@@ -41,6 +40,7 @@ export const theme: ThemeUserConfig = {
   header: {
     menu: [
       { title: 'Blog', link: '/blog' },
+      { title: 'Roadmap', link: '/roadmap' },
       { title: 'Series', link: '/series' },
       { title: 'About', link: '/about' }
     ]
@@ -51,7 +51,10 @@ export const theme: ThemeUserConfig = {
     year: `© ${new Date().getFullYear()}`,
     links: [],
     credits: false,
-    social: { github: 'https://github.com/MuXinCG2004', email: 'mailto:202322130196@mail.sdu.edu.cn' }
+    social: {
+      github: 'https://github.com/MuXinCG2004',
+      email: 'mailto:202322130196@mail.sdu.edu.cn'
+    }
   },
 
   content: {

@@ -1,0 +1,281 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+import { getBlogCollection } from 'astro-pure/server'
+import { Button } from 'astro-pure/user'
+import { getFormattedDate } from 'astro-pure/utils'
+import PageLayout from '@/layouts/BaseLayout.astro'
+
+export const prerender = true
+
+type BlogPost = CollectionEntry<'blog'>
+
+type TrackConfig = {
+  id: string
+  title: string
+  eyebrow: string
+  description: string
+  href: string
+  accent: 'sky' | 'emerald' | 'amber' | 'rose' | 'violet'
+  match: (post: BlogPost) => boolean
+}
+
+const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
+
+const sortByRoadmapOrder = (a: BlogPost, b: BlogPost) => {
+  const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER
+  const orderB = b.data.seriesOrder ?? Number.MAX_SAFE_INTEGER
+  if (orderA !== orderB) return orderA - orderB
+  if (a.data.publishDate.getTime() !== b.data.publishDate.getTime()) {
+    return a.data.publishDate.getTime() - b.data.publishDate.getTime()
+  }
+  return a.data.title.localeCompare(b.data.title)
+}
+
+const tracks: TrackConfig[] = [
+  {
+    id: 'ml-foundations',
+    title: 'Machine Learning Foundations',
+    eyebrow: 'CS229',
+    description:
+      'Regression, classification, generalized linear models, and the mathematical base for later model work.',
+    href: `/series/${slugify('CS229 Machine Learning')}`,
+    accent: 'sky',
+    match: (post) => post.data.series === 'CS229 Machine Learning'
+  },
+  {
+    id: 'language-modeling',
+    title: 'Language Modeling From Scratch',
+    eyebrow: 'CS336',
+    description:
+      'Tokenizer, Transformer, systems, scaling laws, data processing, alignment, and reasoning RL.',
+    href: `/series/${slugify('CS336 Language Modeling from Scratch')}`,
+    accent: 'emerald',
+    match: (post) => post.data.series === 'CS336 Language Modeling from Scratch'
+  },
+  {
+    id: 'algorithm-system',
+    title: 'Algorithm System',
+    eyebrow: 'Algorithms',
+    description:
+      'Core techniques, data structures, graph theory, strings, math, geometry, and review notes.',
+    href: '/tags/algorithm',
+    accent: 'amber',
+    match: (post) =>
+      post.data.series === 'Algorithm Miscellany' || post.data.series === 'Algorithm Review'
+  },
+  {
+    id: 'problem-solving',
+    title: 'Problem Solving',
+    eyebrow: 'OJ Practice',
+    description:
+      'Selected Codeforces and Luogu writeups focused on construction, bit tricks, trees, and implementation details.',
+    href: '/tags/codeforces',
+    accent: 'rose',
+    match: (post) =>
+      post.data.series === 'Codeforces Solutions' ||
+      post.data.series === 'Luogu Solutions' ||
+      post.data.tags.includes('codeforces') ||
+      post.data.tags.includes('luogu')
+  },
+  {
+    id: 'journal',
+    title: 'Journal',
+    eyebrow: 'Diary',
+    description: 'Personal notes that capture context around study, research, and project work.',
+    href: `/series/${slugify('Diary')}`,
+    accent: 'violet',
+    match: (post) => post.data.series === 'Diary'
+  }
+]
+
+const accentClass = {
+  sky: {
+    border: 'border-sky-500/30',
+    bg: 'bg-sky-500/10',
+    text: 'text-sky-700 dark:text-sky-300',
+    marker: 'bg-sky-500'
+  },
+  emerald: {
+    border: 'border-emerald-500/30',
+    bg: 'bg-emerald-500/10',
+    text: 'text-emerald-700 dark:text-emerald-300',
+    marker: 'bg-emerald-500'
+  },
+  amber: {
+    border: 'border-amber-500/35',
+    bg: 'bg-amber-500/10',
+    text: 'text-amber-700 dark:text-amber-300',
+    marker: 'bg-amber-500'
+  },
+  rose: {
+    border: 'border-rose-500/30',
+    bg: 'bg-rose-500/10',
+    text: 'text-rose-700 dark:text-rose-300',
+    marker: 'bg-rose-500'
+  },
+  violet: {
+    border: 'border-violet-500/30',
+    bg: 'bg-violet-500/10',
+    text: 'text-violet-700 dark:text-violet-300',
+    marker: 'bg-violet-500'
+  }
+}
+
+const allPosts = await getBlogCollection()
+const allSeries = new Set(allPosts.map((post) => post.data.series).filter(Boolean))
+const allTags = new Set(allPosts.flatMap((post) => post.data.tags))
+
+const roadmapTracks = tracks
+  .map((track) => {
+    const posts = allPosts.filter(track.match).sort(sortByRoadmapOrder)
+    const tags = [...new Set(posts.flatMap((post) => post.data.tags))].slice(0, 5)
+    const latest = posts
+      .map((post) => post.data.updatedDate ?? post.data.publishDate)
+      .sort((a, b) => b.getTime() - a.getTime())[0]
+
+    return {
+      ...track,
+      posts,
+      tags,
+      latest
+    }
+  })
+  .filter((track) => track.posts.length > 0)
+
+const meta = {
+  description:
+    'A structured reading roadmap for courses, algorithms, problem solving, and journal posts.',
+  title: 'Roadmap'
+}
+---
+
+<PageLayout {meta} highlightColor='#6A9A8B'>
+  <Button title='Back' href='/' variant='back' />
+
+  <main class='mt-6 lg:mt-10'>
+    <section id='content-header' class='animate'>
+      <div class='flex flex-col gap-5 border-b pb-8'>
+        <div class='max-w-3xl'>
+          <p class='mb-3 text-xs font-semibold uppercase tracking-wide text-primary'>Roadmap</p>
+          <h1 class='text-3xl font-semibold leading-tight sm:text-4xl'>
+            Computer Science Learning Map
+          </h1>
+          <p class='mt-4 max-w-2xl text-base leading-7 text-muted-foreground'>
+            Course notes, algorithm reviews, and problem writeups arranged into practical reading
+            tracks.
+          </p>
+        </div>
+
+        <div class='grid gap-3 sm:grid-cols-3'>
+          <div class='rounded-lg border bg-muted/20 px-4 py-3'>
+            <p class='text-2xl font-semibold'>{allPosts.length}</p>
+            <p class='text-sm text-muted-foreground'>Published posts</p>
+          </div>
+          <div class='rounded-lg border bg-muted/20 px-4 py-3'>
+            <p class='text-2xl font-semibold'>{allSeries.size}</p>
+            <p class='text-sm text-muted-foreground'>Series</p>
+          </div>
+          <div class='rounded-lg border bg-muted/20 px-4 py-3'>
+            <p class='text-2xl font-semibold'>{allTags.size}</p>
+            <p class='text-sm text-muted-foreground'>Topic tags</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class='animate mt-8' aria-label='Roadmap tracks'>
+      <div class='flex flex-wrap gap-2'>
+        {
+          roadmapTracks.map((track) => (
+            <a
+              href={`#${track.id}`}
+              class={`rounded-full border px-3 py-1.5 text-sm transition-colors hover:bg-muted ${accentClass[track.accent].border}`}
+            >
+              {track.eyebrow}
+              <span class='ms-1 text-muted-foreground'>{track.posts.length}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <div id='content' class='animate mt-12 flex flex-col gap-14'>
+      {
+        roadmapTracks.map((track) => (
+          <section id={track.id} class='scroll-mt-24'>
+            <div class='mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between'>
+              <div class='max-w-2xl'>
+                <p
+                  class={`mb-2 text-xs font-semibold uppercase tracking-wide ${accentClass[track.accent].text}`}
+                >
+                  {track.eyebrow}
+                </p>
+                <h2 class='text-2xl font-semibold'>{track.title}</h2>
+                <p class='mt-2 leading-7 text-muted-foreground'>{track.description}</p>
+              </div>
+              <div class='flex shrink-0 flex-wrap items-center gap-2 text-sm'>
+                <a href={track.href} class='font-medium'>
+                  View collection →
+                </a>
+              </div>
+            </div>
+
+            <div class='mb-4 flex flex-wrap items-center gap-2 text-xs text-muted-foreground'>
+              <span
+                class={`rounded-full px-2 py-1 ${accentClass[track.accent].bg} ${accentClass[track.accent].text}`}
+              >
+                {track.posts.length} note{track.posts.length > 1 && 's'}
+              </span>
+              {track.latest && <span>Updated {getFormattedDate(track.latest)}</span>}
+              {track.tags.map((tag) => (
+                <a href={`/tags/${tag}`} class='rounded-full border px-2 py-1 hover:bg-muted'>
+                  {tag}
+                </a>
+              ))}
+            </div>
+
+            <ol class='grid gap-3 lg:grid-cols-2'>
+              {track.posts.map((post, index) => (
+                <li>
+                  <a
+                    href={`/blog/${post.id}`}
+                    class={`group grid min-h-35 grid-cols-[3.25rem_1fr] gap-4 rounded-lg border bg-card px-4 py-4 transition-colors hover:bg-muted/40 ${accentClass[track.accent].border}`}
+                  >
+                    <span
+                      class={`flex size-11 items-center justify-center rounded-md text-sm font-semibold ${accentClass[track.accent].bg} ${accentClass[track.accent].text}`}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    <span class='min-w-0'>
+                      <span class='flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground'>
+                        {post.data.series && <span>{post.data.series}</span>}
+                        <time datetime={post.data.publishDate.toISOString()}>
+                          {getFormattedDate(post.data.publishDate)}
+                        </time>
+                      </span>
+                      <span class='mt-1 block text-base font-semibold leading-6 transition-colors group-hover:text-primary'>
+                        {post.data.title}
+                      </span>
+                      <span class='mt-2 line-clamp-2 block text-sm leading-6 text-muted-foreground'>
+                        {post.data.summary ?? post.data.description}
+                      </span>
+                      <span class='mt-3 flex flex-wrap gap-1.5'>
+                        {post.data.tags.slice(0, 4).map((tag) => (
+                          <span class='rounded-md bg-muted px-1.5 py-0.5 text-xs text-muted-foreground'>
+                            {tag}
+                          </span>
+                        ))}
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</PageLayout>
