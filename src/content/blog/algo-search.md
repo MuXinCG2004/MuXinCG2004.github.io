@@ -4,10 +4,12 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: A* search and iterative deepening search algorithms.'
 tags:
   - Algorithm
+  - Search
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 2
+seriesOrder: 3
+summary: 'A* 靠不超过真实距离的启发函数保证最优性，迭代加深与 IDA* 分别用深度和代价上限控制 DFS，配合记忆化与可行性剪枝。'
 ---
 
 ## A* 算法
@@ -74,7 +76,7 @@ Alpha-Beta剪枝是针对Minimax算法的搜索剪枝
 
 ## 剪枝
 
-最常用的剪枝有三种:记忆化搜索、最优性剪枝、可行性剪枝
+最常用的剪枝有三种：记忆化搜索、最优性剪枝、可行性剪枝
 
 ### 记忆化搜索
 
@@ -93,6 +95,6 @@ Alpha-Beta剪枝是针对Minimax算法的搜索剪枝
 
 剪枝思路有很多种，大多需要对于具体问题来分析，在此简要介绍几种常见的剪枝思路
 
-- 极端法:考虑极端情况，如果最极端的情况都无法满足，那么肯定实际情况搜出来的情况不会更优了
-- 调整法:通过对子树的比较剪掉重复子树或者明显不适最有前途的子树
-- 数学方法:比如在图论中借助连通分量，数论中借助模方程的分析，借助不等式的放缩来估计下界等等
+- 极端法：考虑极端情况，如果最极端的情况都无法满足，那么肯定实际情况搜出来的情况不会更优了
+- 调整法：通过对子树的比较剪掉重复子树或者明显不适最有前途的子树
+- 数学方法：比如在图论中借助连通分量，数论中借助模方程的分析，借助不等式的放缩来估计下界等等

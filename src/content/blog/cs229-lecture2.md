@@ -6,9 +6,10 @@ tags:
   - Machine Learning
   - CS229
   - Notes
-language: 'en'
+language: 'zh'
 series: 'CS229 Machine Learning'
 seriesOrder: 2
+summary: '分类问题的目标变量只取离散值，用 sigmoid 把线性输出压到 (0,1) 区间，即得到逻辑回归模型。'
 ---
 
 我们接下来将视角转向分类问题，分类问题与回归问题类似，区别在于需要预测的目标变量只能取有限的离散值。
@@ -34,7 +35,5 @@ $$
 称为**逻辑函数**或 **S 形函数**。
 
 ## 多类别分类
-
-##
 
 ## 附录

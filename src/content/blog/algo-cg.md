@@ -4,8 +4,9 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: computational geometry-related algorithms.'
 tags:
   - Algorithm
+  - Computational Geometry
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 8
+seriesOrder: 9
 ---

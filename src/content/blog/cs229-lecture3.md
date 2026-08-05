@@ -6,9 +6,10 @@ tags:
   - Machine Learning
   - CS229
   - Notes
-language: 'en'
+language: 'zh'
 series: 'CS229 Machine Learning'
 seriesOrder: 3
+summary: '指数族的统一形式 p(y;η)=b(y)exp(ηᵀT(y)−a(η))，由它构造广义线性模型可把最小二乘与逻辑回归纳入同一框架。'
 ---
 
 我们将在这节课中展示一个广义线性模型，

@@ -4,20 +4,22 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: data structure-related algorithms.'
 tags:
   - Algorithm
+  - Data Structure
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 6
+seriesOrder: 7
+summary: '并查集用路径压缩加按大小合并维护集合归属，再以分块、ST 表与线段树支撑区间查询与修改。'
 ---
 
 ## 并查集
 
 并查集是一种用于管理元素所属集合的数据结构，实现为一个森林，其中每棵树代表一个集合，树中的节点表示对应集合中的元素
 
-顾名思义，并查集支持两种操作:
+顾名思义，并查集支持两种操作：
 
-- 合并:合并两个元素所属集合
-- 查询:查询某个元素
+- 合并：合并两个元素所属集合
+- 查询：查询某个元素
 
 ```cpp
 struct DSU {
@@ -93,7 +95,7 @@ $$
 
 最后一个块可能是不完整的，但是这对于我们的讨论来说并没有太大影响
 
-首先看查询操作:
+首先看查询操作：
 
 - 若$l$和$r$在同一个块内，直接暴力求和即可，因为块长为$s$，因此最坏复杂度为$O(s)$
 

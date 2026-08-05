@@ -6,9 +6,10 @@ tags:
   - Algorithm
   - Codeforces
   - Greedy
-language: 'en'
+language: 'zh'
 series: 'Codeforces Solutions'
 seriesOrder: 3
+summary: '青蛙在数轴上跳跃且每种跳法有周期性罚时，贪心优先使用无罚时的跳法，O(n) 求出到达目标的最少罚时次数。'
 ---
 
 青蛙掌握了 $n$ 种魔法跳跃，每种跳跃有最大距离限制，但每隔一定次数会触发回退诅咒。本文分析如何以最少的回退次数到达目标点。

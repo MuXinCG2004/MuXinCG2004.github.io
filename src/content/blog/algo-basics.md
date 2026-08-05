@@ -5,9 +5,10 @@ description: 'Algorithm Miscellany series: ternary search, discretization, and o
 tags:
   - Algorithm
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
 seriesOrder: 1
+summary: '用 bitset 压位加速集合运算，树上前缀和与差分借 LCA 处理路径统计，倍增法压缩大状态空间的递推。'
 ---
 
 最近为了准备保研的机试，开始看 `OI-WIKI` 并且刷题，这个博客主要用来记录我还不熟悉，或者冷门的一些算法和 trick 技巧。
@@ -45,7 +46,7 @@ std::bitset<1000> bs; // a bitset with 1000 bits
 - `size()`：返回 `bitset` 的大小
 - `test(pos)`：它和 `vector` 中的 `at()` 的作用是一样的，和 `[]`
 - `any()`：若存在某一位是 `true` 则返回 `true`，否则返回 `false`
-- `none()`:若所有位都是`true`则返回`true`，否则返回`false`
+- `none()`：若所有位都是`true`则返回`true`，否则返回`false`
 - `all()`
   -  
   -  

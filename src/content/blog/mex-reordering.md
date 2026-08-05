@@ -6,9 +6,10 @@ tags:
   - Algorithm
   - Codeforces
   - Construction
-language: 'en'
+language: 'zh'
 series: 'Codeforces Solutions'
 seriesOrder: 2
+summary: '通过分析 0 与 1 的出现次数构造重排，使任意前缀与后缀的 MEX 都不相等，单次遍历 O(n) 完成。'
 ---
 
 判断能否重排数组，使得对所有分割点，前缀的 MEX 与后缀的 MEX 不相等。本文分析了零和一的数量对答案的决定性影响。

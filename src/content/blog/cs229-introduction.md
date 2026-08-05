@@ -6,9 +6,10 @@ tags:
   - Machine Learning
   - CS229
   - Notes
-language: 'en'
+language: 'zh'
 series: 'CS229 Machine Learning'
 seriesOrder: 0
+summary: 'CS229 的监督、无监督与强化学习三大板块，所需的线性代数、概率论与微积分基础，以及本系列的整体规划。'
 ---
 
 Stanford CS229 是最经典的机器学习入门课程之一。本系列将系统整理课程的核心知识点，从线性回归到深度学习，逐步构建机器学习的完整知识体系。

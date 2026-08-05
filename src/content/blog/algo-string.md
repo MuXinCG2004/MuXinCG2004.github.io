@@ -4,10 +4,12 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: string-related algorithms.'
 tags:
   - Algorithm
+  - String
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 4
+seriesOrder: 5
+summary: '字符串哈希由哈希值不等推出原串不等，Trie 按字符转移建树，KMP 用前缀函数记录最长相等真前后缀以避免回溯。'
 ---
 
 ## 字符串哈希

@@ -6,9 +6,10 @@ tags:
   - Algorithm
   - Dynamic Programming
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 3
+seriesOrder: 4
+summary: '逐维求和把 k 维前缀和做到 O(kN)，据此得到 O(n·2ⁿ) 的子集和 DP，并用状态合法性判定重构最长不下降子序列。'
 ---
 
 ## 高维前缀和

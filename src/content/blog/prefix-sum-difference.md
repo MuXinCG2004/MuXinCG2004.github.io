@@ -1,14 +1,15 @@
 ---
-title: 'Algorithm Review - Prefix Sum and Difference Array'
+title: 'Algorithm Miscellany - Prefix Sum and Difference'
 publishDate: 2026-03-10
 description: 'Review of 1D/2D prefix sums and difference arrays for range sum queries and range updates.'
 tags:
   - Algorithm
   - Data Structure
   - Review
-language: 'en'
-series: 'Algorithm Review'
-seriesOrder: 4
+language: 'zh'
+series: 'Algorithm Miscellany'
+seriesOrder: 2
+summary: '前缀和把区间求和降到 O(1)，差分把区间修改降到 O(1)，二维情形用容斥原理查询任意子矩阵。'
 ---
 
 最近要准备华为机试，因此这个专栏为了让我复习一些简单的算法，由于正式机试不能带板子，所以我们需要熟悉常见的板子的写法。

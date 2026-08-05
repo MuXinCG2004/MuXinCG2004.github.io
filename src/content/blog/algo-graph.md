@@ -4,10 +4,13 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: graph theory-related algorithms.'
 tags:
   - Algorithm
+  - Graph Theory
+  - Tree
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 7
+seriesOrder: 8
+summary: '树的中心使最长链最短、重心使最大连通块不超过一半，重链剖分把任意路径拆成 O(log n) 条连续链交给线段树维护。'
 ---
 
 ## 树的中心
@@ -21,7 +24,7 @@ seriesOrder: 7
 - 当通过
 - 
 
-求法:寻找一个点，使其作为根节点时，最长链的长度最短
+求法：寻找一个点，使其作为根节点时，最长链的长度最短
 
 - 维护$len1_x$，表示节点$x$子树内的最长链
 - 维护$len2_x$，表示不与

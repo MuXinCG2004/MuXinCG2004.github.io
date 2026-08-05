@@ -8,18 +8,19 @@ tags:
   - Transformer
   - Tokenization
   - Notes
-language: 'en'
+language: 'zh'
 series: 'CS336 Language Modeling from Scratch'
 seriesOrder: 1
+summary: '只用 PyTorch primitives 手写 BPE 分词器、RMSNorm/RoPE/SwiGLU 与 AdamW，拼出可在 TinyStories 上训练收敛的 decoder-only 模型。'
 ---
 
-Assignment 1 的目标是**只用 PyTorch primitives 从零搭起一个完整的语言模型**:从字节流到 token,从 token 到 Transformer,再到能够训练收敛的训练循环。这一篇是整个系列的地基。
+Assignment 1 的目标是**只用 PyTorch primitives 从零搭起一个完整的语言模型**：从字节流到 token，从 token 到 Transformer，再到能够训练收敛的训练循环。这一篇是整个系列的地基。
 
 ## 概述
 
-- 限制:不能用 `torch.nn.Transformer`,甚至不能用 `torch.nn.Linear`
-- 产出:一个可在 TinyStories / OpenWebText 上训练的 LM
-- 关注点:理解每个组件**为什么这样设计**,以及它的计算/显存代价
+- 限制：不能用 `torch.nn.Transformer`，甚至不能用 `torch.nn.Linear`
+- 产出：一个可在 TinyStories / OpenWebText 上训练的 LM
+- 关注点：理解每个组件**为什么这样设计**，以及它的计算/显存代价
 
 ## BPE Tokenizer
 
@@ -30,7 +31,7 @@ CS336的这一部分，首先添加了special_tokens，就是
 
 ## Transformer 架构
 
-逐个组件实现,组合成 decoder-only 的因果语言模型。
+逐个组件实现，组合成 decoder-only 的因果语言模型。
 
 ### Embedding
 
@@ -38,7 +39,7 @@ CS336的这一部分，首先添加了special_tokens，就是
 
 ### RMSNorm
 
-相比 LayerNorm 去掉了均值中心化,更省算力:
+相比 LayerNorm 去掉了均值中心化，更省算力：
 
 $$
 \text{RMSNorm}(x) = \frac{x}{\sqrt{\frac{1}{d}\sum_{i=1}^{d} x_i^2 + \epsilon}} \cdot g
@@ -46,7 +47,7 @@ $$
 
 ### RoPE(旋转位置编码)
 
-- 通过对 Q、K 做旋转,把相对位置信息注入注意力
+- 通过对 Q、K 做旋转，把相对位置信息注入注意力
 - 为什么优于绝对位置编码
 
 ### 因果多头自注意力
@@ -55,12 +56,12 @@ $$
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}} + M\right)V
 $$
 
-- 因果 mask $M$:防止看到未来 token
+- 因果 mask $M$：防止看到未来 token
 - 多头的拆分与拼接
 
 ### SwiGLU 前馈层
 
-- Gated 激活:$\text{SwiGLU}(x) = (\text{SiLU}(xW_1) \odot xW_3)W_2$
+- Gated 激活：$\text{SwiGLU}(x) = (\text{SiLU}(xW_1) \odot xW_3)W_2$
 - 为什么用门控、隐藏维度如何设置
 
 ## 训练
@@ -71,9 +72,9 @@ $$
 
 ### AdamW 优化器
 
-从零实现,注意 weight decay 与梯度更新解耦:
+从零实现，注意 weight decay 与梯度更新解耦：
 
-> 待补充:一阶/二阶矩、bias correction、与 Adam 的区别。
+> 待补充：一阶/二阶矩、bias correction、与 Adam 的区别。
 
 ### 学习率调度
 
@@ -87,9 +88,9 @@ $$
 
 ## 实验
 
-- **TinyStories**:小数据集,快速验证实现正确性
-- **OpenWebText**:更接近真实规模
-- 消融:学习率、batch size、架构超参对 loss 的影响
+- **TinyStories**：小数据集，快速验证实现正确性
+- **OpenWebText**：更接近真实规模
+- 消融：学习率、batch size、架构超参对 loss 的影响
 
 ## 参考资料
 

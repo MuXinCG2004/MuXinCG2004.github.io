@@ -7,9 +7,10 @@ tags:
   - Codeforces
   - Construction
   - Bit Manipulation
-language: 'en'
+language: 'zh'
 series: 'Codeforces Solutions'
 seriesOrder: 4
+summary: '用前缀异或配合唯一重复值构造正整数数组，使恰好指定的子数组异或和为零，边算边输出，空间 O(1)。'
 ---
 
 构造长度为 $n$ 的正整数数组，使得恰好只有子数组 $[l, r]$ 的异或值为零，其余所有子数组异或值均非零。本文利用前缀异或与值唯一性的关系给出简洁构造。

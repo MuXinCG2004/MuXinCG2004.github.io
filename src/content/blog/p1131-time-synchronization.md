@@ -7,9 +7,10 @@ tags:
   - Luogu
   - Tree DP
   - Tree
-language: 'en'
+language: 'zh'
 series: 'Luogu Solutions'
 seriesOrder: 1
+summary: '树形 DP 求每棵子树内根到叶的最长路径，再在各子节点分支上补齐差值，只增加边权即可让所有叶子到达时间一致。'
 ---
 
 好久没写算法题的分析了，今天来写一下

@@ -4,10 +4,12 @@ publishDate: 2026-03-10
 description: 'Algorithm Miscellany series: mathematics-related algorithms.'
 tags:
   - Algorithm
+  - Math
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 5
+seriesOrder: 6
+summary: '数论中整除与约数的基本性质，以及多项式与生成函数的基本概念。'
 ---
 
 ## 数论

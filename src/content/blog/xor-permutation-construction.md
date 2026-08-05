@@ -7,9 +7,10 @@ tags:
   - Codeforces
   - Construction
   - Bit Manipulation
-language: 'en'
+language: 'zh'
 series: 'Codeforces Solutions'
 seriesOrder: 1
+summary: '把所有异或结果都导向最后一个位置，构造出每个值与其后某个值异或后等于其下标的排列。'
 ---
 
 构造排列使得每个中间位置的值都能在后缀中找到与之异或等于下标的元素。本文从条件分析出发，推导出一个简洁的构造方案。

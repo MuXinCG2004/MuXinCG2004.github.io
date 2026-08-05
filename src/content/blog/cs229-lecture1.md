@@ -6,9 +6,10 @@ tags:
   - Machine Learning
   - CS229
   - Notes
-language: 'en'
+language: 'zh'
 series: 'CS229 Machine Learning'
 seriesOrder: 1
+summary: '把误差项假设为高斯噪声后，最大似然估计恰好等价于最小二乘，再用梯度下降迭代求解，并以局部加权回归拟合非线性。'
 ---
 
 在这篇博客中，我们来讨论线性回归问题，笔者才疏学浅，如有出错，请读者多多指正。

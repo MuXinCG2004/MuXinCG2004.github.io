@@ -12,9 +12,12 @@ export const theme: ThemeUserConfig = {
   favicon: '/favicon/favicon.ico',
   /** Specify the default language for this site. */
   locale: {
-    lang: 'en',
-    attrs: 'en_US',
-    // Date locale
+    // Post bodies are Chinese; this drives <html lang>, which Pagefind uses to
+    // pick its tokenizer. With 'en' the CJK text was left unsegmented and
+    // effectively unsearchable.
+    lang: 'zh',
+    attrs: 'zh_CN',
+    // Site chrome and post titles stay English, so keep English date formatting.
     dateLocale: 'en-US',
     dateOptions: {
       day: 'numeric',

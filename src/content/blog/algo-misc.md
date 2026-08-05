@@ -5,9 +5,10 @@ description: 'Algorithm Miscellany series: other miscellaneous algorithms and tr
 tags:
   - Algorithm
   - Review
-language: 'en'
+language: 'zh'
 series: 'Algorithm Miscellany'
-seriesOrder: 9
+seriesOrder: 10
+summary: '离散化用排序去重加二分把值域压到 O(n)，CDQ 分治则把动态问题转化为静态的点对问题。'
 ---
 
 ## 离散化
