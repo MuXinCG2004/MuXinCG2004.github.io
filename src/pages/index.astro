@@ -10,9 +10,11 @@ import Section from '@/components/home/Section.astro'
 import avatar from '@/assets/avatar.jpg'
 import config from '@/site-config'
 
-const MAX_POSTS = 3
 const allPosts = await getBlogCollection()
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+const allPostsByDate = sortMDByDate(allPosts)
+const recentPosts = allPostsByDate.slice(0, 5)
+const seriesCount = new Set(allPosts.map((post) => post.data.series).filter(Boolean)).size
+const tagCount = new Set(allPosts.flatMap((post) => post.data.tags)).size
 ---
 
 <PageLayout meta={{ title: 'Home' }} highlightColor='#659EB9'>
@@ -27,6 +29,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
       <div class='flex flex-col items-center gap-y-4'>
         <h1 class='text-3xl font-bold'>{config.author}</h1>
+        <p class='max-w-md text-center text-muted-foreground'>Notes on algorithms, machine learning, systems, and the process of learning them.</p>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
           <Label title='Shandong University, China'>
             <Icon name='location' class='size-5' slot='icon' />
@@ -42,6 +45,21 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
     </section>
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
+      <section aria-label='Blog overview' class='grid grid-cols-3 gap-2 border-y py-4 text-center sm:gap-4'>
+        <div>
+          <p class='text-2xl font-semibold'>{allPosts.length}</p>
+          <p class='text-xs uppercase tracking-wide text-muted-foreground'>Posts</p>
+        </div>
+        <div>
+          <p class='text-2xl font-semibold'>{seriesCount}</p>
+          <p class='text-xs uppercase tracking-wide text-muted-foreground'>Series</p>
+        </div>
+        <div>
+          <p class='text-2xl font-semibold'>{tagCount}</p>
+          <p class='text-xs uppercase tracking-wide text-muted-foreground'>Topics</p>
+        </div>
+      </section>
+
       <Section title='About'>
         <p class='text-muted-foreground mt-1'>Computer Science Undergraduate</p>
         <p class='text-muted-foreground leading-6'>
@@ -51,10 +69,10 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
         <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
       </Section>
       {
-        allPostsByDate.length > 0 && (
+        recentPosts.length > 0 && (
           <Section title='Posts'>
             <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
-              {allPostsByDate.map((p) => (
+              {recentPosts.map((p) => (
                 <li class='flex flex-col gap-x-2 sm:flex-row'>
                   <PostPreview post={p} />
                 </li>
@@ -64,6 +82,15 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
           </Section>
         )
       }
+
+      <Section title='Explore'>
+        <div class='flex flex-wrap gap-2'>
+          <Button title='Search posts' href='/search' variant='pill' />
+          <Button title='Browse by series' href='/series' variant='pill' />
+          <Button title='View archives' href='/archives' variant='pill' />
+          <Button title='Follow the roadmap' href='/roadmap' variant='pill' />
+        </div>
+      </Section>
     </div>
   </main>
 </PageLayout>
