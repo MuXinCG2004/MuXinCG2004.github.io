@@ -7,6 +7,7 @@ import { getBlogCollection, getUniqueTags, sortMDByDate } from 'astro-pure/serve
 import { Button, Icon } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import config from '@/site-config'
+import { tagPath } from '@/utils/slug'
 
 export const prerender = true
 
@@ -89,7 +90,7 @@ const paginationProps = {
               <ul class='text-bgColor flex flex-wrap gap-2'>
                 {uniqueTags.map((tag) => (
                   <li>
-                    <Button title={tag} href={`/tags/${tag}`} variant='pill' />
+                    <Button title={tag} href={tagPath(tag)} variant='pill' />
                   </li>
                 ))}
               </ul>

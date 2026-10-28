@@ -46,7 +46,7 @@ $$
 - 每条 IsoFLOP 曲线的最低点 → 该预算下的最优模型大小
 - 把各预算的最优点连起来 → $N_{opt}(C)$、$D_{opt}(C)$ 的幂律
 
-> 待补充：FLOPs 估算公式 $C \approx 6ND$ 的推导；曲线拟合的实现细节。
+对 decoder-only Transformer，前向和反向通常可粗略估计为每个 token 约 $6N$ 次浮点运算，因此总训练计算量可写成 $C\approx6ND$，其中 $N$ 是参数量，$D$ 是训练 token 数。拟合时可在 log 空间中回归幂律关系，并保留验证集或 bootstrap 重采样来估计外推的不确定性。
 
 ## Training API 与数据收集
 

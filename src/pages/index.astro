@@ -34,7 +34,13 @@ const tagCount = new Set(allPosts.flatMap((post) => post.data.tags)).size
           <Label title='Shandong University, China'>
             <Icon name='location' class='size-5' slot='icon' />
           </Label>
-          <Label title='GitHub' as='a' href='https://github.com/MuXinCG2004' target='_blank'>
+          <Label
+            title='GitHub'
+            as='a'
+            href='https://github.com/MuXinCG2004'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
             <Icon name='github' class='size-5' slot='icon' />
           </Label>
           <Label title='Resume' as='a' href='/profile.pdf' download>
@@ -72,11 +78,7 @@ const tagCount = new Set(allPosts.flatMap((post) => post.data.tags)).size
         recentPosts.length > 0 && (
           <Section title='Posts'>
             <ul class='flex flex-col gap-y-1.5 sm:gap-y-2'>
-              {recentPosts.map((p) => (
-                <li class='flex flex-col gap-x-2 sm:flex-row'>
-                  <PostPreview post={p} />
-                </li>
-              ))}
+              {recentPosts.map((p) => <PostPreview post={p} />)}
             </ul>
             <Button title='More posts' class='w-fit self-end' href='/blog' variant='ahead' />
           </Section>

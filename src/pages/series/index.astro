@@ -3,8 +3,7 @@ import { getBlogCollection } from 'astro-pure/server'
 import { Button } from 'astro-pure/user'
 import { cn } from 'astro-pure/utils'
 import PageLayout from '@/layouts/BaseLayout.astro'
-
-const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
+import { seriesPath } from '@/utils/slug'
 
 const allPosts = await getBlogCollection()
 const counts = new Map<string, number>()
@@ -35,7 +34,7 @@ const meta = {
             {allSeries.map(([name, val]) => (
               <li>
                 <Button
-                  href={`/series/${slugify(name)}`}
+                  href={seriesPath(name)}
                   variant='pill'
                   class={cn(
                     'items-start gap-x-1',

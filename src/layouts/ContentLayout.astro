@@ -7,7 +7,9 @@ import PageLayout from '@/layouts/BaseLayout.astro'
 import { integ } from '@/site-config'
 
 interface Props {
-  meta: SiteMeta
+  meta: SiteMeta & {
+    articleModifiedDate?: string
+  }
   highlightColor?: string
   back?: string
 }
@@ -66,6 +68,8 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
     <button
       slot='other-icons'
       aria-label='Toggle sidebar'
+      aria-controls='sidebar'
+      aria-expanded='false'
       class='size-10 flex items-center justify-center rounded-full border-2 border-transparent bg-muted text-muted-foreground duration-300 hover:border-border/75 md:hidden sm:size-12'
       id='sidebar-btn'
     >
@@ -84,13 +88,15 @@ const { meta, highlightColor, back = '/', ...props } = Astro.props
 
     function toggleSidebar() {
       if (!sidebar || !sidebarShade) return
-      if (sidebar.classList.contains('show')) {
+      const isOpen = sidebar.classList.contains('show')
+      if (isOpen) {
         sidebar.classList.remove('show')
         sidebarShade.style.display = 'none'
       } else {
         sidebar.classList.add('show')
         sidebarShade.style.display = 'block'
       }
+      sidebarButton?.setAttribute('aria-expanded', String(!isOpen))
     }
 
     sidebarShade?.addEventListener('click', toggleSidebar)

@@ -47,7 +47,7 @@ Assignment 2 关注**系统与性能**：让 A1 的模型跑得更快(自定义 
 - 重计算(recomputation)换显存
 - 推导 $dQ, dK, dV$ 的梯度公式
 
-> 待补充：tiling 大小的选择、寄存器/共享内存压力、与 PyTorch SDPA 的对比基准。
+tiling 大小需要在吞吐、寄存器占用和共享内存之间折中：block 太小会增加循环与访存开销，太大则可能降低 occupancy。实际比较时应固定输入形状、数据类型和 warmup 次数，并与 PyTorch SDPA 使用相同的 causal 设置，再分别报告 forward、backward、峰值显存和端到端耗时。
 
 ## 分布式训练
 

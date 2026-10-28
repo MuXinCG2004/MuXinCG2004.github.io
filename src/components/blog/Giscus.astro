@@ -10,7 +10,7 @@
 <script is:inline>
   ;(function () {
     function getTheme() {
-      return document.documentElement.dataset.theme === 'dark'
+      return document.documentElement.classList.contains('dark')
         ? 'dark_dimmed'
         : 'light'
     }
@@ -54,7 +54,7 @@
     })
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme']
+      attributeFilter: ['class']
     })
 
     document.addEventListener(
@@ -65,6 +65,7 @@
       { once: true }
     )
 
+    document.addEventListener('astro:page-load', loadGiscus)
     loadGiscus()
   })()
 </script>

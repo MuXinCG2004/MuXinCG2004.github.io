@@ -7,6 +7,7 @@ import { getBlogCollection, getUniqueTags, sortMDByDate } from 'astro-pure/serve
 import { Button } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import config from '@/site-config'
+import { createSlugMap } from '@/utils/slug'
 
 export const prerender = true
 
@@ -14,26 +15,32 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const allPosts = await getBlogCollection()
   const allPostsByDate = sortMDByDate(allPosts)
   const uniqueTags = getUniqueTags(allPostsByDate)
+  const tagsBySlug = createSlugMap(uniqueTags)
 
-  return uniqueTags.flatMap((tag) => {
+  return [...tagsBySlug.entries()].flatMap(([slug, tag]) => {
     const filterPosts = allPostsByDate.filter((post) => post.data.tags.includes(tag))
-    return paginate(filterPosts, {
-      pageSize: config.content.blogPageSize,
-      params: { tag }
-    })
+    const aliases = [...new Set([slug, tag])]
+    return aliases.flatMap((tagParam) =>
+      paginate(filterPosts, {
+        pageSize: config.content.blogPageSize,
+        params: { tag: tagParam },
+        props: { tagName: tag, legacyUrl: tagParam !== slug }
+      })
+    )
   })
 }
 
 interface Props {
   page: Page<CollectionEntry<'blog'>>
+  tagName: string
+  legacyUrl: boolean
 }
 
-const { page } = Astro.props
-const { tag } = Astro.params
+const { page, tagName, legacyUrl } = Astro.props
 
 const meta = {
-  description: `View all posts with the tag - ${tag}`,
-  title: `Tag: ${tag}`
+  description: `View all posts with the tag - ${tagName}`,
+  title: `Tag: ${tagName}`
 }
 
 const paginationProps = {
@@ -52,13 +59,13 @@ const paginationProps = {
 }
 ---
 
-<PageLayout {meta}>
+<PageLayout {meta} data-pagefind-ignore={legacyUrl ? '' : undefined}>
   <Button title='Back' href='/blog' variant='back' />
   <main class='mt-6 lg:mt-10'>
     <div id='content-header' class='animate'>
       <h1 class='mb-6 flex items-end gap-x-2 text-3xl font-medium'>
         Tags:
-        <span class='text-2xl'>#{tag}</span>
+        <span class='text-2xl'>#{tagName}</span>
       </h1>
     </div>
 

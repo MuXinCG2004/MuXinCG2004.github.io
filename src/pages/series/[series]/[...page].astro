@@ -7,23 +7,24 @@ import { getBlogCollection } from 'astro-pure/server'
 import { Button } from 'astro-pure/user'
 import PageLayout from '@/layouts/BaseLayout.astro'
 import config from '@/site-config'
+import { createSlugMap } from '@/utils/slug'
 
 export const prerender = true
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-  const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
   const allPosts = await getBlogCollection()
   const uniqueSeries = [
     ...new Set(allPosts.map((p) => p.data.series).filter((s): s is string => !!s))
   ]
+  const seriesBySlug = createSlugMap(uniqueSeries)
 
-  return uniqueSeries.flatMap((seriesName) => {
+  return [...seriesBySlug.entries()].flatMap(([seriesSlug, seriesName]) => {
     const seriesPosts = allPosts
       .filter((post) => post.data.series === seriesName)
       .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
     return paginate(seriesPosts, {
       pageSize: config.content.blogPageSize,
-      params: { series: slugify(seriesName) },
+      params: { series: seriesSlug },
       props: { seriesName }
     })
   })

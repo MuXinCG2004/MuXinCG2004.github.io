@@ -14,11 +14,10 @@
   animation: 300ms fade-in-up;
   animation-fill-mode: forwards;
 }
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
   .animate {
-    opacity: 0;
-    animation: 100ms fade-in-up;
-    animation-fill-mode: forwards;
+    opacity: 1;
+    animation: none;
   }
 }
 #content-header {
@@ -29,6 +28,61 @@
 }
 #sidebar {
   animation-delay: 150ms;
+}
+
+/* Analytics consent */
+#analytics-consent[hidden] {
+  display: none;
+}
+#analytics-consent {
+  position: fixed;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 32rem;
+  margin-inline: auto;
+  padding: 0.75rem 1rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  background: hsl(var(--background) / 0.96);
+  color: hsl(var(--foreground));
+  box-shadow: 0 0.5rem 2rem hsl(0 0% 0% / 0.12);
+  font-size: 0.875rem;
+}
+#analytics-consent p {
+  margin: 0;
+}
+#analytics-consent div {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+#analytics-consent button {
+  min-height: 2rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  color: hsl(var(--foreground));
+  background: hsl(var(--muted));
+  cursor: pointer;
+}
+#analytics-consent button:last-child {
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary));
+}
+@media (max-width: 480px) {
+  #analytics-consent {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  #analytics-consent div {
+    justify-content: flex-end;
+  }
 }
 
 /* Katex */

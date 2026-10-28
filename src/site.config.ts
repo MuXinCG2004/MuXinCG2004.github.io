@@ -119,12 +119,14 @@ export const integ: IntegrationUserConfig = {
  */
 export interface AnalyticsConfig {
   enabled: boolean
+  requireConsent: boolean
   src: string
   attrs: Record<string, string>
 }
 
 export const analytics: AnalyticsConfig = {
   enabled: true,
+  requireConsent: true,
   src: 'https://cloud.umami.is/script.js',
   attrs: {
     'data-website-id': 'f459e826-5123-4810-b769-01656f9045b0'

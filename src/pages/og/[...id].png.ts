@@ -1,7 +1,7 @@
 import type { APIContext, GetStaticPathsResult } from 'astro'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { Resvg } from '@resvg/resvg-js'
+import sharp from 'sharp'
 import satori from 'satori'
 import { getBlogCollection } from 'astro-pure/server'
 
@@ -157,13 +157,9 @@ export async function GET({ props }: APIContext) {
     }
   )
 
-  const resvg = new Resvg(svg, {
-    fitTo: { mode: 'width', value: 1200 }
-  })
-  const pngData = resvg.render()
-  const pngBuffer = pngData.asPng()
+  const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer()
 
-  return new Response(pngBuffer.buffer as ArrayBuffer, {
+  return new Response(new Uint8Array(pngBuffer), {
     headers: {
       'Content-Type': 'image/png',
       'Cache-Control': 'public, max-age=31536000, immutable'

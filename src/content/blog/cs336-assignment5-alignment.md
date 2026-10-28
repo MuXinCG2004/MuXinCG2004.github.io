@@ -51,7 +51,7 @@ $$
 - 与 PPO 的对比：去掉 value model
 - KL 正则、reward 设计(答案正确性 + 格式)
 
-> 待补充：GRPO 的完整目标函数、采样组大小、训练稳定性技巧。
+GRPO 的目标可以理解为 clipped policy objective 加 KL 约束。对同一个 prompt 采样 $G$ 个回答，用组内均值和标准差归一化奖励得到优势，再限制新旧策略比值，避免单步更新过大。实践中还需要控制 group size、奖励尺度、响应长度和 KL 系数，并监控奖励是否被格式奖励或长度奖励劫持。
 
 ## 在 Qwen2.5-Math-1.5B 上做 RL
 

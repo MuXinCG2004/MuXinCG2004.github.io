@@ -2,6 +2,7 @@
 import { ClientRouter } from 'astro:transitions'
 import { Footer, Header, ThemeProvider } from 'astro-pure/components/basic'
 import type { SiteMeta } from 'astro-pure/types'
+import Analytics from '@/components/Analytics.astro'
 import BaseHead from '@/components/BaseHead.astro'
 import config from '@/site-config'
 
@@ -10,12 +11,20 @@ import config from '@/site-config'
 import '@/assets/styles/app.css'
 
 interface Props {
-  meta: SiteMeta
+  meta: SiteMeta & {
+    articleModifiedDate?: string
+  }
   highlightColor?: string
 }
 
 const {
-  meta: { articleDate, description = config.description, ogImage, title },
+  meta: {
+    articleDate,
+    articleModifiedDate,
+    description = config.description,
+    ogImage,
+    title
+  },
   highlightColor,
   ...props
 } = Astro.props
@@ -23,7 +32,7 @@ const {
 
 <html lang={config.locale.lang}>
   <head>
-    <BaseHead {articleDate} {description} {ogImage} {title} />
+    <BaseHead {articleDate} {articleModifiedDate} {description} {ogImage} {title} />
     <ThemeProvider />
     <ClientRouter />
   </head>
@@ -40,9 +49,10 @@ const {
     }
     <div class='w-full max-w-[70rem] px-4 sm:px-7 lg:px-10 min-h-[100dvh] flex flex-col justify-between'>
       <Header />
-      <div class="flex-1 w-full">
+      <div class="flex-1 w-full" data-pagefind-body>
         <slot />
       </div>
+      <Analytics />
       <Footer/>
     </div>
 

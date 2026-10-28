@@ -1,0 +1,110 @@
+---
+import { analytics } from '@/site-config'
+
+const enabled = analytics.enabled && import.meta.env.PROD
+---
+
+{
+  enabled && (
+    <div
+      id='analytics-settings'
+      data-pagefind-ignore
+      data-src={analytics.src}
+      data-attrs={JSON.stringify(analytics.attrs)}
+      data-require-consent={String(analytics.requireConsent)}
+    >
+      {analytics.requireConsent && (
+        <>
+          <button
+            type='button'
+            id='analytics-preferences'
+            class='mb-5 text-sm text-muted-foreground underline underline-offset-4'
+            aria-controls='analytics-consent'
+            aria-expanded='false'
+          >
+            访问统计设置
+          </button>
+          <aside id='analytics-consent' aria-label='访问统计设置' hidden>
+            <p>是否允许使用 Umami 统计页面访问？</p>
+            <div>
+              <button type='button' data-consent='denied'>拒绝</button>
+              <button type='button' data-consent='granted'>允许</button>
+            </div>
+          </aside>
+        </>
+      )}
+    </div>
+  )
+}
+
+<script>
+  const consentKey = 'blog-analytics-consent'
+  const loadedSources = new Set<string>()
+  let sessionConsent: string | null = null
+
+  function readConsent() {
+    try {
+      return localStorage.getItem(consentKey) ?? sessionConsent
+    } catch {
+      return sessionConsent
+    }
+  }
+
+  function initAnalytics() {
+    const settings = document.getElementById('analytics-settings')
+    const src = settings?.dataset.src
+    if (!settings || !src) return
+
+    function loadAnalytics() {
+      if (loadedSources.has(src!)) return
+      const script = document.createElement('script')
+      script.src = src!
+      script.async = true
+      script.dataset.blogAnalytics = 'true'
+      const attrs = JSON.parse(settings!.dataset.attrs ?? '{}') as Record<string, string>
+      for (const [name, value] of Object.entries(attrs)) script.setAttribute(name, value)
+      script.addEventListener('error', () => {
+        loadedSources.delete(src!)
+        script.remove()
+      })
+      loadedSources.add(src!)
+      document.head.appendChild(script)
+    }
+
+    if (settings.dataset.requireConsent !== 'true') {
+      loadAnalytics()
+      return
+    }
+
+    const panel = document.getElementById('analytics-consent')
+    const preferences = document.getElementById('analytics-preferences')
+    function setOpen(open: boolean) {
+      if (panel) panel.hidden = !open
+      preferences?.setAttribute('aria-expanded', String(open))
+    }
+
+    function chooseConsent(value: string) {
+      sessionConsent = value
+      try {
+        localStorage.setItem(consentKey, value)
+      } catch {
+        // Keep the choice for this navigation session when storage is unavailable.
+      }
+      setOpen(false)
+      if (value === 'granted') loadAnalytics()
+      else if (loadedSources.size > 0) window.location.reload()
+    }
+
+    preferences?.addEventListener('click', () => setOpen(panel?.hidden ?? true))
+    panel?.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((button) => {
+      button.addEventListener('click', () => chooseConsent(button.dataset.consent!))
+    })
+
+    const consent = readConsent()
+    if (consent === 'granted') loadAnalytics()
+    setOpen(consent !== 'granted' && consent !== 'denied')
+  }
+
+  document.addEventListener('astro:page-load', initAnalytics)
+  initAnalytics()
+</script>

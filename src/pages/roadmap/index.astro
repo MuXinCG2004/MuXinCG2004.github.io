@@ -5,6 +5,7 @@ import { getBlogCollection } from 'astro-pure/server'
 import { Button } from 'astro-pure/user'
 import { getFormattedDate } from 'astro-pure/utils'
 import PageLayout from '@/layouts/BaseLayout.astro'
+import { seriesPath, tagPath } from '@/utils/slug'
 
 export const prerender = true
 
@@ -19,8 +20,6 @@ type TrackConfig = {
   accent: 'sky' | 'emerald' | 'amber' | 'rose' | 'violet'
   match: (post: BlogPost) => boolean
 }
-
-const slugify = (s: string) => s.toLowerCase().replace(/\s+/g, '-')
 
 const sortByRoadmapOrder = (a: BlogPost, b: BlogPost) => {
   const orderA = a.data.seriesOrder ?? Number.MAX_SAFE_INTEGER
@@ -39,7 +38,7 @@ const tracks: TrackConfig[] = [
     eyebrow: 'CS229',
     description:
       'Regression, classification, generalized linear models, and the mathematical base for later model work.',
-    href: `/series/${slugify('CS229 Machine Learning')}`,
+    href: seriesPath('CS229 Machine Learning'),
     accent: 'sky',
     match: (post) => post.data.series === 'CS229 Machine Learning'
   },
@@ -49,7 +48,7 @@ const tracks: TrackConfig[] = [
     eyebrow: 'CS336',
     description:
       'Tokenizer, Transformer, systems, scaling laws, data processing, alignment, and reasoning RL.',
-    href: `/series/${slugify('CS336 Language Modeling from Scratch')}`,
+    href: seriesPath('CS336 Language Modeling from Scratch'),
     accent: 'emerald',
     match: (post) => post.data.series === 'CS336 Language Modeling from Scratch'
   },
@@ -83,7 +82,7 @@ const tracks: TrackConfig[] = [
     title: 'Journal',
     eyebrow: 'Diary',
     description: 'Personal notes that capture context around study, research, and project work.',
-    href: `/series/${slugify('Diary')}`,
+    href: seriesPath('Diary'),
     accent: 'violet',
     match: (post) => post.data.series === 'Diary'
   }
@@ -229,7 +228,7 @@ const meta = {
               </span>
               {track.latest && <span>Updated {getFormattedDate(track.latest)}</span>}
               {track.tags.map((tag) => (
-                <a href={`/tags/${tag}`} class='rounded-full border px-2 py-1 hover:bg-muted'>
+                <a href={tagPath(tag)} class='rounded-full border px-2 py-1 hover:bg-muted'>
                   {tag}
                 </a>
               ))}

@@ -1,15 +1,27 @@
 ---
 import type { SiteMeta } from 'astro-pure/types'
-import config, { analytics } from '@/site-config'
+import config from '@/site-config'
+import { slugify } from '@/utils/slug'
 
-type Props = SiteMeta
+type Props = SiteMeta & {
+  articleModifiedDate?: string
+}
 
-const { articleDate, description, ogImage, title } = Astro.props
+const { articleDate, articleModifiedDate, description, ogImage, title } = Astro.props
 
 const siteTitle = `${title} ${config.titleDelimiter} ${config.title}`
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const canonicalPath = Astro.url.pathname.replace(
+  /^(\/(?:tags|series))\/([^/]+)/,
+  (_, prefix, segment) => {
+    try {
+      return `${prefix}/${slugify(decodeURIComponent(segment))}`
+    } catch {
+      return `${prefix}/${slugify(segment)}`
+    }
+  }
+)
+const canonicalURL = new URL(canonicalPath, Astro.site)
 const socialImageURL = ogImage ? new URL(ogImage, Astro.url).href : undefined
-const enableAnalytics = analytics.enabled && import.meta.env.PROD
 ---
 
 <meta charset='utf-8' />
@@ -62,6 +74,7 @@ const enableAnalytics = analytics.enabled && import.meta.env.PROD
     <>
       <meta content={config.author} property='article:author' />
       <meta content={articleDate} property='article:published_time' />
+      {articleModifiedDate && <meta content={articleModifiedDate} property='article:modified_time' />}
     </>
   )
 }
@@ -102,6 +115,7 @@ const enableAnalytics = analytics.enabled && import.meta.env.PROD
         description: description,
         image: socialImageURL,
         datePublished: articleDate,
+        ...(articleModifiedDate && { dateModified: articleModifiedDate }),
         inLanguage: config.locale.attrs,
         mainEntityOfPage: canonicalURL.href,
         author: {
@@ -129,9 +143,6 @@ const enableAnalytics = analytics.enabled && import.meta.env.PROD
 />
 
 <meta content={Astro.generator} name='generator' />
-
-{/* Analytics (production only, configured in src/site.config.ts) */}
-{enableAnalytics && <script is:inline async defer src={analytics.src} {...analytics.attrs} />}
 
 {/* Styles */}
 <link rel='stylesheet' href='/styles/global.css' />

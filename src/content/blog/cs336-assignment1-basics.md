@@ -26,7 +26,7 @@ Assignment 1 的目标是**只用 PyTorch primitives 从零搭起一个完整的
 
 在第一个作业的第一节中，我们被要求实现一个BPE分词器，首先我们要明白这个的原理，我们首先将文档按UTF-8转换，然后在训练过程中，每次找到出现频率最高的相邻两个词进行合并。
 
-CS336的这一部分，首先添加了special_tokens，就是
+CS336 的这一部分还需要处理 `special_tokens`。它们通常用来标记文档边界或特殊控制信号，不能被普通的 BPE 合并过程拆散。实现时需要保证特殊 token 的匹配优先级高于普通文本，并在编码和解码时保持可逆。
 
 
 ## Transformer 架构
@@ -74,7 +74,20 @@ $$
 
 从零实现，注意 weight decay 与梯度更新解耦：
 
-> 待补充：一阶/二阶矩、bias correction、与 Adam 的区别。
+AdamW 为每个参数维护一阶矩 $m_t$ 与二阶矩 $v_t$：
+
+$$
+m_t=\beta_1m_{t-1}+(1-\beta_1)g_t,\qquad
+v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2.
+$$
+
+用偏置修正后的矩估计更新参数，并把 weight decay 从梯度更新中解耦：
+
+$$
+\theta_t=\theta_{t-1}-\alpha\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}-\alpha\lambda\theta_{t-1}.
+$$
+
+这也是 AdamW 相比直接把 L2 正则项加到梯度上的关键区别。
 
 ### 学习率调度
 
